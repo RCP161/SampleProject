@@ -1,2 +1,1 @@
 # SampleProject
-Catel Test
