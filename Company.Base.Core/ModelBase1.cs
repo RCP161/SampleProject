@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Catel.Data;
 
 namespace Company.Base.Core
@@ -8,11 +9,11 @@ namespace Company.Base.Core
         // Model für alle Darstellungssachen
         public ModelBase1()
         {
-            IsReadOnly = true;
             State = StateEnum.Unchanged;
         }
 
         // Brauche ich hier schon wegen dem State. Kann ja ber default unchanged sein
+        [NotMapped]
         [IgnoreOnState]
         public StateEnum State
         {
@@ -21,12 +22,15 @@ namespace Company.Base.Core
         }
         public static readonly PropertyData StateProperty = RegisterProperty(nameof(State), typeof(StateEnum));
 
+        // BaseReadOnly Sperrt das Object, nicht die Oberfläche
+        [NotMapped]
         public new bool IsReadOnly
         {
             get { return base.IsReadOnly; }
             internal set { base.IsReadOnly = value; }
         }
 
+        [NotMapped]
         [IgnoreOnState]
         public string DisplayText
         {

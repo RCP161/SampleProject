@@ -8,5 +8,6 @@ namespace Company.Security.Core.Services
     public interface IUserService
     {
         IEnumerable<User> GetAll();
+        void SaveUser(User user);
     }
 }

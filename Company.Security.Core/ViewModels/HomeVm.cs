@@ -10,9 +10,9 @@ namespace Company.Security.Core.ViewModels
 {
     public class HomeVm : ViewModelBase
     {
-        public HomeVm(Home home)
+        public HomeVm()
         {
-            Model = home;
+            Model = new Home();
             //OpenGroupCommand = new Command(() => Model.OpenGroup(SelectedGroup));
             //OpenUserCommand = new Command(() => Model.OpenUser(SelectedUser));
         }

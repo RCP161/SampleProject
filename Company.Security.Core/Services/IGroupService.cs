@@ -8,5 +8,6 @@ namespace Company.Security.Core.Services
     public interface IGroupService
     {
         IEnumerable<Group> GetAll();
+        void SaveGroup(Group grp);
     }
 }

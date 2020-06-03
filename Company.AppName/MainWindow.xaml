@@ -15,6 +15,18 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ToolBar />
+        <ToolBar ItemsSource="{Binding Modules}">
+            <ToolBar.ItemTemplate>
+                <DataTemplate>
+                    <Button ToolTip="{Binding Name}">
+                        <Button.Content>
+                            <TextBlock Text="{Binding Logo}" />
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </ToolBar.ItemTemplate>
+        </ToolBar>
+
+        <ContentPresenter Grid.Row="1" Content="{Binding SelectedModuleVm, Converter={catel:ViewModelToViewConverter}}" />
     </Grid>
 </catel:Window>

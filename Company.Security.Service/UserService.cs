@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Company.AppName.Data;
 using Company.Security.Core.Models;
 using Company.Security.Core.Repositories;
@@ -12,10 +13,18 @@ namespace Company.Security.Service
     {
         public IEnumerable<User> GetAll()
         {
+            IEnumerable<User> res;
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>())
             {
-                return uow.GetRepository<IUserRepository>().GetAll();
+                res = uow.GetRepository<IUserRepository>().GetAll().ToList();
             }
+
+            return res;
+        }
+
+        public void SaveUser(User user)
+        {
+            throw new NotImplementedException();
         }
     }
 }

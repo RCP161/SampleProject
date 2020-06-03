@@ -8,9 +8,17 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
-        <Label Grid.Row="0" Content="{Binding Title}" />
-        <Label Grid.Row="1" Content="Here goes your real content" />
+        <TextBlock Grid.Row="0" Text="{Binding Name}" />
+        <ListView Grid.Row="1"
+                  Margin="0,3"
+                  ItemsSource="{Binding GroupPermissions}"
+                  SelectedItem="{Binding SelectedGroup}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding DisplayText}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
-    
+
 </catel:UserControl>

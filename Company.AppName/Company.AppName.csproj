@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -128,6 +130,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TestData.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,6 +140,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Config.cs" />
+    <Compile Include="MainModel.cs" />
+    <Compile Include="MainVm.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -201,6 +206,10 @@
     <ProjectReference Include="..\Company.Security.Service\Company.Security.Service.csproj">
       <Project>{4c65ed51-3ec2-43b4-90ec-0e6848ca0a27}</Project>
       <Name>Company.Security.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Company.Security.UI\Company.Security.UI.csproj">
+      <Project>{73f8c05d-e8eb-49c3-b9bf-3f2c06e4ed08}</Project>
+      <Name>Company.Security.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

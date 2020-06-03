@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Company.Base.Core
@@ -8,17 +9,9 @@ namespace Company.Base.Core
 
     public abstract class ModelBase2 : ModelBase1, IEditable
     {
-        // TODO : PR
-        // Brauche ich ModelBase1 überhaupt noch?
-        // Doch ein eigenes baseRepo dazwischen hängen zum speichern
-        // Keine EF Plus unterstützung
-        // UnitTest durch TestDB ersetzen?
-
 
         public ModelBase2()
-        {
-            IsReadOnly = false;
-        }
+        { }
 
         public abstract long Id { get; protected set; }
 
@@ -28,6 +21,7 @@ namespace Company.Base.Core
         }
 
         // TODO : Bei State PropertyChanged auch IsDirty 
+        [NotMapped]
         [IgnoreOnState]
         public new bool IsDirty
         {

@@ -36,15 +36,6 @@ namespace Company.Security.Core.ViewModels
 
 
         [ViewModelToModel]
-        public string Password
-        {
-            get { return GetValue<string>(PasswordProperty); }
-            set { SetValue(PasswordProperty, value); }
-        }
-        public static readonly PropertyData PasswordProperty = RegisterProperty(nameof(Password), typeof(string));
-
-
-        [ViewModelToModel]
         public ObservableCollection<Group> Groups
         {
             get { return GetValue<ObservableCollection<Group>>(GroupsProperty); }

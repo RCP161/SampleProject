@@ -27,11 +27,11 @@
                       Margin="0,3"
                       ItemsSource="{Binding Groups}"
                       SelectedItem="{Binding SelectedGroup}">
-                <i:Interaction.Triggers>
+                <!--<i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding OpenGroupCommand}" />
                     </i:EventTrigger>
-                </i:Interaction.Triggers>
+                </i:Interaction.Triggers>-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding DisplayText}" />
@@ -44,11 +44,11 @@
                       Margin="0,3"
                       ItemsSource="{Binding Users}"
                       SelectedItem="{Binding SelectedUser}">
-                <i:Interaction.Triggers>
+                <!--<i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding OpenUserCommand}" />
                     </i:EventTrigger>
-                </i:Interaction.Triggers>
+                </i:Interaction.Triggers>-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding DisplayText}" />
@@ -57,8 +57,12 @@
             </ListView>
         </Grid>
         <Grid Grid.Column="1">
-            <local:GroupView DataContext="{Binding SelectedGroup}" />
-            <local:UserView DataContext="{Binding SelectedUser}" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <local:GroupView Grid.Row="0" DataContext="{Binding SelectedGroup}" />
+            <local:UserView Grid.Row="1" DataContext="{Binding SelectedUser}" />
         </Grid>
     </Grid>
 </catel:UserControl>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Company.AppName.Data;
 using Company.Basic.Core.Models;
 using Company.Basic.Core.Repositories;
@@ -9,6 +10,11 @@ namespace Company.Basic.Service
 {
     public class PersonService : IPersonService
     {
+        public IEnumerable<Person> GatAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Person GetPersonById(long id)
         {
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>())

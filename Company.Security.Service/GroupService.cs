@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Catel.Linq;
 using Company.AppName.Data;
 using Company.Security.Core.Models;
 using Company.Security.Core.Repositories;
@@ -12,10 +14,19 @@ namespace Company.Security.Service
     {
         public IEnumerable<Group> GetAll()
         {
+            IEnumerable<Group> res;
+
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>())
             {
-                return uow.GetRepository<IGroupRepository>().GetAll();
+                res = uow.GetRepository<IGroupRepository>().GetQuery().ToList();
             }
+
+            return res;
+        }
+
+        public void SaveGroup(Group grp)
+        {
+            throw new NotImplementedException();
         }
     }
 }

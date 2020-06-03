@@ -8,7 +8,6 @@ using Company.Base.Core;
 
 namespace Company.Security.Core.Models
 {
-    [Table("Permission")]
     public class Permission : ModelBase2
     {
 
@@ -19,10 +18,10 @@ namespace Company.Security.Core.Models
         [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override long Id
         {
-            get { return GetValue<int>(IdProperty); }
+            get { return GetValue<long>(IdProperty); }
             protected set { SetValue(IdProperty, value); }
         }
-        public static readonly PropertyData IdProperty = RegisterProperty(nameof(Id), typeof(int));
+        public static readonly PropertyData IdProperty = RegisterProperty(nameof(Id), typeof(long));
 
 
         [Required, MaxLength(255)]
