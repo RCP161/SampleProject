@@ -13,6 +13,8 @@ namespace Company.Security.Core.ViewModels
         public GroupVm(Group model)
         {
             Model = model;
+            SaveCommand = new Command(Model.Save);
+            CancelCommand = new Command(Cancel);
         }
 
         #region Properties
@@ -52,8 +54,37 @@ namespace Company.Security.Core.ViewModels
         public static readonly PropertyData SelectedGroupPermissionProperty = RegisterProperty(nameof(SelectedGroupPermission), typeof(GroupPermission));
 
 
+        [ViewModelToModel]
+        public ObservableCollection<User> Users
+        {
+            get { return GetValue<ObservableCollection<User>>(UsersProperty); }
+            set { SetValue(UsersProperty, value); }
+        }
+        public static readonly PropertyData UsersProperty = RegisterProperty(nameof(Users), typeof(ObservableCollection<User>));
+
+
+        public User SelectedUser
+        {
+            get { return GetValue<User>(SelectedUserProperty); }
+            set { SetValue(SelectedUserProperty, value); }
+        }
+        public static readonly PropertyData SelectedUserProperty = RegisterProperty(nameof(SelectedUser), typeof(User));
+
+
         //public Command OpenGroupCommand { get; private set; }
         //public Command OpenUserCommand { get; private set; }
+        public Command SaveCommand { get; private set; }
+        public Command CancelCommand { get; private set; }
+
+        #endregion
+
+        #region Methods
+
+        private void Cancel()
+        {
+            // Siehe UserVm
+            //throw new NotImplementedException();
+        }
 
         #endregion
     }

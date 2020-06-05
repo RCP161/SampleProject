@@ -4,21 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86FE9EF6-7997-4357-AB54-AA1AB83B41B5}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>Company.AppName</RootNamespace>
-    <AssemblyName>Company.AppName</AssemblyName>
+    <ProjectGuid>{D0EAC873-DD38-4EAB-B338-B4C6DDD82EF2}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Company.Basic.UI</RootNamespace>
+    <AssemblyName>Company.Basic.UI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -28,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,20 +38,8 @@
     <Reference Include="Catel.MVVM, Version=5.12.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Catel.MVVM.5.12.6\lib\net47\Catel.MVVM.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
-    </Reference>
-    <Reference Include="Orc.EntityFramework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Orc.EntityFramework6.3.0.0\lib\net47\Orc.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -115,9 +98,6 @@
     </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
-    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -132,28 +112,23 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="TestData.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="HomeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
+    <Compile Include="HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Config.cs" />
-    <Compile Include="MainModel.cs" />
-    <Compile Include="MainVm.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="PersonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PersonView.xaml.cs">
+      <DependentUpon>PersonView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -176,55 +151,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Company.AppName.Data\Company.AppName.Data.csproj">
-      <Project>{92f07c59-1aa4-40fb-b805-140537f0e7f2}</Project>
-      <Name>Company.AppName.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Company.Base.Core\Company.Base.Core.csproj">
-      <Project>{8edcb469-32f4-42cf-b726-5c8bcfe383cc}</Project>
-      <Name>Company.Base.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Company.Base.Service\Company.Base.Service.csproj">
-      <Project>{f241bd88-6fd4-47ef-979d-f531ba47bb24}</Project>
-      <Name>Company.Base.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Company.Basic.Core\Company.Basic.Core.csproj">
-      <Project>{aecf3d77-0ae9-432c-bf56-f37492113d7e}</Project>
-      <Name>Company.Basic.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Company.Basic.Data\Company.Basic.Data.csproj">
-      <Project>{c88f5be4-4678-4deb-93fd-1a5355eb1861}</Project>
-      <Name>Company.Basic.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Company.Basic.Service\Company.Basic.Service.csproj">
-      <Project>{228428a3-870b-4ead-b43a-bd674f7ed699}</Project>
-      <Name>Company.Basic.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Company.Basic.UI\Company.Basic.UI.csproj">
-      <Project>{d0eac873-dd38-4eab-b338-b4c6ddd82ef2}</Project>
-      <Name>Company.Basic.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Company.Security.Core\Company.Security.Core.csproj">
-      <Project>{94f59f88-38f5-4819-a683-2f3ccf92bd00}</Project>
-      <Name>Company.Security.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Company.Security.Data\Company.Security.Data.csproj">
-      <Project>{77df4349-4428-48a7-9f5f-6e65087f271e}</Project>
-      <Name>Company.Security.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Company.Security.Service\Company.Security.Service.csproj">
-      <Project>{4c65ed51-3ec2-43b4-90ec-0e6848ca0a27}</Project>
-      <Name>Company.Security.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Company.Security.UI\Company.Security.UI.csproj">
-      <Project>{73f8c05d-e8eb-49c3-b9bf-3f2c06e4ed08}</Project>
-      <Name>Company.Security.UI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

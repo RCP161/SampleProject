@@ -8,5 +8,7 @@ namespace Company.AppName.Data
     public interface IDbConfigruation
     {
         string ConnectionString { get; }
+        bool IsDbLoggingActiv { get; }
+        bool CreateNewDb { get; }
     }
 }

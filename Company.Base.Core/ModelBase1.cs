@@ -14,7 +14,6 @@ namespace Company.Base.Core
 
         // Brauche ich hier schon wegen dem State. Kann ja ber default unchanged sein
         [NotMapped]
-        [IgnoreOnState]
         public StateEnum State
         {
             get { return GetValue<StateEnum>(StateProperty); }
@@ -22,16 +21,20 @@ namespace Company.Base.Core
         }
         public static readonly PropertyData StateProperty = RegisterProperty(nameof(State), typeof(StateEnum));
 
+
         // BaseReadOnly Sperrt das Object, nicht die Oberfläche
         [NotMapped]
-        public new bool IsReadOnly
+        public new bool IsReadOnly { get; set; }
+
+
+        // TODO : Bei State PropertyChanged auch IsDirty 
+        [NotMapped]
+        public new bool IsDirty
         {
-            get { return base.IsReadOnly; }
-            internal set { base.IsReadOnly = value; }
+            get { return State == StateEnum.Unchanged; }
         }
 
         [NotMapped]
-        [IgnoreOnState]
         public string DisplayText
         {
             get { return GetValue<string>(DisplayTextProperty); }

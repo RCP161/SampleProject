@@ -17,9 +17,10 @@ namespace Company.AppName
         {
             Model = new MainModel();
 
-            SelectedModuleVm = new HomeVm();
+            ActivCommand = new Command<ViewModelBase>(SetActivatedModule);
         }
 
+        #region Properties
 
         [Model]
         public MainModel Model
@@ -28,6 +29,9 @@ namespace Company.AppName
             private set { SetValue(ModelProperty, value); }
         }
         public static readonly PropertyData ModelProperty = RegisterProperty(nameof(Model), typeof(MainModel));
+
+
+        public Command<ViewModelBase> ActivCommand { get; private set; }
 
 
         [ViewModelToModel]
@@ -39,11 +43,24 @@ namespace Company.AppName
         public static readonly PropertyData ModulesProperty = RegisterProperty(nameof(Modules), typeof(ObservableCollection<IModule>));
 
 
+        [ViewModelToModel]
         public ViewModelBase SelectedModuleVm
         {
             get { return GetValue<ViewModelBase>(SelectedModuleVmProperty); }
             set { SetValue(SelectedModuleVmProperty, value); }
         }
         public static readonly PropertyData SelectedModuleVmProperty = RegisterProperty(nameof(SelectedModuleVm), typeof(ViewModelBase));
+
+        #endregion
+
+        #region Methods
+
+        private void SetActivatedModule(ViewModelBase newActivVm)
+        {
+            SelectedModuleVm = newActivVm;
+        }
+
+        #endregion
+
     }
 }

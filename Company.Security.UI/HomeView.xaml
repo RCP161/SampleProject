@@ -9,60 +9,56 @@
                    d:DesignHeight="450"
                    d:DesignWidth="800"
                    mc:Ignorable="d">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+    <TabControl>
+        <TabItem Header="Home">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="Gruppen" />
-            <ListView Grid.Row="1"
-                      Margin="0,3"
-                      ItemsSource="{Binding Groups}"
-                      SelectedItem="{Binding SelectedGroup}">
-                <!--<i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseDoubleClick">
-                        <i:InvokeCommandAction Command="{Binding OpenGroupCommand}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>-->
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding DisplayText}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                <TextBlock Grid.Row="0" Text="Gruppen" />
+                <ListView Grid.Row="1"
+                          Margin="0,3"
+                          ItemsSource="{Binding Groups}"
+                          SelectedItem="{Binding SelectedGroup}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding OpenGroupCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DisplayText}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-            <TextBlock Grid.Row="2" Text="User" />
-            <ListView Grid.Row="3"
-                      Margin="0,3"
-                      ItemsSource="{Binding Users}"
-                      SelectedItem="{Binding SelectedUser}">
-                <!--<i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseDoubleClick">
-                        <i:InvokeCommandAction Command="{Binding OpenUserCommand}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>-->
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding DisplayText}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <local:GroupView Grid.Row="0" DataContext="{Binding SelectedGroup}" />
-            <local:UserView Grid.Row="1" DataContext="{Binding SelectedUser}" />
-        </Grid>
-    </Grid>
+                <TextBlock Grid.Row="2" Text="User" />
+                <ListView Grid.Row="3"
+                          Margin="0,3"
+                          ItemsSource="{Binding Users}"
+                          SelectedItem="{Binding SelectedUser}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding OpenUserCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DisplayText}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Gruppe">
+            <local:GroupView DataContext="{Binding SelectedGroup}" />
+        </TabItem>
+        <TabItem Header="Benutzer">
+            <local:UserView DataContext="{Binding SelectedUser}" />
+        </TabItem>
+    </TabControl>
 </catel:UserControl>

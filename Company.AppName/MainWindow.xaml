@@ -18,7 +18,9 @@
         <ToolBar ItemsSource="{Binding Modules}">
             <ToolBar.ItemTemplate>
                 <DataTemplate>
-                    <Button ToolTip="{Binding Name}">
+                    <Button Command="{Binding DataContext.ActivCommand, RelativeSource={RelativeSource AncestorType=ToolBar}}"
+                            CommandParameter="{Binding HomeViewModel}"
+                            ToolTip="{Binding Name}">
                         <Button.Content>
                             <TextBlock Text="{Binding Logo}" />
                         </Button.Content>

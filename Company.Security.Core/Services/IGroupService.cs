@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Company.Base.Core;
 using Company.Security.Core.Models;
 
 namespace Company.Security.Core.Services
 {
-    public interface IGroupService
+    public interface IGroupService : IModelBase2Service<Group>
     {
-        IEnumerable<Group> GetAll();
-        void SaveGroup(Group grp);
+        IEnumerable<Group> GetByUserId(long id);
+        IEnumerable<Group> GetAllComplete();
     }
 }

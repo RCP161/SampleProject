@@ -13,5 +13,15 @@ namespace Company.AppName
         {
             get { return @"Server=(LocalDB)\MSSQLLocalDB;Initial Catalog=CatelEfTest;Integrated Security=True;"; }
         }
+
+        public bool IsDbLoggingActiv
+        {
+            get { return false; }
+        }
+
+        public bool CreateNewDb
+        {
+            get { return false; }
+        }
     }
 }

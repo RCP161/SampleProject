@@ -14,8 +14,13 @@ namespace Company.AppName.Data
     {
         public AppDbContext() : base(GetConnectionString())
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<AppDbContext>());
-            Database.Log = Console.WriteLine;
+            IDbConfigruation config = ServiceLocator.Default.ResolveType<IDbConfigruation>();
+
+            if(config.CreateNewDb)
+                Database.SetInitializer(new DropCreateDatabaseAlways<AppDbContext>());
+
+            if(config.IsDbLoggingActiv)
+                Database.Log = Console.WriteLine; // Eigentlich Logger, nicht Coonsole
         }
 
         // nicht hübsch, aber es funst mal
@@ -28,6 +33,8 @@ namespace Company.AppName.Data
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
+            modelBuilder.Configurations.Add(new ModuleConfiguration.Basic.PersonConfig());
+
             modelBuilder.Configurations.Add(new ModuleConfiguration.Security.GroupConfig());
             modelBuilder.Configurations.Add(new ModuleConfiguration.Security.PermissionConfig());
             modelBuilder.Configurations.Add(new ModuleConfiguration.Security.GroupPermissionConfig());
@@ -35,7 +42,7 @@ namespace Company.AppName.Data
         }
 
         // TODO : Durch Code-generierung erzeugen
-        public DbSet<Person> Person { get; set; }
+        public DbSet<Person> Bsc_Person { get; set; }
 
 
         public DbSet<Group> Sec_Group { get; set; }

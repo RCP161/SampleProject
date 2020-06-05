@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
 using System.Text;
 using Catel.Data;
 using Company.Base.Core;
@@ -43,7 +44,20 @@ namespace Company.Security.Core.Models
 
         #endregion
 
-        #region Methods
+        #region Overrides
+
+        private static Dictionary<string, PropertyInfo> _propertyInfos;
+        [NotMapped]
+        public override Dictionary<string, PropertyInfo> MappedPropertyInfos
+        {
+            get
+            {
+                if(_propertyInfos == null)
+                    _propertyInfos = GetPropertyInfos();
+
+                return _propertyInfos;
+            }
+        }
 
         protected override string GetDisplayText()
         {

@@ -1,15 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using Catel.Data;
+using Catel.IoC;
 using Company.Base.Core;
+using Company.Security.Core.Services;
 
 namespace Company.Security.Core.Models
 {
     public class Group : ModelBase2
     {
+        public Group()
+        {
+            GroupPermissions = new ObservableCollection<GroupPermission>();
+            Users = new ObservableCollection<User>();
+        }
+
         #region Properties
 
         [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -30,24 +41,46 @@ namespace Company.Security.Core.Models
         public static readonly PropertyData NameProperty = RegisterProperty(nameof(Name), typeof(string));
 
 
-        public List<GroupPermission> GroupPermissions
+        public ObservableCollection<GroupPermission> GroupPermissions
         {
-            get { return GetValue<List<GroupPermission>>(GroupPermissionsProperty); }
+            get { return GetValue<ObservableCollection<GroupPermission>>(GroupPermissionsProperty); }
             set { SetValue(GroupPermissionsProperty, value); }
         }
-        public static readonly PropertyData GroupPermissionsProperty = RegisterProperty(nameof(GroupPermissions), typeof(List<GroupPermission>));
+        public static readonly PropertyData GroupPermissionsProperty = RegisterProperty(nameof(GroupPermissions), typeof(ObservableCollection<GroupPermission>));
 
 
-        public List<User> Users
+        public ObservableCollection<User> Users
         {
-            get { return GetValue<List<User>>(UsersProperty); }
+            get { return GetValue<ObservableCollection<User>>(UsersProperty); }
             set { SetValue(UsersProperty, value); }
         }
-        public static readonly PropertyData UsersProperty = RegisterProperty(nameof(Users), typeof(List<User>));
+        public static readonly PropertyData UsersProperty = RegisterProperty(nameof(Users), typeof(ObservableCollection<User>));
 
         #endregion
 
         #region Methods
+
+        internal void Save()
+        {
+            ServiceLocator.Default.ResolveType<IGroupService>().SaveOrUpdate(this);
+        }
+
+        #endregion
+
+        #region Overrides
+
+        private static Dictionary<string, PropertyInfo> _propertyInfos;
+        [NotMapped]
+        public override Dictionary<string, PropertyInfo> MappedPropertyInfos
+        {
+            get
+            {
+                if(_propertyInfos == null)
+                    _propertyInfos = GetPropertyInfos();
+
+                return _propertyInfos;
+            }
+        }
 
         protected override string GetDisplayText()
         {

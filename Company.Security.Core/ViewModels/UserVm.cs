@@ -13,6 +13,8 @@ namespace Company.Security.Core.ViewModels
         public UserVm(User model)
         {
             Model = model;
+            SaveCommand = new Command(Model.Save);
+            CancelCommand = new Command(Cancel);
         }
 
         #region Properties
@@ -52,8 +54,20 @@ namespace Company.Security.Core.ViewModels
         public static readonly PropertyData SelectedGroupProperty = RegisterProperty(nameof(SelectedGroup), typeof(Group));
 
 
+        public Command SaveCommand { get; private set; }
+        public Command CancelCommand { get; private set; }
         //public Command OpenGroupCommand { get; private set; }
         //public Command OpenUserCommand { get; private set; }
+
+        #endregion
+
+        #region Methods
+
+        private void Cancel()
+        {
+            // SaveAsync etc verwenden. Für alle editierbaren VMs Speichern & Abbrechen vereinheitlichen?
+            //throw new NotImplementedException();
+        }
 
         #endregion
     }

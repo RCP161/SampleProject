@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Reflection;
 using System.Text;
+using Catel.Data;
+using Catel.Reflection;
 
 namespace Company.Base.Core
 {
@@ -15,17 +19,12 @@ namespace Company.Base.Core
 
         public abstract long Id { get; protected set; }
 
+        [NotMapped]
+        public abstract Dictionary<string, PropertyInfo> MappedPropertyInfos { get; }
+
         public void SetState(StateEnum stateEnum)
         {
             State = stateEnum;
-        }
-
-        // TODO : Bei State PropertyChanged auch IsDirty 
-        [NotMapped]
-        [IgnoreOnState]
-        public new bool IsDirty
-        {
-            get { return State == StateEnum.Unchanged; }
         }
 
         protected override sealed string GetDisplyTextWithState()
@@ -36,6 +35,35 @@ namespace Company.Base.Core
                 dpText += "*";
 
             return dpText;
+        }
+
+
+
+        // TODO : PR
+        // Eher ein VM dazwischen hängen und Status von Moedl entfernen
+        // State eigentlich nur während der bearbeitung interessant
+        // Dann bei Cancel das Vm zurücksetzen oder bei SaveAsync SpeicherMethode an Model aufrufen
+        // -- dass dann aber auch für die UI-Kindelemente
+
+        protected override void OnPropertyChanged(AdvancedPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+
+            if(State == StateEnum.Unchanged && MappedPropertyInfos.ContainsKey(e.PropertyName))
+                State = StateEnum.Modified;
+        }
+
+        protected Dictionary<string, PropertyInfo> GetPropertyInfos()
+        {
+            Dictionary<string, PropertyInfo> res = new Dictionary<string, PropertyInfo>();
+
+            foreach(PropertyInfo pi in GetType().GetProperties())
+            {
+                if(pi.GetAttribute<NotMappedAttribute>() == null)
+                    res.Add(pi.Name, pi);
+            }
+
+            return res;
         }
     }
 }

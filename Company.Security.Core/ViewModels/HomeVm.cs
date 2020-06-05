@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using Catel.Data;
 using Catel.MVVM;
@@ -13,8 +14,11 @@ namespace Company.Security.Core.ViewModels
         public HomeVm()
         {
             Model = new Home();
-            //OpenGroupCommand = new Command(() => Model.OpenGroup(SelectedGroup));
-            //OpenUserCommand = new Command(() => Model.OpenUser(SelectedUser));
+            OpenGroupCommand = new Command(() => Model.OpenGroup(SelectedGroup));
+            OpenUserCommand = new Command(() => Model.OpenUser(SelectedUser));
+
+            SelectedUser = Users.FirstOrDefault();
+            SelectedGroup = Groups.FirstOrDefault();
         }
 
         #region Properties
@@ -60,6 +64,7 @@ namespace Company.Security.Core.ViewModels
             set { SetValue(SelectedUserProperty, value); }
         }
         public static readonly PropertyData SelectedUserProperty = RegisterProperty(nameof(SelectedUser), typeof(User));
+
 
         public Command OpenGroupCommand { get; private set; }
         public Command OpenUserCommand { get; private set; }

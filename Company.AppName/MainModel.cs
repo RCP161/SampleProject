@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Catel.Data;
+using Catel.MVVM;
 using Company.Base.Core;
 
 namespace Company.AppName
@@ -14,6 +15,10 @@ namespace Company.AppName
         public MainModel()
         {
             Modules.Add(new Security.Core.Models.Module());
+            Modules.Add(new Basic.Core.Models.Module());
+
+
+            SelectedModuleVm = Modules.FirstOrDefault().HomeViewModel;
         }
 
         public ObservableCollection<IModule> Modules
@@ -22,5 +27,13 @@ namespace Company.AppName
             set { SetValue(ModulesProperty, value); }
         }
         public static readonly PropertyData ModulesProperty = RegisterProperty(nameof(Modules), typeof(ObservableCollection<IModule>), () => new ObservableCollection<IModule>());
+
+
+        public ViewModelBase SelectedModuleVm
+        {
+            get { return GetValue<ViewModelBase>(SelectedModuleVmProperty); }
+            set { SetValue(SelectedModuleVmProperty, value); }
+        }
+        public static readonly PropertyData SelectedModuleVmProperty = RegisterProperty(nameof(SelectedModuleVm), typeof(ViewModelBase));
     }
 }

@@ -20,11 +20,8 @@ namespace Company.AppName
 
         private void TestOrCreatePersons()
         {
-            //CreatePersons();
+            CreatePersons();
             CreatePermissions();
-
-
-
         }
 
         private void CreatePersons()
@@ -51,25 +48,25 @@ namespace Company.AppName
             IGroupService groupService = ServiceLocator.Default.ResolveType<IGroupService>();
             IPermissionService permissionService = ServiceLocator.Default.ResolveType<IPermissionService>();
 
-            IEnumerable<string> conflicts = new List<string>();
-
+            // Rechte
             Permission p = new Permission();
             p.Name = "Person";
             p.Comment = "Recht zum sehen und bearbeiten von Personen";
 
-            permissionService.SavePermission(p);
+            permissionService.SaveOrUpdate(p);
 
             Permission g = new Permission();
             g.Name = "Group";
             g.Comment = "Recht zum sehen und bearbeiten von Gruppen";
 
-            permissionService.SavePermission(p);
+            permissionService.SaveOrUpdate(p);
 
             Permission u = new Permission();
             u.Name = "User";
             u.Comment = "Recht zum sehen und bearbeiten von LogIn-Usern";
 
-            permissionService.SavePermission(p);
+            permissionService.SaveOrUpdate(p);
+
 
             // Gruppe 1
             Group grp1 = new Group();
@@ -90,7 +87,7 @@ namespace Company.AppName
             gp.Write = true;
             grp1.GroupPermissions.Add(gp);
 
-            groupService.SaveGroup(grp1);
+            groupService.SaveOrUpdate(grp1);
 
 
             // Gruppe 2
@@ -102,29 +99,30 @@ namespace Company.AppName
             gp.Write = true;
             grp.GroupPermissions.Add(gp);
 
-            groupService.SaveGroup(grp);
+            groupService.SaveOrUpdate(grp);
 
 
             // Gruppe 3
             grp = new Group();
             grp.Name = "Facharbeiter";
 
-            groupService.SaveGroup(grp);
+            groupService.SaveOrUpdate(grp);
 
 
+            // User
             User user = new User();
             user.LogIn = "KeyUser";
             user.Password = "Password";
 
             user.Groups.Add(grp1);
 
-            userService.SaveUser(user);
+            userService.SaveOrUpdate(user);
 
             user = new User();
             user.LogIn = "Sandra";
             user.Password = "Mustermann";
 
-            userService.SaveUser(user);
+            userService.SaveOrUpdate(user);
         }
     }
 }

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using Catel.MVVM;
 using Company.Base.Core;
-using Company.Security.Core.ViewModels;
+using Company.Basic.Core.ViewModels;
 
-namespace Company.Security.Core.Models
+namespace Company.Basic.Core.Models
 {
     public class Module : ModelBase1, IModule
     {
         public Module()
         {
-            Logo = "Sec.";
-            Name = "Security";
+            Logo = "Bsc.";
+            Name = "Basic";
             HomeViewModel = new HomeVm();
         }
 

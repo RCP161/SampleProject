@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
 using Catel.Data;
 using Company.Base.Core;
 
 namespace Company.Basic.Core.Models
 {
-    [Table("Person")]
     public class Person : ModelBase2
     {
         #region Properties
@@ -14,7 +15,7 @@ namespace Company.Basic.Core.Models
         [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override long Id
         {
-            get { return GetValue<int>(IdProperty); }
+            get { return GetValue<long>(IdProperty); }
             protected set { SetValue(IdProperty, value); }
         }
         public static readonly PropertyData IdProperty = RegisterProperty(nameof(Id), typeof(long));
@@ -37,9 +38,22 @@ namespace Company.Basic.Core.Models
         }
         public static readonly PropertyData SurenameProperty = RegisterProperty(nameof(Surename), typeof(string));
 
+
         #endregion
 
-        #region Methods
+        #region Overrides
+
+        private static Dictionary<string, PropertyInfo> _propertyInfos;
+        public override Dictionary<string, PropertyInfo> MappedPropertyInfos
+        {
+            get
+            {
+                if(_propertyInfos == null)
+                    _propertyInfos = new Dictionary<string, PropertyInfo>();
+
+                return _propertyInfos;
+            }
+        }
 
         protected override string GetDisplayText()
         {

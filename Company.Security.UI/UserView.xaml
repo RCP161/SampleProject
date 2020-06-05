@@ -6,11 +6,28 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Text="{Binding LogIn}" />
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="3"
+                   Text="Benutzername" />
+        <TextBox Grid.Row="0"
+                 Grid.Column="1"
+                 Text="{Binding LogIn}" />
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   Margin="3"
+                   Text="Zugeteilte Gruppen" />
         <ListView Grid.Row="1"
+                  Grid.Column="1"
                   Margin="0,3"
                   ItemsSource="{Binding Groups}"
                   SelectedItem="{Binding SelectedGroup}">
@@ -20,6 +37,18 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <StackPanel Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Margin="3"
+                    Command="{Binding SaveCommand}"
+                    Content="Speichern" />
+            <Button Margin="3"
+                    Command="{Binding CancelCommand}"
+                    Content="Abbrechen" />
+        </StackPanel>
     </Grid>
 
 </catel:UserControl>

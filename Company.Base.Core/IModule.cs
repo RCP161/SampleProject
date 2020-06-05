@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Catel.MVVM;
 
 namespace Company.Base.Core
 {
@@ -8,5 +9,7 @@ namespace Company.Base.Core
     {
         string Logo { get; }
         string Name { get; }
+
+        ViewModelBase HomeViewModel { get; }
     }
 }

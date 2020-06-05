@@ -44,7 +44,9 @@ namespace Company.AppName
 
 
             Register();
-            //new TestData();
+
+            if(ServiceLocator.Default.ResolveType<Data.IDbConfigruation>().CreateNewDb)
+                new TestData();
 
             base.OnStartup(e);
 
@@ -80,22 +82,31 @@ namespace Company.AppName
             ServiceLocator.Default.RegisterType<Company.Security.Core.Services.IUserService, Company.Security.Service.UserService>(RegistrationType.Transient);
 
             // =========================
-            //          UI  
+            //         ViewModels  
             // =========================
             IViewModelLocator viewModelLocator = ServiceLocator.Default.ResolveType<IViewModelLocator>();
-            IViewLocator viewLocator = ServiceLocator.Default.ResolveType<IViewLocator>();
 
             viewModelLocator.Register(typeof(MainWindow), typeof(MainVm));
+
+            // Basic
+            viewModelLocator.Register(typeof(Company.Basic.UI.HomeView), typeof(Company.Basic.Core.ViewModels.HomeVm));
+            viewModelLocator.Register(typeof(Company.Basic.UI.PersonView), typeof(Company.Basic.Core.ViewModels.PersonVm));
 
             // Security
             viewModelLocator.Register(typeof(Company.Security.UI.HomeView), typeof(Company.Security.Core.ViewModels.HomeVm));
             viewModelLocator.Register(typeof(Company.Security.UI.GroupView), typeof(Company.Security.Core.ViewModels.GroupVm));
             viewModelLocator.Register(typeof(Company.Security.UI.UserView), typeof(Company.Security.Core.ViewModels.UserVm));
 
+            // =========================
+            //          Views  
+            // =========================
 
-            viewModelLocator.Register(typeof(Company.Security.Core.ViewModels.HomeVm), typeof(Company.Security.UI.HomeView));
+            IViewLocator viewLocator = ServiceLocator.Default.ResolveType<IViewLocator>();
 
+            // Basic
+            viewLocator.Register(typeof(Company.Basic.Core.ViewModels.HomeVm), typeof(Company.Basic.UI.HomeView));
 
+            // Security
             viewLocator.Register(typeof(Company.Security.Core.ViewModels.HomeVm), typeof(Company.Security.UI.HomeView));
 
             // =========================

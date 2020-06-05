@@ -26,13 +26,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.Basic.Core", "Compa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.Basic.Data", "Company.Basic.Data\Company.Basic.Data.csproj", "{C88F5BE4-4678-4DEB-93FD-1A5355EB1861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Security.Core", "Company.Security.Core\Company.Security.Core.csproj", "{94F59F88-38F5-4819-A683-2F3CCF92BD00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.Security.Core", "Company.Security.Core\Company.Security.Core.csproj", "{94F59F88-38F5-4819-A683-2F3CCF92BD00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Security.Data", "Company.Security.Data\Company.Security.Data.csproj", "{77DF4349-4428-48A7-9F5F-6E65087F271E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.Security.Data", "Company.Security.Data\Company.Security.Data.csproj", "{77DF4349-4428-48A7-9F5F-6E65087F271E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Security.Service", "Company.Security.Service\Company.Security.Service.csproj", "{4C65ED51-3EC2-43B4-90EC-0E6848CA0A27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.Security.Service", "Company.Security.Service\Company.Security.Service.csproj", "{4C65ED51-3EC2-43B4-90EC-0E6848CA0A27}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Security.UI", "Company.Security.UI\Company.Security.UI.csproj", "{73F8C05D-E8EB-49C3-B9BF-3F2C06E4ED08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Basic.UI", "Company.Basic.UI\Company.Basic.UI.csproj", "{D0EAC873-DD38-4EAB-B338-B4C6DDD82EF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Base.Service", "Company.Base.Service\Company.Base.Service.csproj", "{F241BD88-6FD4-47EF-979D-F531BA47BB24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +84,14 @@ Global
 		{73F8C05D-E8EB-49C3-B9BF-3F2C06E4ED08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73F8C05D-E8EB-49C3-B9BF-3F2C06E4ED08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73F8C05D-E8EB-49C3-B9BF-3F2C06E4ED08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0EAC873-DD38-4EAB-B338-B4C6DDD82EF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0EAC873-DD38-4EAB-B338-B4C6DDD82EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0EAC873-DD38-4EAB-B338-B4C6DDD82EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0EAC873-DD38-4EAB-B338-B4C6DDD82EF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F241BD88-6FD4-47EF-979D-F531BA47BB24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F241BD88-6FD4-47EF-979D-F531BA47BB24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F241BD88-6FD4-47EF-979D-F531BA47BB24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F241BD88-6FD4-47EF-979D-F531BA47BB24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
