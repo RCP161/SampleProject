@@ -3,30 +3,24 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using Catel.Data;
+using Catel.IoC;
 using Catel.MVVM;
+using Company.Base.Core;
 using Company.Security.Core.Models;
+using Company.Security.Core.Services;
 
 namespace Company.Security.Core.ViewModels
 {
-    public class GroupVm : ViewModelBase
+    public class GroupVm : InoViewModelBase2<Group>
     {
         public GroupVm(Group model)
         {
             Model = model;
-            SaveCommand = new Command(Model.Save);
-            CancelCommand = new Command(Cancel);
+            SaveCommand = new Command(() => ServiceLocator.Default.ResolveType<IGroupService>().SaveGroup(Model));
+            CancelCommand = new Command(Revert);
         }
 
         #region Properties
-
-        [Model]
-        public Group Model
-        {
-            get { return GetValue<Group>(ModelProperty); }
-            private set { SetValue(ModelProperty, value); }
-        }
-        public static readonly PropertyData ModelProperty = RegisterProperty(nameof(Model), typeof(Group));
-
 
         [ViewModelToModel]
         public string Name
@@ -75,16 +69,6 @@ namespace Company.Security.Core.ViewModels
         //public Command OpenUserCommand { get; private set; }
         public Command SaveCommand { get; private set; }
         public Command CancelCommand { get; private set; }
-
-        #endregion
-
-        #region Methods
-
-        private void Cancel()
-        {
-            // Siehe UserVm
-            //throw new NotImplementedException();
-        }
 
         #endregion
     }

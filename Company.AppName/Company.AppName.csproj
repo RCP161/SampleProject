@@ -189,6 +189,10 @@
       <Project>{8edcb469-32f4-42cf-b726-5c8bcfe383cc}</Project>
       <Name>Company.Base.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Company.Base.Data\Company.Base.Data.csproj">
+      <Project>{1f77f82d-b679-4b09-b6a2-b1f97d76cd67}</Project>
+      <Name>Company.Base.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Company.Base.Service\Company.Base.Service.csproj">
       <Project>{f241bd88-6fd4-47ef-979d-f531ba47bb24}</Project>
       <Name>Company.Base.Service</Name>

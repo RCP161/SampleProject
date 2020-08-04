@@ -7,7 +7,7 @@ using Company.Basic.Core.ViewModels;
 
 namespace Company.Basic.Core.Models
 {
-    public class Module : ModelBase1, IModule
+    public class Module : InoModelBase1, IModule
     {
         public Module()
         {

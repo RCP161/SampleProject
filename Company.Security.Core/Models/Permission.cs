@@ -9,7 +9,7 @@ using Company.Base.Core;
 
 namespace Company.Security.Core.Models
 {
-    public class Permission : ModelBase2
+    public class Permission : InoModelBase2
     {
 
         // IsReadOnly setzen

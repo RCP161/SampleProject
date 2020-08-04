@@ -11,20 +11,26 @@ namespace Company.Base.Core
 {
     // Model für alle speicherbaren Objekte
 
-    public abstract class ModelBase2 : ModelBase1, IEditable
+    public abstract class InoModelBase2 : InoModelBase1
     {
 
-        public ModelBase2()
+        public InoModelBase2()
         { }
 
         public abstract long Id { get; protected set; }
 
         [NotMapped]
+        public bool IsOnEdit { get; set; }
+
+        [NotMapped]
         public abstract Dictionary<string, PropertyInfo> MappedPropertyInfos { get; }
 
-        public void SetState(StateEnum stateEnum)
+
+        #region Methods
+
+        public void SetState(StateEnum state)
         {
-            State = stateEnum;
+            State = state;
         }
 
         protected override sealed string GetDisplyTextWithState()
@@ -37,19 +43,11 @@ namespace Company.Base.Core
             return dpText;
         }
 
-
-
-        // TODO : PR
-        // Eher ein VM dazwischen hängen und Status von Moedl entfernen
-        // State eigentlich nur während der bearbeitung interessant
-        // Dann bei Cancel das Vm zurücksetzen oder bei SaveAsync SpeicherMethode an Model aufrufen
-        // -- dass dann aber auch für die UI-Kindelemente
-
         protected override void OnPropertyChanged(AdvancedPropertyChangedEventArgs e)
         {
             base.OnPropertyChanged(e);
 
-            if(State == StateEnum.Unchanged && MappedPropertyInfos.ContainsKey(e.PropertyName))
+            if(IsOnEdit && State == StateEnum.Unchanged && MappedPropertyInfos.ContainsKey(e.PropertyName))
                 State = StateEnum.Modified;
         }
 
@@ -65,5 +63,7 @@ namespace Company.Base.Core
 
             return res;
         }
+
+        #endregion
     }
 }

@@ -10,7 +10,7 @@ using Orc.EntityFramework;
 
 namespace Company.Security.Service
 {
-    public class GroupPermissionService : ModelBase2Service<GroupPermission, IGroupPermissionRepository>, IGroupPermissionService
+    public class GroupPermissionService : InoBaseService<GroupPermission, IGroupPermissionRepository>, IGroupPermissionService
     {
         public IEnumerable<GroupPermission> GetByGroupId(long id)
         {
@@ -18,7 +18,7 @@ namespace Company.Security.Service
 
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
-                res = uow.GetRepository<IGroupPermissionRepository>().GetQuery(x => x.Group.Id == id).ToList();
+                res = uow.GetRepository<IGroupPermissionRepository>().GetByGroupId(id);
             }
 
             return res;

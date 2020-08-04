@@ -8,7 +8,7 @@ using Company.Base.Core;
 
 namespace Company.Basic.Core.Models
 {
-    public class Person : ModelBase2
+    public class Person : InoModelBase2
     {
         #region Properties
 

@@ -1,18 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using Catel.Data;
+using Catel.Reflection;
 
 namespace Company.Base.Core
 {
-    public abstract class ModelBase1 : ModelBase
+    // Model für alle speicherbaren Objekte
+
+    public abstract class InoModelBase1 : ModelBase
     {
         // Model für alle Darstellungssachen
-        public ModelBase1()
+        public InoModelBase1()
         {
             State = StateEnum.Unchanged;
         }
 
-        // Brauche ich hier schon wegen dem State. Kann ja ber default unchanged sein
+        // BaseReadOnly Sperrt das Object, nicht die Oberfläche
+        [NotMapped]
+        public new bool IsReadOnly { get; set; }
+
         [NotMapped]
         public StateEnum State
         {
@@ -20,11 +30,6 @@ namespace Company.Base.Core
             internal set { SetValue(StateProperty, value); }
         }
         public static readonly PropertyData StateProperty = RegisterProperty(nameof(State), typeof(StateEnum));
-
-
-        // BaseReadOnly Sperrt das Object, nicht die Oberfläche
-        [NotMapped]
-        public new bool IsReadOnly { get; set; }
 
 
         // TODO : Bei State PropertyChanged auch IsDirty 
@@ -64,5 +69,4 @@ namespace Company.Base.Core
 
         #endregion
     }
-
 }

@@ -13,19 +13,8 @@ using Orc.EntityFramework;
 
 namespace Company.Security.Service
 {
-    public class GroupService : ModelBase2Service<Group, IGroupRepository>, IGroupService
+    public class GroupService : InoBaseService<Group, IGroupRepository>, IGroupService
     {
-        //public IEnumerable<Group> GetAll()
-        //{
-        //    IEnumerable<Group> res;
-
-        //    using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
-        //    {
-        //        res = uow.GetRepository<IGroupRepository>().GetQuery().ToList();
-        //    }
-
-        //    return res;
-        //}
 
         public IEnumerable<Group> GetAllComplete()
         {
@@ -33,7 +22,7 @@ namespace Company.Security.Service
 
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
-                res = uow.GetRepository<IGroupRepository>().GetAll().Include(x => x.Users).Include(x => x.GroupPermissions).ToList();
+                res = uow.GetRepository<IGroupRepository>().GetAllComplete();
             }
 
             return res;
@@ -45,23 +34,28 @@ namespace Company.Security.Service
 
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
-                res = uow.GetRepository<IGroupRepository>().GetQuery(x => x.Users.Any(u => u.Id == id)).ToList();
+                res = uow.GetRepository<IGroupRepository>().GetByUserId(id);
             }
 
             return res;
         }
 
-        //public void SaveGroup(Group grp)
-        //{
-        //    using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
-        //    {
-        //        IGroupRepository gr = uow.GetRepository<IGroupRepository>();
+        public void SaveGroup(Group grp)
+        {
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            {
+                uow.GetRepository<IGroupRepository>().SaveOrUpdate(grp);
 
-        //        gr.Add(grp);
-        //        uow.SaveChanges();
-        //    }
+                IGroupPermissionRepository gpRep = uow.GetRepository<IGroupPermissionRepository>();
+                foreach(GroupPermission gp in grp.GroupPermissions)
+                    gpRep.SaveOrUpdate(gp);
 
-        //    grp.SetState(Base.Core.StateEnum.Unchanged);
-        //}
+                uow.SaveChanges();
+            }
+
+            grp.SetState(Base.Core.StateEnum.Unchanged);
+            foreach(GroupPermission gp in grp.GroupPermissions)
+                gp.SetState(Base.Core.StateEnum.Unchanged);
+        }
     }
 }

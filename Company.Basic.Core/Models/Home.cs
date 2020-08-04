@@ -9,7 +9,7 @@ using Company.Basic.Core.Services;
 
 namespace Company.Basic.Core.Models
 {
-    public class Home : ModelBase1
+    public class Home : InoModelBase1
     {
         public Home()
         {

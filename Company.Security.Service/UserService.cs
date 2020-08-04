@@ -11,25 +11,14 @@ using Orc.EntityFramework;
 
 namespace Company.Security.Service
 {
-    public class UserService : ModelBase2Service<User, IUserRepository>, IUserService
+    public class UserService : InoBaseService<User, IUserRepository>, IUserService
     {
-        //public IEnumerable<User> GetAll()
-        //{
-        //    IEnumerable<User> res;
-        //    using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
-        //    {
-        //        res = uow.GetRepository<IUserRepository>().GetAll().ToList();
-        //    }
-
-        //    return res;
-        //}
-
         public IEnumerable<User> GetAllComplete()
         {
             IEnumerable<User> res;
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
-                res = uow.GetRepository<IUserRepository>().GetAll().Include(x => x.Groups).ToList();
+                res = uow.GetRepository<IUserRepository>().GetAllComplete();
             }
 
             return res;
@@ -41,23 +30,21 @@ namespace Company.Security.Service
 
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
-                res = uow.GetRepository<IUserRepository>().GetQuery(x => x.Groups.Any(g => g.Id == id)).ToList();
+                res = uow.GetRepository<IUserRepository>().GetByGroupId(id);
             }
 
             return res;
         }
 
-        //public void SaveUser(User user)
-        //{
-        //    using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
-        //    {
-        //        IUserRepository ur = uow.GetRepository<IUserRepository>();
+        public void SaveUser(User user)
+        {
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            {
+                uow.GetRepository<IUserRepository>().SaveOrUpdate(user);
+                uow.SaveChanges();
+            }
 
-        //        ur.Add(user);
-        //        uow.SaveChanges();
-        //    }
-
-        //    user.SetState(Base.Core.StateEnum.Unchanged);
-        //}
+            user.SetState(Base.Core.StateEnum.Unchanged);
+        }
     }
 }

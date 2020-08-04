@@ -22,7 +22,7 @@ namespace Company.AppName
         protected override void OnStartup(StartupEventArgs e)
         {
 #if DEBUG
-            LogManager.AddDebugListener();
+            //LogManager.AddDebugListener();
 #endif
 
             _log.Info("Starting application");
@@ -118,7 +118,10 @@ namespace Company.AppName
             uIVisualizerService.Register(typeof(MainVm), typeof(MainWindow));
         }
 
-        // TODO : List
+        // TODO : Todo-Liste
+
+        // Abfragen aus ServiceClassen in Repos auslagen
+
 
         // Weitere Themen
         // DeleteCascade ist im EF immer an. Austellen ist derzeit nicht möglich. Sollte man aber noch mit größerer Modelanzahl testen
@@ -136,13 +139,14 @@ namespace Company.AppName
         // Doch ein eigenes BaseRepo dazwischen hängen zum speichern
         // Keine EF Plus unterstützung
         // Repo UnitTest durch TestDB machen?
+        // ModulCache der spezifische Daten im Ram hält/freigibt (Spracheinträge, Objektinfos, etc)
 
 
         // Mögliche Erweiterungen
         // - Instanz refresher:     2 Instanzen des selben Datensatzes refreshen, nach Speichern
         // - Validation https://codingfreaks.de/wpf-mvvm-03/
         // - PropertyGrid?
-        // - Mehrsprachenfähigkeit
+        // - Mehrsprachenfähigkeit - https://docs.catelproject.com/5.1/catel-core/multilingual/
         // - Schreibrechte abprüfen
         // - EF Plus prüfen
         // - CodeGeneration

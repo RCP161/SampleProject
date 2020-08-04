@@ -3,30 +3,24 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using Catel.Data;
+using Catel.IoC;
 using Catel.MVVM;
+using Company.Base.Core;
 using Company.Security.Core.Models;
+using Company.Security.Core.Services;
 
 namespace Company.Security.Core.ViewModels
 {
-    public class UserVm : ViewModelBase
+    public class UserVm : InoViewModelBase2<User>
     {
         public UserVm(User model)
         {
             Model = model;
-            SaveCommand = new Command(Model.Save);
-            CancelCommand = new Command(Cancel);
+            SaveCommand = new Command(() => ServiceLocator.Default.ResolveType<IUserService>().SaveUser(Model));
+            CancelCommand = new Command(Revert);
         }
 
         #region Properties
-
-        [Model]
-        public User Model
-        {
-            get { return GetValue<User>(ModelProperty); }
-            private set { SetValue(ModelProperty, value); }
-        }
-        public static readonly PropertyData ModelProperty = RegisterProperty(nameof(Model), typeof(User));
-
 
         [ViewModelToModel]
         public string LogIn
@@ -58,16 +52,6 @@ namespace Company.Security.Core.ViewModels
         public Command CancelCommand { get; private set; }
         //public Command OpenGroupCommand { get; private set; }
         //public Command OpenUserCommand { get; private set; }
-
-        #endregion
-
-        #region Methods
-
-        private void Cancel()
-        {
-            // SaveAsync etc verwenden. Für alle editierbaren VMs Speichern & Abbrechen vereinheitlichen?
-            //throw new NotImplementedException();
-        }
 
         #endregion
     }

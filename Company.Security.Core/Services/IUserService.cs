@@ -6,9 +6,10 @@ using Company.Security.Core.Models;
 
 namespace Company.Security.Core.Services
 {
-    public interface IUserService : IModelBase2Service<User>
+    public interface IUserService : IInoBaseService<User>
     {
         IEnumerable<User> GetByGroupId(long id);
         IEnumerable<User> GetAllComplete();
+        void SaveUser(User user);
     }
 }

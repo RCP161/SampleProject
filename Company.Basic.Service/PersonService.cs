@@ -17,7 +17,7 @@ namespace Company.Basic.Service
 
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
-                res = uow.GetRepository<IPersonRepository>().GetQuery().ToList();
+                res = uow.GetRepository<IPersonRepository>().GetAll().ToList();
             }
 
             return res;
@@ -27,9 +27,7 @@ namespace Company.Basic.Service
         {
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
-                IPersonRepository pr = uow.GetRepository<IPersonRepository>();
-
-                return pr.GetByKey(id);
+                return uow.GetRepository<IPersonRepository>().GetByKey(id);
             }
         }
 
@@ -39,7 +37,7 @@ namespace Company.Basic.Service
             {
                 IPersonRepository pr = uow.GetRepository<IPersonRepository>();
 
-                pr.Add(person);
+                pr.SaveOrUpdate(person);
                 uow.SaveChanges();
             }
 

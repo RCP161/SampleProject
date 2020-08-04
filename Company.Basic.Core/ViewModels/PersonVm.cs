@@ -3,25 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using Catel.Data;
 using Catel.MVVM;
+using Company.Base.Core;
 using Company.Basic.Core.Models;
 
 namespace Company.Basic.Core.ViewModels
 {
-    public class PersonVm : ViewModelBase
+    public class PersonVm : InoViewModelBase2<Person>
     {
         public PersonVm(Person model)
         {
             Model = model;
         }
-
-
-        [Model]
-        public Person Model
-        {
-            get { return GetValue<Person>(ModelProperty); }
-            private set { SetValue(ModelProperty, value); }
-        }
-        public static readonly PropertyData ModelProperty = RegisterProperty(nameof(Model), typeof(Person), null);
 
 
         [ViewModelToModel]

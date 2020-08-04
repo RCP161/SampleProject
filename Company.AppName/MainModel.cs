@@ -10,7 +10,7 @@ using Company.Base.Core;
 
 namespace Company.AppName
 {
-    public class MainModel : ModelBase1
+    public class MainModel : InoModelBase1
     {
         public MainModel()
         {

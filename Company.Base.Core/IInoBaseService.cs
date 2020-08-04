@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Company.Base.Core
 {
-    public interface IModelBase2Service<T> where T : ModelBase2
+    public interface IInoBaseService<T> where T : InoModelBase2
     {
         T GetById(long id);
 
@@ -16,6 +16,5 @@ namespace Company.Base.Core
 
         //bool TryDelete(T model, IEnumerable<string> conflicts);
 
-        bool SaveOrUpdate(T model);
     }
 }

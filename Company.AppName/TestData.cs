@@ -29,14 +29,13 @@ namespace Company.AppName
             IPersonService service = ServiceLocator.Default.ResolveType<IPersonService>();
 
             Person p;
-            IEnumerable<string> conflicts = new List<string>();
-
 
             for(int i = 0; i <= 5; i++)
             {
                 p = new Person();
                 p.Name = "Person";
                 p.Surename = Guid.NewGuid().ToString();
+                p.SetState(Base.Core.StateEnum.Created);
 
                 service.SavePerson(p);
             }
@@ -52,77 +51,89 @@ namespace Company.AppName
             Permission p = new Permission();
             p.Name = "Person";
             p.Comment = "Recht zum sehen und bearbeiten von Personen";
+            p.SetState(Base.Core.StateEnum.Created);
 
-            permissionService.SaveOrUpdate(p);
+            permissionService.SavePermission(p);
 
             Permission g = new Permission();
             g.Name = "Group";
             g.Comment = "Recht zum sehen und bearbeiten von Gruppen";
+            p.SetState(Base.Core.StateEnum.Created);
 
-            permissionService.SaveOrUpdate(p);
+            permissionService.SavePermission(p);
 
             Permission u = new Permission();
             u.Name = "User";
             u.Comment = "Recht zum sehen und bearbeiten von LogIn-Usern";
+            p.SetState(Base.Core.StateEnum.Created);
 
-            permissionService.SaveOrUpdate(p);
+            permissionService.SavePermission(p);
 
 
             // Gruppe 1
             Group grp1 = new Group();
-            grp1.Name = "KeyUser";
+            grp1.Name = "Administratoren";
+            grp1.SetState(Base.Core.StateEnum.Created);
 
             GroupPermission gp = new GroupPermission();
             gp.Permission = p;
             gp.Write = true;
+            gp.SetState(Base.Core.StateEnum.Created);
             grp1.GroupPermissions.Add(gp);
 
             gp = new GroupPermission();
             gp.Permission = g;
             gp.Write = true;
+            gp.SetState(Base.Core.StateEnum.Created);
             grp1.GroupPermissions.Add(gp);
 
             gp = new GroupPermission();
             gp.Permission = u;
             gp.Write = true;
+            gp.SetState(Base.Core.StateEnum.Created);
             grp1.GroupPermissions.Add(gp);
 
-            groupService.SaveOrUpdate(grp1);
+            groupService.SaveGroup(grp1);
 
 
             // Gruppe 2
             Group grp = new Group();
             grp.Name = "Verwaltung";
+            grp.SetState(Base.Core.StateEnum.Created);
 
             gp = new GroupPermission();
             gp.Permission = p;
             gp.Write = true;
+            gp.SetState(Base.Core.StateEnum.Created);
             grp.GroupPermissions.Add(gp);
 
-            groupService.SaveOrUpdate(grp);
+            groupService.SaveGroup(grp);
 
 
             // Gruppe 3
             grp = new Group();
             grp.Name = "Facharbeiter";
+            grp.SetState(Base.Core.StateEnum.Created);
 
-            groupService.SaveOrUpdate(grp);
+            groupService.SaveGroup(grp);
 
 
             // User
             User user = new User();
-            user.LogIn = "KeyUser";
+            user.LogIn = "Admin";
             user.Password = "Password";
+            user.SetState(Base.Core.StateEnum.Created);
 
             user.Groups.Add(grp1);
 
-            userService.SaveOrUpdate(user);
+            userService.SaveUser(user);
 
             user = new User();
             user.LogIn = "Sandra";
             user.Password = "Mustermann";
+            user.SetState(Base.Core.StateEnum.Created);
 
-            userService.SaveOrUpdate(user);
+            userService.SaveUser(user);
         }
     }
 }

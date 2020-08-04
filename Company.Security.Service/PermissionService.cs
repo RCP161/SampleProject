@@ -8,19 +8,17 @@ using Orc.EntityFramework;
 
 namespace Company.Security.Service
 {
-    public class PermissionService : ModelBase2Service<Permission, IPermissionRepository>, IPermissionService
+    public class PermissionService : InoBaseService<Permission, IPermissionRepository>, IPermissionService
     {
-        //public void SavePermission(Permission p)
-        //{
-        //    using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
-        //    {
-        //        IPermissionRepository pr = uow.GetRepository<IPermissionRepository>();
+        public void SavePermission(Permission p)
+        {
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            {
+                uow.GetRepository<IPermissionRepository>().SaveOrUpdate(p);
+                uow.SaveChanges();
+            }
 
-        //        pr.Add(p);
-        //        uow.SaveChanges();
-        //    }
-
-        //    p.SetState(Base.Core.StateEnum.Unchanged);
-        //}
+            p.SetState(Base.Core.StateEnum.Unchanged);
+        }
     }
 }

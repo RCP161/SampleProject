@@ -12,7 +12,7 @@ using Company.Security.Core.Services;
 
 namespace Company.Security.Core.Models
 {
-    public class User : ModelBase2
+    public class User : InoModelBase2
     {
         public User()
         {
@@ -54,15 +54,6 @@ namespace Company.Security.Core.Models
             set { SetValue(GroupsProperty, value); }
         }
         public static readonly PropertyData GroupsProperty = RegisterProperty(nameof(Groups), typeof(ObservableCollection<Group>));
-
-        #endregion
-
-        #region Methods
-
-        internal void Save()
-        {
-            ServiceLocator.Default.ResolveType<IUserService>().SaveOrUpdate(this);
-        }
 
         #endregion
 

@@ -4,11 +4,12 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Catel.Data;
 using Catel.MVVM;
+using Company.Base.Core;
 using Company.Basic.Core.Models;
 
 namespace Company.Basic.Core.ViewModels
 {
-    public class HomeVm : ViewModelBase
+    public class HomeVm : InoViewModelBase1<Home>
     {
         public HomeVm()
         {
@@ -17,15 +18,6 @@ namespace Company.Basic.Core.ViewModels
         }
 
         #region Properties
-
-        [Model]
-        public Home Model
-        {
-            get { return GetValue<Home>(ModelProperty); }
-            private set { SetValue(ModelProperty, value); }
-        }
-        public static readonly PropertyData ModelProperty = RegisterProperty(nameof(Model), typeof(Home));
-
 
         [ViewModelToModel]
         public ObservableCollection<Person> Persons

@@ -9,7 +9,7 @@ using Company.Base.Core;
 
 namespace Company.Security.Core.Models
 {
-    public class GroupPermission : ModelBase2
+    public class GroupPermission : InoModelBase2
     { 
         #region Properties
 
