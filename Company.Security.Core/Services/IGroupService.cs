@@ -11,5 +11,8 @@ namespace Company.Security.Core.Services
         IEnumerable<Group> GetByUserId(long id);
         IEnumerable<Group> GetAllComplete();
         void SaveGroup(Group model);
+        void DeleteGroup(Group selectedGroup);
+        IEnumerable<InoModelBase2> GetLast10();
+        IEnumerable<InoModelBase2> GetForSearchText(string arg);
     }
 }

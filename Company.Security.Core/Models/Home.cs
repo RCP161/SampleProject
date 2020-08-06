@@ -14,10 +14,22 @@ namespace Company.Security.Core.Models
 {
     public class Home: InoModelBase1
     {
-        public Home()
+        private Home()
         {
             Users = new ObservableCollection<User>(ServiceLocator.Default.ResolveType<IUserService>().GetAllComplete());
             Groups = new ObservableCollection<Group>(ServiceLocator.Default.ResolveType<IGroupService>().GetAllComplete());
+        }
+
+        private static Home _instance;
+        public static Home Instance
+        {
+            get
+            {
+                if(_instance == null)
+                    _instance = new Home();
+
+                return _instance;
+            }
         }
 
         #region Properties
@@ -36,22 +48,6 @@ namespace Company.Security.Core.Models
             set { SetValue(PersonsProperty, value); }
         }
         public static readonly PropertyData PersonsProperty = RegisterProperty(nameof(Groups), typeof(ObservableCollection<Group>));
-
-        #endregion
-
-        #region Methods
-
-        // Derzeit keine prio
-
-        internal void OpenUser(User selectedUser)
-        {
-            //throw new NotImplementedException();
-        }
-
-        internal void OpenGroup(Group selectedGroup)
-        {
-            //throw new NotImplementedException();
-        }
 
         #endregion
     }

@@ -16,7 +16,10 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Text="Gruppen" />
@@ -24,34 +27,48 @@
                           Margin="0,3"
                           ItemsSource="{Binding Groups}"
                           SelectedItem="{Binding SelectedGroup}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDoubleClick">
-                            <i:InvokeCommandAction Command="{Binding OpenGroupCommand}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DisplayText}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <StackPanel Grid.Row="2"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <Button Width="80"
+                            Margin="3"
+                            Command="{Binding DeleteGroupCommand}"
+                            Content="Löschen" />
+                    <Button Width="80"
+                            Margin="3"
+                            Command="{Binding NewGroupCommand}"
+                            Content="Speichern" />
+                </StackPanel>
 
-                <TextBlock Grid.Row="2" Text="User" />
-                <ListView Grid.Row="3"
+                <TextBlock Grid.Row="4" Text="User" />
+                <ListView Grid.Row="5"
                           Margin="0,3"
                           ItemsSource="{Binding Users}"
                           SelectedItem="{Binding SelectedUser}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDoubleClick">
-                            <i:InvokeCommandAction Command="{Binding OpenUserCommand}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DisplayText}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <StackPanel Grid.Row="6"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <Button Width="80"
+                            Margin="3"
+                            Command="{Binding DeleteUserCommand}"
+                            Content="Löschen" />
+                    <Button Width="80"
+                            Margin="3"
+                            Command="{Binding NewUserCommand}"
+                            Content="Speichern" />
+                </StackPanel>
             </Grid>
         </TabItem>
         <TabItem Header="Gruppe">

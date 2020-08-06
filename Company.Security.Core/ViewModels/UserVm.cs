@@ -16,7 +16,7 @@ namespace Company.Security.Core.ViewModels
         public UserVm(User model)
         {
             Model = model;
-            SaveCommand = new Command(() => ServiceLocator.Default.ResolveType<IUserService>().SaveUser(Model));
+            SaveCommand = new Command(() => SaveUser()); 
             CancelCommand = new Command(Revert);
         }
 
@@ -52,6 +52,19 @@ namespace Company.Security.Core.ViewModels
         public Command CancelCommand { get; private set; }
         //public Command OpenGroupCommand { get; private set; }
         //public Command OpenUserCommand { get; private set; }
+
+        #endregion
+
+        #region Methods
+
+        private void SaveUser()
+        {
+            bool isNew = Model.State == StateEnum.Created;
+            ServiceLocator.Default.ResolveType<IUserService>().SaveUser(Model);
+
+            if(isNew)
+                Home.Instance.Users.Add(Model);
+        }
 
         #endregion
     }

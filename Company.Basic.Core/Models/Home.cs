@@ -11,10 +11,25 @@ namespace Company.Basic.Core.Models
 {
     public class Home : InoModelBase1
     {
-        public Home()
+        private Home()
         {
             Persons = new ObservableCollection<Person>(ServiceLocator.Default.ResolveType<IPersonService>().GetAll());
         }
+
+
+        private static Home _instance;
+        public static Home Instance
+        {
+            get
+            {
+                if(_instance == null)
+                    _instance = new Home();
+
+                return _instance;
+            }
+        }
+
+
 
         #region Properties
 
@@ -24,17 +39,6 @@ namespace Company.Basic.Core.Models
             set { SetValue(PersonsProperty, value); }
         }
         public static readonly PropertyData PersonsProperty = RegisterProperty(nameof(Persons), typeof(ObservableCollection<Person>));
-
-        #endregion
-
-        #region Methods
-
-        public void OpenPerson(long id)
-        {
-            // Rechte, etc.
-            //Person person = ServiceLocator.Default.ResolveType<Logic.Basic.IPersonService>().GetByIdForEdit(id);
-            //ServiceLocator.Default.ResolveType<Logic.Project.IMainUiService>().SetMainContent(person);
-        }
 
         #endregion
 

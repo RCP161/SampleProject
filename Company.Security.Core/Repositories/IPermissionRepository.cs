@@ -9,5 +9,7 @@ namespace Company.Security.Core.Repositories
 {
     public interface IPermissionRepository : IInoBaseRepository<Permission>
     {
+        IEnumerable<User> GetLast10();
+        IEnumerable<User> GetForSearchText(string arg);
     }
 }

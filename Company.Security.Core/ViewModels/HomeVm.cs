@@ -4,9 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Catel.Data;
+using Catel.IoC;
 using Catel.MVVM;
 using Company.Base.Core;
 using Company.Security.Core.Models;
+using Company.Security.Core.Services;
 
 namespace Company.Security.Core.ViewModels
 {
@@ -14,9 +16,11 @@ namespace Company.Security.Core.ViewModels
     {
         public HomeVm()
         {
-            Model = new Home();
-            OpenGroupCommand = new Command(() => Model.OpenGroup(SelectedGroup));
-            OpenUserCommand = new Command(() => Model.OpenUser(SelectedUser));
+            Model = Home.Instance;
+            NewGroupCommand = new Command(() => NewGroup());
+            DeleteGroupCommand = new Command(() => DeleteGroup());
+            NewUserCommand = new Command(() => NewUser());
+            DeleteUserCommand = new Command(() => DeleteUser());
 
             SelectedUser = Users.FirstOrDefault();
             SelectedGroup = Groups.FirstOrDefault();
@@ -58,8 +62,38 @@ namespace Company.Security.Core.ViewModels
         public static readonly PropertyData SelectedUserProperty = RegisterProperty(nameof(SelectedUser), typeof(User));
 
 
-        public Command OpenGroupCommand { get; private set; }
-        public Command OpenUserCommand { get; private set; }
+        public Command NewGroupCommand { get; private set; }
+        public Command DeleteGroupCommand { get; private set; }
+        public Command NewUserCommand { get; private set; }
+        public Command DeleteUserCommand { get; private set; }
+
+        #endregion
+
+        #region Methods
+
+        private void NewGroup()
+        {
+            SelectedGroup = new Group();
+        }
+
+        private void DeleteGroup()
+        {
+            ServiceLocator.Default.ResolveType<IGroupService>().DeleteGroup(SelectedGroup);
+            Groups.Remove(SelectedGroup);
+            SelectedGroup = Groups.FirstOrDefault();
+        }
+
+        private void NewUser()
+        {
+            SelectedUser = new User();
+        }
+
+        private void DeleteUser()
+        {
+            ServiceLocator.Default.ResolveType<IUserService>().DeleteUser(SelectedUser);
+            Users.Remove(SelectedUser);
+            SelectedUser = Users.FirstOrDefault();
+        }
 
         #endregion
     }

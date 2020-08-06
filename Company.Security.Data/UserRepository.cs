@@ -24,5 +24,15 @@ namespace Company.Security.Data
         {
             return GetQuery(x => x.Groups.Any(g => g.Id == id)).ToList();
         }
+
+        public IEnumerable<User> GetForSearchText(string arg)
+        {
+            return GetQuery(x => x.LogIn.Contains(arg)).ToList();
+        }
+
+        public IEnumerable<User> GetLast10()
+        {
+            return GetQuery().OrderByDescending(x => x.Id).Take(10);
+        }
     }
 }

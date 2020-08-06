@@ -26,36 +26,58 @@
                    Grid.Column="0"
                    Margin="3"
                    Text="Zugeteilte Rechte" />
-        <DataGrid Grid.Row="1"
-                  Grid.Column="1"
-                  Margin="0,3"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False"
-                  ItemsSource="{Binding GroupPermissions}"
-                  SelectedItem="{Binding SelectedGroupPermission}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding DisplayText}"
-                                    Header="Recht"
-                                    IsReadOnly="True" />
-                <DataGridCheckBoxColumn Binding="{Binding Read}" Header="Leserecht" />
-                <DataGridCheckBoxColumn Binding="{Binding Write}" Header="Schreibrecht" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid Grid.Row="1"
+              Grid.Column="1"
+              Margin="0,3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ToolBar>
+                <Button Command="{Binding AddPermissionCommand}" Content="+" />
+                <Button Command="{Binding RemovePermissionCommand}" Content="x" />
+            </ToolBar>
+            <DataGrid Grid.Row="1"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      ItemsSource="{Binding GroupPermissions}"
+                      SelectedItem="{Binding SelectedGroupPermission}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding DisplayText}"
+                                        Header="Recht"
+                                        IsReadOnly="True" />
+                    <DataGridCheckBoxColumn Binding="{Binding Read}" Header="Leserecht" />
+                    <DataGridCheckBoxColumn Binding="{Binding Write}" Header="Schreibrecht" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
 
         <TextBlock Grid.Row="2"
                    Grid.Column="0"
                    Text="Zugeteilte User" />
-        <ListView Grid.Row="2"
-                  Grid.Column="1"
-                  Margin="0,3"
-                  ItemsSource="{Binding Users}"
-                  SelectedItem="{Binding SelectedUser}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding DisplayText}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid Grid.Row="2"
+              Grid.Column="1"
+              Margin="0,3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ToolBar>
+                <Button Command="{Binding AddUserCommand}" Content="+" />
+                <Button Command="{Binding RemoveUserCommand}" Content="x" />
+            </ToolBar>
+            <ListView Grid.Row="1"
+                      ItemsSource="{Binding Users}"
+                      SelectedItem="{Binding SelectedUser}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DisplayText}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
 
         <StackPanel Grid.Row="3"
                     Grid.ColumnSpan="2"

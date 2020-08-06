@@ -9,5 +9,7 @@ namespace Company.Security.Core.Services
     public interface IPermissionService : IInoBaseService<Permission>
     {
         void SavePermission(Permission p);
+        IEnumerable<InoModelBase2> GetLast10();
+        IEnumerable<InoModelBase2> GetForSearchText(string arg);
     }
 }

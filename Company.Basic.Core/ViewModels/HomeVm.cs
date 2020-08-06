@@ -13,8 +13,7 @@ namespace Company.Basic.Core.ViewModels
     {
         public HomeVm()
         {
-            Model = new Home();
-            OpenPersonCommand = new Command(() => Model.OpenPerson(SelectedPerson.Id));
+            Model = Home.Instance;
         }
 
         #region Properties
@@ -35,8 +34,6 @@ namespace Company.Basic.Core.ViewModels
         }
         public static readonly PropertyData SelectedPersonProperty = RegisterProperty(nameof(SelectedPerson), typeof(Person));
 
-
-        public Command OpenPersonCommand { get; private set; }
 
         #endregion
     }

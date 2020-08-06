@@ -45,37 +45,5 @@ namespace Company.Base.Service
 
             return res;
         }
-
-        // Nicht automatisieren! Alles einzeln speichern aufgrund des States ist nicht effektiv
-        //
-        //public bool SaveOrUpdate(T model)
-        //{
-        //    using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
-        //    {
-        //        U repo = uow.GetRepository<U>();
-
-        //        switch(model.State)
-        //        {
-        //            case StateEnum.Created:
-        //                repo.Add(model);
-        //                break;
-        //            case StateEnum.Modified:
-        //                repo.Attach(model);
-        //                break;
-        //            case StateEnum.Deleted:
-        //                repo.Delete(model);
-        //                break;
-        //            default:
-        //                return true;
-        //        }
-
-        //        uow.SaveChanges();
-
-        //        if(model.State != StateEnum.Deleted)
-        //            model.SetState(StateEnum.Unchanged);
-        //    }
-
-        //    return true;
-        //}
     }
 }

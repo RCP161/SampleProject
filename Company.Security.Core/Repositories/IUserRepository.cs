@@ -11,5 +11,7 @@ namespace Company.Security.Core.Repositories
     {
         IEnumerable<User> GetAllComplete();
         IEnumerable<User> GetByGroupId(long id);
+        IEnumerable<User> GetForSearchText(string arg);
+        IEnumerable<User> GetLast10();
     }
 }

@@ -16,8 +16,12 @@ namespace Company.Security.Core.ViewModels
         public GroupVm(Group model)
         {
             Model = model;
-            SaveCommand = new Command(() => ServiceLocator.Default.ResolveType<IGroupService>().SaveGroup(Model));
+            SaveCommand = new Command(() => SaveGroup());
             CancelCommand = new Command(Revert);
+            AddPermissionCommand = new Command(() => AddPermission());
+            RemovePermissionCommand = new Command(() => RemovePermission());
+            AddUserCommand = new Command(() => AddUser());
+            RemoveUserCommand= new Command(() => RemoveUser());
         }
 
         #region Properties
@@ -65,10 +69,52 @@ namespace Company.Security.Core.ViewModels
         public static readonly PropertyData SelectedUserProperty = RegisterProperty(nameof(SelectedUser), typeof(User));
 
 
-        //public Command OpenGroupCommand { get; private set; }
-        //public Command OpenUserCommand { get; private set; }
         public Command SaveCommand { get; private set; }
         public Command CancelCommand { get; private set; }
+        public Command AddPermissionCommand { get; private set; }
+        public Command RemovePermissionCommand { get; private set; }
+        public Command AddUserCommand { get; private set; }
+        public Command RemoveUserCommand { get; private set; }
+
+        #endregion
+
+        #region Methods
+
+        private void SaveGroup()
+        {
+            bool isNew = Model.State == StateEnum.Created;
+            ServiceLocator.Default.ResolveType<IGroupService>().SaveGroup(Model);
+
+            if(isNew)
+                Home.Instance.Groups.Add(Model);
+        }
+
+        private void AddPermission()
+        {
+            Permission permission = ServiceLocator.Default.ResolveType<ISearchService<Permission>>().Search();
+
+            GroupPermission groupPermission = new GroupPermission();
+            groupPermission.Permission = permission;
+            groupPermission.Group = Model;
+            groupPermission.SetState(StateEnum.Created);
+
+            GroupPermissions.Add(new GroupPermission());
+        }
+
+        private void RemovePermission()
+        {
+            SelectedGroupPermission.SetState(StateEnum.Deleted);
+        }
+
+        private void AddUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RemoveUser()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

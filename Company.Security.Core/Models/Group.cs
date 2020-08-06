@@ -48,7 +48,9 @@ namespace Company.Security.Core.Models
         }
         public static readonly PropertyData GroupPermissionsProperty = RegisterProperty(nameof(GroupPermissions), typeof(ObservableCollection<GroupPermission>));
 
+        Collection<GrouUserMapp>
 
+        [NotMapped]
         public ObservableCollection<User> Users
         {
             get { return GetValue<ObservableCollection<User>>(UsersProperty); }

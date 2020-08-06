@@ -40,22 +40,79 @@ namespace Company.Security.Service
             return res;
         }
 
-        public void SaveGroup(Group grp)
+        public void SaveGroup(Group group)
         {
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
-                uow.GetRepository<IGroupRepository>().SaveOrUpdate(grp);
+                uow.GetRepository<IGroupRepository>().SaveOrUpdate(group);
 
                 IGroupPermissionRepository gpRep = uow.GetRepository<IGroupPermissionRepository>();
-                foreach(GroupPermission gp in grp.GroupPermissions)
+                foreach(GroupPermission gp in group.GroupPermissions)
                     gpRep.SaveOrUpdate(gp);
 
                 uow.SaveChanges();
             }
 
-            grp.SetState(Base.Core.StateEnum.Unchanged);
-            foreach(GroupPermission gp in grp.GroupPermissions)
-                gp.SetState(Base.Core.StateEnum.Unchanged);
+            List<GroupPermission> deletedGroupPermissions = group.GroupPermissions.Where(x => x.State == StateEnum.Deleted).ToList();
+
+            foreach(GroupPermission gp in group.GroupPermissions)
+                group.GroupPermissions.Remove(gp);
+
+            List<User> removed = group.GroupPermissions.Where(x => x.State == StateEnum.Deleted).ToList();
+
+            foreach(GroupPermission gp in group.GroupPermissions)
+                group.GroupPermissions.Remove(gp);
+
+
+
+            group.SetState(StateEnum.Unchanged);
+            foreach(GroupPermission gp in group.GroupPermissions)
+                gp.SetState(StateEnum.Unchanged);
+        }
+
+        public void DeleteGroup(Group group)
+        {
+            // Kein DeleteAllowed benötigt
+
+            group.SetState(StateEnum.Deleted);
+
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            {
+                uow.GetRepository<IGroupRepository>().SaveOrUpdate(group);
+
+                IGroupPermissionRepository gpRep = uow.GetRepository<IGroupPermissionRepository>();
+                foreach(GroupPermission gp in group.GroupPermissions)
+                {
+                    gp.SetState(StateEnum.Deleted);
+                    gpRep.SaveOrUpdate(gp);
+                }
+
+                uow.SaveChanges();
+            }
+        }
+
+        public IEnumerable<InoModelBase2> GetLast10()
+        {
+            IEnumerable<Group> res;
+
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            {
+                res = uow.GetRepository<IGroupRepository>().GetLast10();
+            }
+
+            return res;
+        }
+
+        public IEnumerable<InoModelBase2> GetForSearchText(string arg)
+        {
+            IEnumerable<Group> res;
+
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            {
+                res = uow.GetRepository<IGroupRepository>().GetForSearchText(arg);
+            }
+
+            return res;
         }
     }
 }
