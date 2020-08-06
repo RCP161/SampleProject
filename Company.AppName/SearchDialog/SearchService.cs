@@ -11,21 +11,21 @@ using Company.Base.Core;
 
 namespace Company.AppName.SearchDialog
 {
-    public class SearchService<T> : ISearchService<T> where T : InoModelBase2
+    public class SearchService : ISearchService
     {
-        public T Search()
+        public T Search<T>() where T : InoModelBase2
         {
-            IEnumerable<T> res = StartDialog(false);
+            IEnumerable<T> res = StartDialog<T>(false);
             return res.SingleOrDefault();
         }
 
-        public IEnumerable<T> SearchMultiple()
+        public IEnumerable<T> SearchMultiple<T>() where T : InoModelBase2
         {
-            IEnumerable<T> res = StartDialog(true);
+            IEnumerable<T> res = StartDialog<T>(true);
             return res;
         }
 
-        private IEnumerable<T> StartDialog(bool isMultiple)
+        private IEnumerable<T> StartDialog<T>(bool isMultiple) where T : InoModelBase2
         {
             Func<IEnumerable<InoModelBase2>> last10Function;
             Func<string, IEnumerable<InoModelBase2>> searchFunction;
@@ -52,7 +52,7 @@ namespace Company.AppName.SearchDialog
             }
 
 
-            SearchWindowModel model = new SearchWindowModel(true, last10Function, searchFunction);
+            SearchWindowModel model = new SearchWindowModel(isMultiple, last10Function, searchFunction);
             SearchWindowViewModel vm = new SearchWindowViewModel(model);
 
             ServiceLocator.Default.ResolveType<IUIVisualizerService>().ShowAsync<SearchWindowViewModel>(vm);

@@ -63,6 +63,7 @@ namespace Company.AppName
             // =========================
 
             ServiceLocator.Default.RegisterType<Company.AppName.Data.IDbConfigruation, Config>(RegistrationType.Singleton);
+            ServiceLocator.Default.RegisterType<Base.Core.ISearchService, SearchDialog.SearchService>(RegistrationType.Transient);
 
             // Basic
 
@@ -87,6 +88,7 @@ namespace Company.AppName
             IViewModelLocator viewModelLocator = ServiceLocator.Default.ResolveType<IViewModelLocator>();
 
             viewModelLocator.Register(typeof(MainWindow), typeof(MainVm));
+            viewModelLocator.Register(typeof(SearchDialog.SearchWindow), typeof(SearchDialog.SearchWindowViewModel));
 
             // Basic
             viewModelLocator.Register(typeof(Company.Basic.UI.HomeView), typeof(Company.Basic.Core.ViewModels.HomeVm));

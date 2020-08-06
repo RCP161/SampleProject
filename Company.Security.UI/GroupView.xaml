@@ -54,7 +54,11 @@
                     <DataGridCheckBoxColumn Binding="{Binding Read}" Header="Leserecht" />
                     <DataGridCheckBoxColumn Binding="{Binding Write}" Header="Schreibrecht" />
                 </DataGrid.Columns>
-                <!--  Visibility Binding StateVisibilityConverter  -->
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Setter Property="Visibility" Value="{Binding AsyncState, Converter={StaticResource StateVisibilityConverter}}" />
+                    </Style>
+                </DataGrid.RowStyle>
             </DataGrid>
         </Grid>
 

@@ -91,7 +91,7 @@ namespace Company.Security.Core.ViewModels
 
         private void AddPermission()
         {
-            Permission permission = ServiceLocator.Default.ResolveType<ISearchService<Permission>>().Search();
+            Permission permission = ServiceLocator.Default.ResolveType<ISearchService>().Search<Permission>();
 
             GroupPermission groupPermission = new GroupPermission();
             groupPermission.Permission = permission;
@@ -108,7 +108,7 @@ namespace Company.Security.Core.ViewModels
 
         private void AddUser()
         {
-            User user = ServiceLocator.Default.ResolveType<ISearchService<User>>().Search();
+            User user = ServiceLocator.Default.ResolveType<ISearchService>().Search<User>();
 
             GroupUser groupPermission = new GroupUser();
             groupPermission.User = user;

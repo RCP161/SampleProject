@@ -10,11 +10,6 @@ namespace Company.Base.Core
 {
     public abstract class InoViewModelBase1<T> : ViewModelBase where T : InoModelBase1
     {
-
-        public InoViewModelBase1()
-        {
-        }
-
         [Model]
         public T Model
         {
