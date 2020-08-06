@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using System.Text;
 using Catel.Data;
-using Catel.IoC;
+using Catel.MVVM.Navigation;
 using Company.Base.Core;
-using Company.Security.Core.Services;
 
 namespace Company.Security.Core.Models
 {
-    [Table("Sec_User")]
-    public class User : InoModelBase2
+    [Table("Sec_GroupUser")]
+    public class GroupUser : InoModelBase2
     {
-        public User()
-        {
-            Groups = new ObservableCollection<Group>();
-        }
 
         #region Properties
 
@@ -31,30 +25,22 @@ namespace Company.Security.Core.Models
         public static readonly PropertyData IdProperty = RegisterProperty(nameof(Id), typeof(long));
 
 
-        [Required, MaxLength(255)]
-        public string LogIn
+        [Required]
+        public User User
         {
-            get { return GetValue<string>(LogInProperty); }
-            set { SetValue(LogInProperty, value); }
+            get { return GetValue<User>(UserProperty); }
+            set { SetValue(UserProperty, value); }
         }
-        public static readonly PropertyData LogInProperty = RegisterProperty(nameof(LogIn), typeof(string));
+        public static readonly PropertyData UserProperty = RegisterProperty(nameof(User), typeof(User));
 
 
-        [Required, MaxLength(255)]
-        public string Password
+        [Required]
+        public Group Group
         {
-            get { return GetValue<string>(PasswordProperty); }
-            set { SetValue(PasswordProperty, value); }
+            get { return GetValue<Group>(GroupProperty); }
+            set { SetValue(GroupProperty, value); }
         }
-        public static readonly PropertyData PasswordProperty = RegisterProperty(nameof(Password), typeof(string));
-
-
-        public ObservableCollection<Group> Groups
-        {
-            get { return GetValue<ObservableCollection<Group>>(GroupsProperty); }
-            set { SetValue(GroupsProperty, value); }
-        }
-        public static readonly PropertyData GroupsProperty = RegisterProperty(nameof(Groups), typeof(ObservableCollection<Group>));
+        public static readonly PropertyData GroupProperty = RegisterProperty(nameof(Group), typeof(Group));
 
         #endregion
 
@@ -75,9 +61,13 @@ namespace Company.Security.Core.Models
 
         protected override string GetDisplayText()
         {
-            return LogIn;
+            if(Group != null && User != null)
+                return String.Format("{0} \\ {1}", Group.Name, User.LogIn);
+            else
+                return ToString();
         }
 
         #endregion
+
     }
 }

@@ -46,8 +46,6 @@ namespace Company.Security.Service
                 uow.GetRepository<IUserRepository>().SaveOrUpdate(user);
                 uow.SaveChanges();
             }
-
-            user.SetState(Base.Core.StateEnum.Unchanged);
         }
 
         public  void DeleteUser(User user)

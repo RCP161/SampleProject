@@ -53,20 +53,20 @@ namespace Company.Security.Core.ViewModels
 
 
         [ViewModelToModel]
-        public ObservableCollection<User> Users
+        public ObservableCollection<GroupUser> GroupUsers
         {
-            get { return GetValue<ObservableCollection<User>>(UsersProperty); }
-            set { SetValue(UsersProperty, value); }
+            get { return GetValue<ObservableCollection<GroupUser>>(GroupUsersProperty); }
+            set { SetValue(GroupUsersProperty, value); }
         }
-        public static readonly PropertyData UsersProperty = RegisterProperty(nameof(Users), typeof(ObservableCollection<User>));
+        public static readonly PropertyData GroupUsersProperty = RegisterProperty(nameof(GroupUsers), typeof(ObservableCollection<GroupUser>));
 
 
-        public User SelectedUser
+        public GroupUser SelectedGroupUser
         {
-            get { return GetValue<User>(SelectedUserProperty); }
-            set { SetValue(SelectedUserProperty, value); }
+            get { return GetValue<GroupUser>(SelectedGroupUserProperty); }
+            set { SetValue(SelectedGroupUserProperty, value); }
         }
-        public static readonly PropertyData SelectedUserProperty = RegisterProperty(nameof(SelectedUser), typeof(User));
+        public static readonly PropertyData SelectedGroupUserProperty = RegisterProperty(nameof(SelectedGroupUser), typeof(GroupUser));
 
 
         public Command SaveCommand { get; private set; }
@@ -98,7 +98,7 @@ namespace Company.Security.Core.ViewModels
             groupPermission.Group = Model;
             groupPermission.SetState(StateEnum.Created);
 
-            GroupPermissions.Add(new GroupPermission());
+            GroupPermissions.Add(groupPermission);
         }
 
         private void RemovePermission()
@@ -108,12 +108,19 @@ namespace Company.Security.Core.ViewModels
 
         private void AddUser()
         {
-            throw new NotImplementedException();
+            User user = ServiceLocator.Default.ResolveType<ISearchService<User>>().Search();
+
+            GroupUser groupPermission = new GroupUser();
+            groupPermission.User = user;
+            groupPermission.Group = Model;
+            groupPermission.SetState(StateEnum.Created);
+
+            GroupUsers.Add(groupPermission);
         }
 
         private void RemoveUser()
         {
-            throw new NotImplementedException();
+            SelectedGroupUser.SetState(StateEnum.Deleted);
         }
 
         #endregion

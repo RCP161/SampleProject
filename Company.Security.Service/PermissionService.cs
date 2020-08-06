@@ -19,13 +19,11 @@ namespace Company.Security.Service
                 uow.GetRepository<IPermissionRepository>().SaveOrUpdate(p);
                 uow.SaveChanges();
             }
-
-            p.SetState(Base.Core.StateEnum.Unchanged);
         }
 
         public IEnumerable<InoModelBase2> GetLast10()
         {
-            IEnumerable<User> res;
+            IEnumerable<Permission> res;
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
                 res = uow.GetRepository<IPermissionRepository>().GetLast10();
@@ -36,7 +34,7 @@ namespace Company.Security.Service
 
         public IEnumerable<InoModelBase2> GetForSearchText(string arg)
         {
-            IEnumerable<User> res;
+            IEnumerable<Permission> res;
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
                 res = uow.GetRepository<IPermissionRepository>().GetForSearchText(arg);

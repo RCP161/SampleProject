@@ -73,12 +73,12 @@ namespace Company.AppName
 
             ServiceLocator.Default.RegisterType<Company.Security.Core.Repositories.IGroupRepository, Company.Security.Data.GroupRepository>(RegistrationType.Transient);
             ServiceLocator.Default.RegisterType<Company.Security.Core.Repositories.IPermissionRepository, Company.Security.Data.PermissionRepository>(RegistrationType.Transient);
+            ServiceLocator.Default.RegisterType<Company.Security.Core.Repositories.IGroupUserRepository, Company.Security.Data.GroupUserRepository>(RegistrationType.Transient);
             ServiceLocator.Default.RegisterType<Company.Security.Core.Repositories.IGroupPermissionRepository, Company.Security.Data.GroupPermissionRepository>(RegistrationType.Transient);
             ServiceLocator.Default.RegisterType<Company.Security.Core.Repositories.IUserRepository, Company.Security.Data.UserRepository>(RegistrationType.Transient);
 
             ServiceLocator.Default.RegisterType<Company.Security.Core.Services.IGroupService, Company.Security.Service.GroupService>(RegistrationType.Transient);
             ServiceLocator.Default.RegisterType<Company.Security.Core.Services.IPermissionService, Company.Security.Service.PermissionService>(RegistrationType.Transient);
-            ServiceLocator.Default.RegisterType<Company.Security.Core.Services.IGroupPermissionService, Company.Security.Service.GroupPermissionService>(RegistrationType.Transient);
             ServiceLocator.Default.RegisterType<Company.Security.Core.Services.IUserService, Company.Security.Service.UserService>(RegistrationType.Transient);
 
             // =========================
@@ -120,7 +120,7 @@ namespace Company.AppName
 
         // TODO : Todo-Liste
 
-        // Abfragen aus ServiceClassen in Repos auslagen
+        // SonarQube warnung wenn auf NotMapped eigenschaften im Repo zugegriffen werden?
 
 
         // Weitere Themen

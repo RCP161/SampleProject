@@ -239,6 +239,10 @@
       <Project>{73f8c05d-e8eb-49c3-b9bf-3f2c06e4ed08}</Project>
       <Name>Company.Security.UI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Company.Styling\Company.Styling.csproj">
+      <Project>{b8f3bc5d-db96-468e-83ea-f2f2d59e3cea}</Project>
+      <Name>Company.Styling</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

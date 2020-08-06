@@ -7,9 +7,7 @@ using Orc.EntityFramework.Repositories;
 
 namespace Company.Security.Core.Repositories
 {
-    public interface IPermissionRepository : IInoBaseRepository<Permission>
+    public interface IGroupUserRepository : IInoBaseRepository<GroupUser>
     {
-        IEnumerable<Permission> GetLast10();
-        IEnumerable<Permission> GetForSearchText(string arg);
     }
 }

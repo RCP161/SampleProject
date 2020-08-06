@@ -42,6 +42,9 @@ namespace Company.Security.Service
 
         public void SaveGroup(Group group)
         {
+            List<GroupPermission> deletedGroupPermissions = group.GroupPermissions.Where(x => x.State == StateEnum.Deleted).ToList();
+            List<GroupUser> removedUsers = group.GroupUsers.Where(x => x.State == StateEnum.Deleted).ToList();
+
             using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
             {
                 uow.GetRepository<IGroupRepository>().SaveOrUpdate(group);
@@ -50,24 +53,19 @@ namespace Company.Security.Service
                 foreach(GroupPermission gp in group.GroupPermissions)
                     gpRep.SaveOrUpdate(gp);
 
+
+                IGroupUserRepository guRep = uow.GetRepository<IGroupUserRepository>();
+                foreach(GroupUser gu in group.GroupUsers)
+                    guRep.SaveOrUpdate(gu);
+
                 uow.SaveChanges();
             }
 
-            List<GroupPermission> deletedGroupPermissions = group.GroupPermissions.Where(x => x.State == StateEnum.Deleted).ToList();
-
-            foreach(GroupPermission gp in group.GroupPermissions)
+            foreach(GroupPermission gp in deletedGroupPermissions)
                 group.GroupPermissions.Remove(gp);
 
-            List<User> removed = group.GroupPermissions.Where(x => x.State == StateEnum.Deleted).ToList();
-
-            foreach(GroupPermission gp in group.GroupPermissions)
-                group.GroupPermissions.Remove(gp);
-
-
-
-            group.SetState(StateEnum.Unchanged);
-            foreach(GroupPermission gp in group.GroupPermissions)
-                gp.SetState(StateEnum.Unchanged);
+            foreach(GroupUser gu in removedUsers)
+                group.GroupUsers.Remove(gu);
         }
 
         public void DeleteGroup(Group group)

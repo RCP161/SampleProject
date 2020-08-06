@@ -8,6 +8,8 @@ namespace Company.AppName.Data.ModuleConfiguration.Basic
 {
     public class PersonConfig : EntityTypeConfiguration<Person>
     {
+        // Wird nicht mehr verwendet. Hier nur beispielhaft behalten
+
         public PersonConfig()
         {
             ToTable("Bsc_Person");

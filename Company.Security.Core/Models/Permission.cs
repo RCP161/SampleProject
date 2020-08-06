@@ -9,6 +9,7 @@ using Company.Base.Core;
 
 namespace Company.Security.Core.Models
 {
+    [Table("Sec_Permission")]
     public class Permission : InoModelBase2
     {
 

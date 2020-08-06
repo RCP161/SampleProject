@@ -13,12 +13,13 @@ using Company.Security.Core.Services;
 
 namespace Company.Security.Core.Models
 {
+    [Table("Sec_Group")]
     public class Group : InoModelBase2
     {
         public Group()
         {
             GroupPermissions = new ObservableCollection<GroupPermission>();
-            Users = new ObservableCollection<User>();
+            GroupUsers = new ObservableCollection<GroupUser>();
         }
 
         #region Properties
@@ -48,15 +49,13 @@ namespace Company.Security.Core.Models
         }
         public static readonly PropertyData GroupPermissionsProperty = RegisterProperty(nameof(GroupPermissions), typeof(ObservableCollection<GroupPermission>));
 
-        Collection<GrouUserMapp>
 
-        [NotMapped]
-        public ObservableCollection<User> Users
+        public ObservableCollection<GroupUser> GroupUsers
         {
-            get { return GetValue<ObservableCollection<User>>(UsersProperty); }
-            set { SetValue(UsersProperty, value); }
+            get { return GetValue<ObservableCollection<GroupUser>>(GroupUsersProperty); }
+            set { SetValue(GroupUsersProperty, value); }
         }
-        public static readonly PropertyData UsersProperty = RegisterProperty(nameof(Users), typeof(ObservableCollection<User>));
+        public static readonly PropertyData GroupUsersProperty = RegisterProperty(nameof(GroupUsers), typeof(ObservableCollection<GroupUser>));
 
         #endregion
 

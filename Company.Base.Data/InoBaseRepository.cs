@@ -25,6 +25,9 @@ namespace Company.Base.Data
                     Delete(model);
                     break;
             }
+
+            // Wenn gelösch, eh egal, nur was, wenn Commit/DB Flush/Go schief geht?
+            model.SetState(StateEnum.Unchanged);
         }
     }
 }

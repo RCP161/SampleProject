@@ -165,5 +165,11 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Company.Styling\Company.Styling.csproj">
+      <Project>{b8f3bc5d-db96-468e-83ea-f2f2d59e3cea}</Project>
+      <Name>Company.Styling</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

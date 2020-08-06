@@ -12,6 +12,7 @@ using Company.Security.Core.Services;
 
 namespace Company.Security.Core.Models
 {
+    [Table("")]
     public class Home: InoModelBase1
     {
         private Home()

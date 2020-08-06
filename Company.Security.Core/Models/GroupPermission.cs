@@ -9,6 +9,7 @@ using Company.Base.Core;
 
 namespace Company.Security.Core.Models
 {
+    [Table("Sec_GroupPermission")]
     public class GroupPermission : InoModelBase2
     { 
         #region Properties
@@ -86,7 +87,7 @@ namespace Company.Security.Core.Models
             if(Permission != null)
                 return Permission.Name;
             else
-                return null;
+                return ToString();
         }
 
         #endregion

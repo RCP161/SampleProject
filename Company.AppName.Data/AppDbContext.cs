@@ -33,12 +33,8 @@ namespace Company.AppName.Data
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Configurations.Add(new ModuleConfiguration.Basic.PersonConfig());
-
-            modelBuilder.Configurations.Add(new ModuleConfiguration.Security.GroupConfig());
-            modelBuilder.Configurations.Add(new ModuleConfiguration.Security.PermissionConfig());
-            modelBuilder.Configurations.Add(new ModuleConfiguration.Security.GroupPermissionConfig());
-            modelBuilder.Configurations.Add(new ModuleConfiguration.Security.UserConfig());
+            // Nur beispielhaft als Kommentar behalten
+            //modelBuilder.Configurations.Add(new ModuleConfiguration.Basic.PersonConfig());
         }
 
         // TODO : Durch Code-generierung erzeugen
@@ -47,6 +43,7 @@ namespace Company.AppName.Data
 
         public DbSet<Group> Sec_Group { get; set; }
         public DbSet<GroupPermission> Sec_GroupPermission { get; set; }
+        public DbSet<GroupUser> Sec_GroupUser { get; set; }
         public DbSet<Permission> Sec_Permission { get; set; }
         public DbSet<User> Sec_User { get; set; }
     }

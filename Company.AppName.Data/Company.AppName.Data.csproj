@@ -16,4 +16,9 @@
     <ProjectReference Include="..\Company.Security.Core\Company.Security.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ModuleConfiguration\Basic\" />
+    <Folder Include="ModuleConfiguration\Security\" />
+  </ItemGroup>
+
 </Project>

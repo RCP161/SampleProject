@@ -40,8 +40,6 @@ namespace Company.Basic.Service
                 pr.SaveOrUpdate(person);
                 uow.SaveChanges();
             }
-
-            person.SetState(Base.Core.StateEnum.Unchanged);
         }
     }
 }
