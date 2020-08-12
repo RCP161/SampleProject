@@ -50,7 +50,6 @@ namespace Company.AppName.SearchDialog
         public static readonly PropertyData SearchResultsProperty = RegisterProperty(nameof(SearchResults), typeof(ObservableCollection<InoModelBase2>));
 
 
-        [ViewModelToModel]
         public InoModelBase2 SelectedSearchResult
         {
             get { return GetValue<InoModelBase2>(SelectedSearchResultProperty); }
@@ -68,7 +67,6 @@ namespace Company.AppName.SearchDialog
         public static readonly PropertyData MultipleResultsProperty = RegisterProperty(nameof(MultipleResults), typeof(ObservableCollection<InoModelBase2>));
 
 
-        [ViewModelToModel]
         public InoModelBase2 SelectedMultipleResult
         {
             get { return GetValue<InoModelBase2>(SelectedMultipleResultProperty); }

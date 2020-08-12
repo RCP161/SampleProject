@@ -22,7 +22,7 @@ namespace Company.AppName
         protected override void OnStartup(StartupEventArgs e)
         {
 #if DEBUG
-            //LogManager.AddDebugListener();
+            LogManager.AddDebugListener();
 #endif
 
             _log.Info("Starting application");
@@ -118,6 +118,7 @@ namespace Company.AppName
             IUIVisualizerService uIVisualizerService = ServiceLocator.Default.ResolveType<IUIVisualizerService>();
 
             uIVisualizerService.Register(typeof(MainVm), typeof(MainWindow));
+            uIVisualizerService.Register(typeof(SearchDialog.SearchWindowViewModel), typeof(SearchDialog.SearchWindow));
         }
 
         // TODO : Todo-Liste

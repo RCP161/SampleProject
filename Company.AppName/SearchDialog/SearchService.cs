@@ -13,19 +13,19 @@ namespace Company.AppName.SearchDialog
 {
     public class SearchService : ISearchService
     {
-        public T Search<T>() where T : InoModelBase2
+        public async Task<T> SearchAsync<T>() where T : InoModelBase2
         {
-            IEnumerable<T> res = StartDialog<T>(false);
+            IEnumerable<T> res = await StartDialogAsync<T>(false);
             return res.SingleOrDefault();
         }
 
-        public IEnumerable<T> SearchMultiple<T>() where T : InoModelBase2
+        public async Task<IEnumerable<T>> SearchMultipleAsync<T>() where T : InoModelBase2
         {
-            IEnumerable<T> res = StartDialog<T>(true);
+            IEnumerable<T> res = await StartDialogAsync<T>(true);
             return res;
         }
 
-        private IEnumerable<T> StartDialog<T>(bool isMultiple) where T : InoModelBase2
+        private async Task<IEnumerable<T>> StartDialogAsync<T>(bool isMultiple) where T : InoModelBase2
         {
             Func<IEnumerable<InoModelBase2>> last10Function;
             Func<string, IEnumerable<InoModelBase2>> searchFunction;
@@ -53,9 +53,8 @@ namespace Company.AppName.SearchDialog
 
 
             SearchWindowModel model = new SearchWindowModel(isMultiple, last10Function, searchFunction);
-            SearchWindowViewModel vm = new SearchWindowViewModel(model);
 
-            ServiceLocator.Default.ResolveType<IUIVisualizerService>().ShowAsync<SearchWindowViewModel>(vm);
+            await ServiceLocator.Default.ResolveType<IUIVisualizerService>().ShowDialogAsync<SearchWindowViewModel>(model);
 
             return model.MultipleResults as IEnumerable<T>;
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using Catel.Data;
 using Catel.IoC;
 using Catel.MVVM;
@@ -18,9 +19,9 @@ namespace Company.Security.Core.ViewModels
             Model = model;
             SaveCommand = new Command(() => SaveGroup());
             CancelCommand = new Command(Revert);
-            AddPermissionCommand = new Command(() => AddPermission());
+            AddPermissionCommand = new TaskCommand(() => AddPermissionAsync());
             RemovePermissionCommand = new Command(() => RemovePermission());
-            AddUserCommand = new Command(() => AddUser());
+            AddUserCommand = new TaskCommand(() => AddUserAsync());
             RemoveUserCommand= new Command(() => RemoveUser());
         }
 
@@ -71,9 +72,9 @@ namespace Company.Security.Core.ViewModels
 
         public Command SaveCommand { get; private set; }
         public Command CancelCommand { get; private set; }
-        public Command AddPermissionCommand { get; private set; }
+        public TaskCommand AddPermissionCommand { get; private set; }
         public Command RemovePermissionCommand { get; private set; }
-        public Command AddUserCommand { get; private set; }
+        public TaskCommand AddUserCommand { get; private set; }
         public Command RemoveUserCommand { get; private set; }
 
         #endregion
@@ -89,9 +90,9 @@ namespace Company.Security.Core.ViewModels
                 Home.Instance.Groups.Add(Model);
         }
 
-        private void AddPermission()
+        private async Task AddPermissionAsync()
         {
-            Permission permission = ServiceLocator.Default.ResolveType<ISearchService>().Search<Permission>();
+            Permission permission = await ServiceLocator.Default.ResolveType<ISearchService>().SearchAsync<Permission>();
 
             GroupPermission groupPermission = new GroupPermission();
             groupPermission.Permission = permission;
@@ -106,9 +107,9 @@ namespace Company.Security.Core.ViewModels
             SelectedGroupPermission.SetState(StateEnum.Deleted);
         }
 
-        private void AddUser()
+        private async Task AddUserAsync()
         {
-            User user = ServiceLocator.Default.ResolveType<ISearchService>().Search<User>();
+            User user = await ServiceLocator.Default.ResolveType<ISearchService>().SearchAsync<User>();
 
             GroupUser groupPermission = new GroupUser();
             groupPermission.User = user;
