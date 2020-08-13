@@ -54,9 +54,12 @@ namespace Company.AppName.SearchDialog
 
             SearchWindowModel model = new SearchWindowModel(isMultiple, last10Function, searchFunction);
 
-            await ServiceLocator.Default.ResolveType<IUIVisualizerService>().ShowDialogAsync<SearchWindowViewModel>(model);
+            bool? result = await ServiceLocator.Default.ResolveType<IUIVisualizerService>().ShowDialogAsync<SearchWindowViewModel>(model);
 
-            return model.MultipleResults as IEnumerable<T>;
+            if(result.HasValue && result.Value)
+                return model.MultipleResults.OfType<T>().ToList();
+
+            return new List<T>();
         }
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Company.AppName.SearchDialog
 {
-    public partial class SearchWindow : IWindow
+    public partial class SearchWindow
     {
-        public SearchWindow() 
-        {
+        public SearchWindow()
+        { 
             InitializeComponent();
         }
     }

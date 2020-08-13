@@ -17,7 +17,7 @@ namespace Company.Security.Data
 
         public IEnumerable<Group> GetAllComplete()
         {
-            return GetQuery().Include(x => x.GroupUsers.Select(y => y.User)).Include(x => x.GroupPermissions).ToList();
+            return GetQuery().Include(x => x.GroupUsers).Include(x => x.GroupPermissions).ToList();
         }
 
         public IEnumerable<Group> GetByUserId(long id)

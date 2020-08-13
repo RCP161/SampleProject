@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Catel.Data;
@@ -94,6 +95,12 @@ namespace Company.Security.Core.ViewModels
         {
             Permission permission = await ServiceLocator.Default.ResolveType<ISearchService>().SearchAsync<Permission>();
 
+            if(permission == null)
+                return;
+
+            if(GroupPermissions.Any(x => x.Permission.Id == permission.Id))
+                return;
+
             GroupPermission groupPermission = new GroupPermission();
             groupPermission.Permission = permission;
             groupPermission.Group = Model;
@@ -110,6 +117,12 @@ namespace Company.Security.Core.ViewModels
         private async Task AddUserAsync()
         {
             User user = await ServiceLocator.Default.ResolveType<ISearchService>().SearchAsync<User>();
+
+            if(user == null)
+                return;
+
+            if(GroupUsers.Any(x => x.User.Id == user.Id))
+                return;
 
             GroupUser groupPermission = new GroupUser();
             groupPermission.User = user;

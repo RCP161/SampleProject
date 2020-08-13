@@ -64,28 +64,14 @@ namespace Company.AppName.SearchDialog
             SearchResults.AddRange(results);
         }
 
-        internal void AddResult(InoModelBase2 selectedSearchResult, IWindow window)
+        internal void AddResult(InoModelBase2 selectedSearchResult)
         {
             MultipleResults.Add(selectedSearchResult);
-
-            if(IsMultiple)
-                Finish(window);
         }
 
         internal void RemoveResult(InoModelBase2 selectedMultipleResult)
         {
             MultipleResults.Remove(selectedMultipleResult);
-        }
-
-        internal void Cancel(IWindow window)
-        {
-            MultipleResults.Clear();
-            window.Close();
-        }
-
-        internal void Finish(IWindow window)
-        {
-            window.Close();
         }
     }
 }

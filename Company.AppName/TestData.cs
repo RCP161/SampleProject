@@ -58,16 +58,16 @@ namespace Company.AppName
             Permission g = new Permission();
             g.Name = "Group";
             g.Comment = "Recht zum sehen und bearbeiten von Gruppen";
-            p.SetState(Base.Core.StateEnum.Created);
+            g.SetState(Base.Core.StateEnum.Created);
 
-            permissionService.SavePermission(p);
+            permissionService.SavePermission(g);
 
             Permission u = new Permission();
             u.Name = "User";
             u.Comment = "Recht zum sehen und bearbeiten von LogIn-Usern";
-            p.SetState(Base.Core.StateEnum.Created);
+            u.SetState(Base.Core.StateEnum.Created);
 
-            permissionService.SavePermission(p);
+            permissionService.SavePermission(u);
 
 
             // Gruppe 1

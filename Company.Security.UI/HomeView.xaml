@@ -43,7 +43,7 @@
                     <Button Width="80"
                             Margin="3"
                             Command="{Binding NewGroupCommand}"
-                            Content="Speichern" />
+                            Content="Neu" />
                 </StackPanel>
 
                 <TextBlock Grid.Row="4" Text="User" />
@@ -67,7 +67,7 @@
                     <Button Width="80"
                             Margin="3"
                             Command="{Binding NewUserCommand}"
-                            Content="Speichern" />
+                            Content="Neu" />
                 </StackPanel>
             </Grid>
         </TabItem>

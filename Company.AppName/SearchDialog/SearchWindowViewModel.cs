@@ -18,9 +18,8 @@ namespace Company.AppName.SearchDialog
 
             SearchCommand = new Command(() => Model.DoSearch());
             RemoveCommand = new Command(() => Model.RemoveResult(SelectedMultipleResult));
-            AddCommand = new Command<IWindow>(AddResult);
-            OkCommand = new Command<IWindow>(Finish);
-            CancelCommand = new Command<IWindow>(Cancel);
+            OnCloseCommand = new Command(() => OnClose());
+            AddCommand = new Command(() => AddResult());
         }
 
         [ViewModelToModel]
@@ -77,25 +76,22 @@ namespace Company.AppName.SearchDialog
 
         public Command SearchCommand { get; private set; }
         public Command RemoveCommand { get; private set; }
-        public Command<IWindow> AddCommand { get; private set; }
-        public Command<IWindow> OkCommand { get; private set; }
-        public Command<IWindow> CancelCommand { get; private set; }
+        public Command OnCloseCommand { get; private set; }
+        public Command AddCommand { get; private set; }
 
 
-        private void AddResult(IWindow window)
+        private void AddResult()
         {
-            Model.AddResult(SelectedSearchResult, window);
+            Model.AddResult(SelectedSearchResult);
+
+            if(!IsMultiple)
+                this.SaveAndCloseViewModelAsync();
         }
 
-        private void Finish(IWindow window)
+        private void OnClose()
         {
-            Model.Finish(window);
+            if(!IsMultiple && SelectedSearchResult != null && MultipleResults.Count < 1)
+                Model.AddResult(SelectedSearchResult);
         }
-
-        private void Cancel(IWindow window)
-        {
-            Model.Cancel(window);
-        }
-
     }
 }
