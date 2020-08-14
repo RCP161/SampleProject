@@ -30,6 +30,14 @@ namespace Company.Security.Core.ViewModels
         }
         public static readonly PropertyData LogInProperty = RegisterProperty(nameof(LogIn), typeof(string));
 
+        [ViewModelToModel]
+        public string Password
+        {
+            get { return GetValue<string>(PasswordProperty); }
+            set { SetValue(PasswordProperty, value); }
+        }
+        public static readonly PropertyData PasswordProperty = RegisterProperty(nameof(Password), typeof(string));
+
 
         [ViewModelToModel]
         public ObservableCollection<GroupUser> GroupUsers
@@ -40,12 +48,12 @@ namespace Company.Security.Core.ViewModels
         public static readonly PropertyData GroupUsersProperty = RegisterProperty(nameof(GroupUsers), typeof(ObservableCollection<GroupUser>));
 
 
-        public Group SelectedGroup
+        public GroupUser SelectedGroup
         {
-            get { return GetValue<Group>(SelectedGroupProperty); }
+            get { return GetValue<GroupUser>(SelectedGroupProperty); }
             set { SetValue(SelectedGroupProperty, value); }
         }
-        public static readonly PropertyData SelectedGroupProperty = RegisterProperty(nameof(SelectedGroup), typeof(Group));
+        public static readonly PropertyData SelectedGroupProperty = RegisterProperty(nameof(SelectedGroup), typeof(GroupUser));
 
 
         public Command SaveCommand { get; private set; }
