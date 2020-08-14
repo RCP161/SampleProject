@@ -32,12 +32,12 @@ namespace Company.Security.Core.ViewModels
 
 
         [ViewModelToModel]
-        public ObservableCollection<Group> Groups
+        public ObservableCollection<GroupUser> GroupUsers
         {
-            get { return GetValue<ObservableCollection<Group>>(GroupsProperty); }
-            set { SetValue(GroupsProperty, value); }
+            get { return GetValue<ObservableCollection<GroupUser>>(GroupUsersProperty); }
+            set { SetValue(GroupUsersProperty, value); }
         }
-        public static readonly PropertyData GroupsProperty = RegisterProperty(nameof(Groups), typeof(ObservableCollection<Group>));
+        public static readonly PropertyData GroupUsersProperty = RegisterProperty(nameof(GroupUsers), typeof(ObservableCollection<GroupUser>));
 
 
         public Group SelectedGroup

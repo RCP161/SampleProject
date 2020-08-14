@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Catel.Data;
 using Catel.IoC;
 using Company.Basic.Core.Models;
 using Company.Basic.Core.Services;
@@ -39,6 +40,20 @@ namespace Company.AppName
 
                 service.SavePerson(p);
             }
+
+            p = new Person();
+            p.Name = "Sandra";
+            p.Surename = "Musterfrau";
+            p.SetState(Base.Core.StateEnum.Created);
+
+            service.SavePerson(p);
+
+            p = new Person();
+            p.Name = "Marvin";
+            p.Surename = "Mustermann";
+            p.SetState(Base.Core.StateEnum.Created);
+
+            service.SavePerson(p);
         }
 
         private void CreatePermissions()
@@ -124,15 +139,38 @@ namespace Company.AppName
             user.Password = "Password";
             user.SetState(Base.Core.StateEnum.Created);
 
-            user.Groups.Add(grp1);
+            GroupUser gu = new GroupUser();
+            gu.Group = grp1;
+            gu.User = user;
+            gu.SetState(Base.Core.StateEnum.Created);
 
+            user.GroupUsers.Add(gu);
             userService.SaveUser(user);
 
             user = new User();
-            user.LogIn = "Sandra";
-            user.Password = "Mustermann";
+            user.LogIn = "SMusterfrau";
+            user.Password = "Password";
             user.SetState(Base.Core.StateEnum.Created);
 
+            gu = new GroupUser();
+            gu.Group = grp;
+            gu.User = user;
+            gu.SetState(Base.Core.StateEnum.Created);
+
+            user.GroupUsers.Add(gu);
+            userService.SaveUser(user);
+
+            user = new User();
+            user.LogIn = "MMustermann";
+            user.Password = "Password";
+            user.SetState(Base.Core.StateEnum.Created);
+
+            gu = new GroupUser();
+            gu.Group = grp;
+            gu.User = user;
+            gu.SetState(Base.Core.StateEnum.Created);
+
+            user.GroupUsers.Add(gu);
             userService.SaveUser(user);
         }
     }

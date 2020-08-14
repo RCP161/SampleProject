@@ -50,12 +50,12 @@ namespace Company.Security.Service
                 uow.GetRepository<IGroupRepository>().SaveOrUpdate(group);
 
                 IGroupPermissionRepository gpRep = uow.GetRepository<IGroupPermissionRepository>();
-                foreach(GroupPermission gp in group.GroupPermissions)
+                foreach(GroupPermission gp in group.GroupPermissions.ToList())
                     gpRep.SaveOrUpdate(gp);
 
 
                 IGroupUserRepository guRep = uow.GetRepository<IGroupUserRepository>();
-                foreach(GroupUser gu in group.GroupUsers)
+                foreach(GroupUser gu in group.GroupUsers.ToList())
                     guRep.SaveOrUpdate(gu);
 
                 uow.SaveChanges();

@@ -16,7 +16,7 @@ namespace Company.Styling.Converters
         {
             StateEnum state;
 
-            bool hasFit = Enum.TryParse(value.ToString(), out state);
+           bool hasFit = Enum.TryParse(value.ToString(), out state);
 
             if(hasFit && state == StateEnum.Deleted)
                 return Visibility.Collapsed;

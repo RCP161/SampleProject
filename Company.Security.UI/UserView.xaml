@@ -33,7 +33,7 @@
                   SelectedItem="{Binding SelectedGroup}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding DisplayText}" />
+                    <TextBlock Text="{Binding Group.DisplayText}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

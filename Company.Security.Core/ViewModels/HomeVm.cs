@@ -74,6 +74,7 @@ namespace Company.Security.Core.ViewModels
         private void NewGroup()
         {
             SelectedGroup = new Group();
+            SelectedGroup.SetState(StateEnum.Created);
         }
 
         private void DeleteGroup()
@@ -86,6 +87,7 @@ namespace Company.Security.Core.ViewModels
         private void NewUser()
         {
             SelectedUser = new User();
+            SelectedUser.SetState(StateEnum.Created);
         }
 
         private void DeleteUser()

@@ -17,12 +17,12 @@ namespace Company.Security.Data
 
         public IEnumerable<User> GetAllComplete()
         {
-            return GetQuery().Include(x => x.Groups).ToList();
+            return GetQuery().Include(x => x.GroupUsers).ToList();
         }
 
         public IEnumerable<User> GetByGroupId(long id)
         {
-            return GetQuery(x => x.Groups.Any(g => g.Id == id)).ToList();
+            return GetQuery(x => x.GroupUsers.Any(gu => gu.Group.Id == id)).ToList();
         }
 
         public IEnumerable<User> GetForSearchText(string arg)

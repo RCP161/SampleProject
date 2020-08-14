@@ -17,7 +17,9 @@ namespace Company.Security.Data
 
         public IEnumerable<Group> GetAllComplete()
         {
-            return GetQuery().Include(x => x.GroupUsers).Include(x => x.GroupPermissions).ToList();
+            // Besser EF Core/7 mit IncludeThen!
+            // return GetQuery().Include(x => x.GroupUsers).Include("GroupUsers.User").Include(x => x.GroupPermissions).Include("GroupPermissions.Permission").ToList();
+            return  GetQuery().Include(x => x.GroupUsers.Select(gu => gu.User)).Include(x => x.GroupPermissions.Select(gp => gp.Permission)).ToList();
         }
 
         public IEnumerable<Group> GetByUserId(long id)
