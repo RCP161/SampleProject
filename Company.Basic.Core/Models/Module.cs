@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Catel.MVVM;
 using Company.Base.Core;
-using Company.Basic.Core.ViewModels;
+using Company.Security.Presentation;
 
 namespace Company.Basic.Core.Models
 {
@@ -13,7 +13,7 @@ namespace Company.Basic.Core.Models
         {
             Logo = "Bsc.";
             Name = "Basic";
-            HomeViewModel = new HomeVm();
+            HomeModel = Home.Instance;
         }
 
 
@@ -21,7 +21,7 @@ namespace Company.Basic.Core.Models
 
         public string Logo { get; private set; }
         public string Name { get; private set; }
-        public ViewModelBase HomeViewModel { get; private set; }
+        public InoModelBase1 HomeModel { get; private set; }
 
         #endregion
     }

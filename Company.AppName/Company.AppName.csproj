@@ -136,6 +136,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ModulTemplateSelector.cs" />
     <Compile Include="SearchDialog\SearchWindow.xaml.cs">
       <DependentUpon>SearchWindow.xaml</DependentUpon>
     </Compile>
@@ -203,6 +204,10 @@
       <Project>{1f77f82d-b679-4b09-b6a2-b1f97d76cd67}</Project>
       <Name>Company.Base.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Company.Base.Presentation\Company.Base.Presentation.csproj">
+      <Project>{fe73210d-43ea-421b-b73f-e95c155cf1cd}</Project>
+      <Name>Company.Base.Presentation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Company.Base.Service\Company.Base.Service.csproj">
       <Project>{f241bd88-6fd4-47ef-979d-f531ba47bb24}</Project>
       <Name>Company.Base.Service</Name>
@@ -214,6 +219,10 @@
     <ProjectReference Include="..\Company.Basic.Data\Company.Basic.Data.csproj">
       <Project>{c88f5be4-4678-4deb-93fd-1a5355eb1861}</Project>
       <Name>Company.Basic.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Company.Basic.Presentation\Company.Basic.Presentation.csproj">
+      <Project>{2d916c69-9ed4-476a-a1c0-d9a5486d92a0}</Project>
+      <Name>Company.Basic.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\Company.Basic.Service\Company.Basic.Service.csproj">
       <Project>{228428a3-870b-4ead-b43a-bd674f7ed699}</Project>
@@ -230,6 +239,10 @@
     <ProjectReference Include="..\Company.Security.Data\Company.Security.Data.csproj">
       <Project>{77df4349-4428-48a7-9f5f-6e65087f271e}</Project>
       <Name>Company.Security.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Company.Security.Presentation\Company.Security.Presentation.csproj">
+      <Project>{0d1cf6a0-ce4e-40c7-8ae8-92ae136c8806}</Project>
+      <Name>Company.Security.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\Company.Security.Service\Company.Security.Service.csproj">
       <Project>{4c65ed51-3ec2-43b4-90ec-0e6848ca0a27}</Project>

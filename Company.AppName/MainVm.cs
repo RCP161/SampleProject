@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Catel.Data;
 using Catel.MVVM;
 using Company.Base.Core;
-using Company.Security.Core.ViewModels;
 
 namespace Company.AppName
 {
@@ -17,7 +16,7 @@ namespace Company.AppName
         {
             Model = new MainModel();
 
-            ActivCommand = new Command<ViewModelBase>(SetActivatedModule);
+            ActivCommand = new Command<InoModelBase1>(SetActivatedModule);
         }
 
         #region Properties
@@ -31,7 +30,7 @@ namespace Company.AppName
         public static readonly PropertyData ModelProperty = RegisterProperty(nameof(Model), typeof(MainModel));
 
 
-        public Command<ViewModelBase> ActivCommand { get; private set; }
+        public Command<InoModelBase1> ActivCommand { get; private set; }
 
 
         [ViewModelToModel]
@@ -44,20 +43,20 @@ namespace Company.AppName
 
 
         [ViewModelToModel]
-        public ViewModelBase SelectedModuleVm
+        public InoModelBase1 SelectedHomeModel
         {
-            get { return GetValue<ViewModelBase>(SelectedModuleVmProperty); }
-            set { SetValue(SelectedModuleVmProperty, value); }
+            get { return GetValue<InoModelBase1>(SelectedHomeModuleProperty); }
+            set { SetValue(SelectedHomeModuleProperty, value); }
         }
-        public static readonly PropertyData SelectedModuleVmProperty = RegisterProperty(nameof(SelectedModuleVm), typeof(ViewModelBase));
+        public static readonly PropertyData SelectedHomeModuleProperty = RegisterProperty(nameof(SelectedHomeModel), typeof(InoModelBase1));
 
         #endregion
 
         #region Methods
 
-        private void SetActivatedModule(ViewModelBase newActivVm)
+        private void SetActivatedModule(InoModelBase1 newActivVm)
         {
-            SelectedModuleVm = newActivVm;
+            SelectedHomeModel = newActivVm;
         }
 
         #endregion

@@ -10,6 +10,6 @@ namespace Company.Base.Core
         string Logo { get; }
         string Name { get; }
 
-        ViewModelBase HomeViewModel { get; }
+        InoModelBase1 HomeModel { get; }
     }
 }

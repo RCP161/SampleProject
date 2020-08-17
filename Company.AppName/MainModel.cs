@@ -18,7 +18,7 @@ namespace Company.AppName
             Modules.Add(new Basic.Core.Models.Module());
 
 
-            SelectedModuleVm = Modules.FirstOrDefault().HomeViewModel;
+            SelectedHomeModel = Modules.FirstOrDefault().HomeModel;
         }
 
         public ObservableCollection<IModule> Modules
@@ -29,11 +29,11 @@ namespace Company.AppName
         public static readonly PropertyData ModulesProperty = RegisterProperty(nameof(Modules), typeof(ObservableCollection<IModule>), () => new ObservableCollection<IModule>());
 
 
-        public ViewModelBase SelectedModuleVm
+        public InoModelBase1 SelectedHomeModel
         {
-            get { return GetValue<ViewModelBase>(SelectedModuleVmProperty); }
-            set { SetValue(SelectedModuleVmProperty, value); }
+            get { return GetValue<InoModelBase1>(SelectedHomeModuleProperty); }
+            set { SetValue(SelectedHomeModuleProperty, value); }
         }
-        public static readonly PropertyData SelectedModuleVmProperty = RegisterProperty(nameof(SelectedModuleVm), typeof(ViewModelBase));
+        public static readonly PropertyData SelectedHomeModuleProperty = RegisterProperty(nameof(SelectedHomeModel), typeof(InoModelBase1));
     }
 }

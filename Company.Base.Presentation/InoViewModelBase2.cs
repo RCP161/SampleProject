@@ -6,8 +6,9 @@ using System.Reflection;
 using System.Text;
 using Catel.Data;
 using Catel.MVVM;
+using Company.Base.Core;
 
-namespace Company.Base.Core
+namespace Company.Base.Presentation
 {
     public abstract class InoViewModelBase2<T> : ViewModelBase where T : InoModelBase2
     {

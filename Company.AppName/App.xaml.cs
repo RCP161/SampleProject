@@ -91,13 +91,13 @@ namespace Company.AppName
             viewModelLocator.Register(typeof(SearchDialog.SearchWindow), typeof(SearchDialog.SearchWindowViewModel));
 
             // Basic
-            viewModelLocator.Register(typeof(Company.Basic.UI.HomeView), typeof(Company.Basic.Core.ViewModels.HomeVm));
-            viewModelLocator.Register(typeof(Company.Basic.UI.PersonView), typeof(Company.Basic.Core.ViewModels.PersonVm));
+            viewModelLocator.Register(typeof(Company.Basic.UI.HomeView), typeof(Company.Basic.Presentation.HomeVm));
+            viewModelLocator.Register(typeof(Company.Basic.UI.PersonView), typeof(Company.Basic.Presentation.PersonVm));
 
             // Security
-            viewModelLocator.Register(typeof(Company.Security.UI.HomeView), typeof(Company.Security.Core.ViewModels.HomeVm));
-            viewModelLocator.Register(typeof(Company.Security.UI.GroupView), typeof(Company.Security.Core.ViewModels.GroupVm));
-            viewModelLocator.Register(typeof(Company.Security.UI.UserView), typeof(Company.Security.Core.ViewModels.UserVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.HomeView), typeof(Company.Security.Presentation.HomeVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.GroupView), typeof(Company.Security.Presentation.GroupVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.UserView), typeof(Company.Security.Presentation.UserVm));
 
             // =========================
             //          Views  
@@ -106,10 +106,10 @@ namespace Company.AppName
             IViewLocator viewLocator = ServiceLocator.Default.ResolveType<IViewLocator>();
 
             // Basic
-            viewLocator.Register(typeof(Company.Basic.Core.ViewModels.HomeVm), typeof(Company.Basic.UI.HomeView));
+            viewLocator.Register(typeof(Company.Basic.Presentation.HomeVm), typeof(Company.Basic.UI.HomeView));
 
             // Security
-            viewLocator.Register(typeof(Company.Security.Core.ViewModels.HomeVm), typeof(Company.Security.UI.HomeView));
+            viewLocator.Register(typeof(Company.Security.Presentation.HomeVm), typeof(Company.Security.UI.HomeView));
 
             // =========================
             //        Windows  

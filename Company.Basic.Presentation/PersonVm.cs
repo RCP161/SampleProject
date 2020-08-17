@@ -4,9 +4,10 @@ using System.Text;
 using Catel.Data;
 using Catel.MVVM;
 using Company.Base.Core;
+using Company.Base.Presentation;
 using Company.Basic.Core.Models;
 
-namespace Company.Basic.Core.ViewModels
+namespace Company.Basic.Presentation
 {
     public class PersonVm : InoViewModelBase2<Person>
     {

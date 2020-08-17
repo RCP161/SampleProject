@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Catel.Data;
 using Catel.MVVM;
 using Company.Base.Core;
+using Company.Base.Presentation;
 
 namespace Company.AppName.SearchDialog
 {
