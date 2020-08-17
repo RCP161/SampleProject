@@ -97,7 +97,9 @@ namespace Company.AppName
             // Security
             viewModelLocator.Register(typeof(Company.Security.UI.HomeView), typeof(Company.Security.Presentation.HomeVm));
             viewModelLocator.Register(typeof(Company.Security.UI.GroupView), typeof(Company.Security.Presentation.GroupVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.GroupRoItemView), typeof(Company.Security.Presentation.GroupRoItemVm));
             viewModelLocator.Register(typeof(Company.Security.UI.UserView), typeof(Company.Security.Presentation.UserVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.UserRoItemView), typeof(Company.Security.Presentation.UserRoItemVm));
 
             // =========================
             //          Views  
