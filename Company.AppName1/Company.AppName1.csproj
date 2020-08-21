@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
   <PropertyGroup>
-    <TargetFrameworks>net472;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.0</TargetFrameworks>
     <AssemblyName>Company.AppName1</AssemblyName>
     <RootNamespace>Company.AppName1</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
