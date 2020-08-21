@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using Catel.Data;
+using Catel.Logging;
 using Catel.Reflection;
 
 namespace Company.Base.Core
@@ -65,6 +68,32 @@ namespace Company.Base.Core
 
             if(e.PropertyName != nameof(DisplayText))
                 DisplayText = GetDisplyTextWithState();
+        }
+
+
+
+        protected override void OnBeginEdit(BeginEditEventArgs e)
+        {
+            base.OnBeginEdit(e);
+
+            if(LogManager.IsDebugEnabled.Value)
+                Trace.WriteLine(String.Format("Ino M: {0} starts edit", GetType()));
+        }
+
+        protected override void OnEndEdit(EditEventArgs e)
+        {
+            base.OnEndEdit(e);
+
+            if(LogManager.IsDebugEnabled.Value)
+                Trace.WriteLine(String.Format("Ino M: {0} ends edit", GetType()));
+        }
+
+        protected override void OnCancelEdit(EditEventArgs e)
+        {
+            base.OnCancelEdit(e);
+
+            if(LogManager.IsDebugEnabled.Value)
+                Trace.WriteLine(String.Format("Ino M: {0} aborts edit", GetType()));
         }
 
         #endregion

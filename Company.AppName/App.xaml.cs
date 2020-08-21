@@ -21,9 +21,17 @@ namespace Company.AppName
         private static readonly ILog _log = LogManager.GetCurrentClassLogger();
         protected override void OnStartup(StartupEventArgs e)
         {
-#if DEBUG
-            LogManager.AddDebugListener();
-#endif
+
+            bool isLogging = false;
+
+            LogManager.IsDebugEnabled = isLogging;
+            LogManager.IsStatusEnabled = isLogging;
+            LogManager.IsInfoEnabled = isLogging;
+            LogManager.IsWarningEnabled = isLogging;
+            LogManager.IsErrorEnabled = isLogging;
+
+            if(LogManager.IsDebugEnabled.HasValue && LogManager.IsDebugEnabled.Value)
+                LogManager.AddDebugListener();
 
             _log.Info("Starting application");
 

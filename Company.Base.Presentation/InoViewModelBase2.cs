@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using Catel.Data;
+using Catel.Logging;
 using Catel.MVVM;
 using Company.Base.Core;
 
@@ -111,21 +112,27 @@ namespace Company.Base.Presentation
         {
             base.OnBeginEdit(e);
             Model.IsOnEdit = true;
-            Trace.WriteLine(String.Format("Ino: {0} starts edit", Model.GetType()));
+
+            if(LogManager.IsDebugEnabled.Value)
+                Trace.WriteLine(String.Format("Ino VM: {0} starts edit", Model.GetType()));
         }
 
         protected override void OnEndEdit(EditEventArgs e)
         {
             base.OnEndEdit(e);
             Model.IsOnEdit = false;
-            Trace.WriteLine(String.Format("Ino: {0} ends edit", Model.GetType()));
+
+            if(LogManager.IsDebugEnabled.Value)
+                Trace.WriteLine(String.Format("Ino VM: {0} ends edit", Model.GetType()));
         }
 
         protected override void OnCancelEdit(EditEventArgs e)
         {
             base.OnCancelEdit(e);
             Model.IsOnEdit = false;
-            Trace.WriteLine(String.Format("Ino: {0} abots edit", Model.GetType()));
+
+            if(LogManager.IsDebugEnabled.Value)
+                Trace.WriteLine(String.Format("Ino VM: {0} abots edit", Model.GetType()));
         }
 
 
