@@ -3,7 +3,7 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:bsc="clr-namespace:Company.Basic.UI;assembly=Company1.Basic.UI"
                    xmlns:catel="http://schemas.catelproject.com"
-                   xmlns:local="clr-namespace:Company1.AppName"
+                   xmlns:local="clr-namespace:Company.AppName1"
                    xmlns:orccontrols="http://schemas.wildgums.com/orc/controls"
                    xmlns:sec="clr-namespace:Company.Security.UI;assembly=Company1.Security.UI">
 

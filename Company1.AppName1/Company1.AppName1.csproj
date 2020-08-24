@@ -15,7 +15,7 @@
 
   <PropertyGroup>
     <!-- Tools like SonarQube require a unique project guid -->
-    <ProjectGuid>9e43c4c2-1482-4b4e-af24-1ffb666bea86</ProjectGuid>
+    <ProjectGuid>9fc98050-6e56-48e0-9b91-6ff0a75867d1</ProjectGuid>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -26,12 +26,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Catel.Core" Version="5.11.2" />
-    <PackageReference Include="Catel.MVVM" Version="5.11.2" />
+    <PackageReference Include="Catel.Core" Version="5.12.8" />
+    <PackageReference Include="Catel.MVVM" Version="5.12.8" />
     <PackageReference Include="Catel.Fody" Version="4.1.0" PrivateAssets="all" />
     <PackageReference Include="Fody" Version="5.1.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+    <PackageReference Include="MicrosoftExpressionInteractions" Version="3.0.40218" />
     <PackageReference Include="ModuleInit.Fody" Version="2.0.0" PrivateAssets="all" />
     <PackageReference Include="Obsolete.Fody" Version="5.0.0" PrivateAssets="all" />
+    <PackageReference Include="Orc.Controls" Version="4.0.5" />
     <PackageReference Include="Orc.EntityFramework6" Version="3.0.0" />
     <PackageReference Include="Orchestra.Shell.MahApps" Version="5.3.0-alpha0297" />
     <PackageReference Include="WpfAnalyzers" Version="2.2.0.2" PrivateAssets="all">
@@ -185,7 +188,7 @@
         
         <PropertyGroup Condition=" '$(TargetFramework)' == 'net462' ">
           <EnableWpfProjectSetup>true</EnableWpfProjectSetup>
-          <DefineConstants>$(DefineConstants);NET;NET46;NET462</DefineConstants>
+          <DefineConstants>TRACE;NET;NET46;NET462;NET472</DefineConstants>
         </PropertyGroup>
         
         <ItemGroup Condition=" '$(TargetFramework)' == 'net46' OR '$(TargetFramework)' == 'net461' OR '$(TargetFramework)' == 'net462'">
@@ -209,4 +212,7 @@
         </ItemGroup>
     </When>
   </Choose>
+  <ItemGroup>
+    <Compile Update="..\SolutionInfo.cs" Link="Properties\SolutionInfo.cs" />
+  </ItemGroup>
 </Project>

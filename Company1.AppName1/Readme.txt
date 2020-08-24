@@ -3,7 +3,7 @@ Orchestra.Shell.MahApps project template readme
 
 Congratulations with creating a new Orchestra project:
 
-Company1.AppName
+Company.AppName1
 
 
 ================================================================================================

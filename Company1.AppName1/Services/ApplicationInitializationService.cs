@@ -1,4 +1,4 @@
-﻿namespace Company1.AppName.Services
+﻿namespace Company.AppName1.Services
 {
     using System;
     using System.Threading;

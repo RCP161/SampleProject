@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Company1.AppName
+namespace Company.AppName1
 {
     public class ModulTemplateSelector : DataTemplateSelector
     {
@@ -17,9 +17,9 @@ namespace Company1.AppName
         {
             if(item != null)
             {
-                if(item is Company1.Basic.Core.Models.Home)
+                if(item is Basic.Core.Models.Home)
                     return BasicTemplate;
-                if(item is Company1.Security.Core.Models.Home)
+                if(item is Security.Core.Models.Home)
                     return SecurityTemplate;
             }
 

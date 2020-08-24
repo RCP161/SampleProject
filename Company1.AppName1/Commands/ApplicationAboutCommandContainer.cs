@@ -1,4 +1,4 @@
-﻿namespace Company1.AppName
+﻿namespace Company.AppName1
 {
     using System.Threading.Tasks;
     using Catel;

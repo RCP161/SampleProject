@@ -1,4 +1,4 @@
-﻿namespace Company1.AppName.Services
+﻿namespace Company.AppName1.Services
 {
     using System.Windows;
     using Catel;
@@ -11,15 +11,15 @@
     using Orchestra.Services;
     using Orchestra.ViewModels;
     using Orchestra.Views;
-    using Company.AppName1.Views;
+    using Views;
 
     public class MahAppsService : IMahAppsService
     {
         public WindowCommands GetRightWindowCommands()
         {
-            WindowCommands windowCommands = new WindowCommands();
+            var windowCommands = new WindowCommands();
 
-            System.Windows.Controls.Button settingsButton = WindowCommandHelper.CreateWindowCommandButton(new PackIconMaterial { Kind = PackIconMaterialKind.Settings }, "settings");
+            var settingsButton = WindowCommandHelper.CreateWindowCommandButton(new PackIconMaterial { Kind = PackIconMaterialKind.Settings }, "settings");
             //settingsButton.SetCurrentValue(System.Windows.Controls.Primitives.ButtonBase.CommandProperty, _commandManager.GetCommand(AppCommands.Settings.General));
             windowCommands.Items.Add(settingsButton);
 

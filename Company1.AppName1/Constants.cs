@@ -1,4 +1,4 @@
-﻿namespace Company1.AppName
+﻿namespace Company.AppName1
 {
     using System.Windows.Input;
     using InputGesture = Catel.Windows.Input.InputGesture;

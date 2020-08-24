@@ -1,5 +1,5 @@
 ﻿using Catel.IoC;
-using Company1.AppName.Services;
+using Company.AppName1.Services;
 using Orchestra.Services;
 
 /// <summary>
