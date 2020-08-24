@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Catel.MVVM" Version="5.12.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Company2.AppName.Data\Company2.AppName.Data.csproj" />
+    <ProjectReference Include="..\Company2.Base.Service\Company2.Base.Service.csproj" />
+  </ItemGroup>
+
+</Project>

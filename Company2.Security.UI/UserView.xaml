@@ -1,0 +1,78 @@
+﻿<catel:UserControl x:Class="Company.Security.UI.UserView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com"
+                   xmlns:conv="clr-namespace:Company.Styling.Converters;assembly=Company2.Styling"
+                   xmlns:local="clr-namespace:Company.Security.UI">
+    <catel:UserControl.Resources>
+        <conv:StateVisibilityConverter x:Key="StateVisibilityConverter" />
+    </catel:UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="3"
+                   Text="Benutzername" />
+        <TextBox Grid.Row="0"
+                 Grid.Column="1"
+                 Text="{Binding LogIn}" />
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   Margin="3"
+                   Text="Passwort" />
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Text="{Binding Password}" />
+
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   Margin="3"
+                   Text="Zugeteilte Gruppen" />
+        <ListView Grid.Row="2"
+                  Grid.Column="1"
+                  Margin="0,3"
+                  ItemsSource="{Binding GroupUsers}"
+                  SelectedItem="{Binding SelectedGroup}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <local:GroupRoItemView DataContext="{Binding Group}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding State, Converter={StaticResource StateVisibilityConverter}}" Value="Collapsed">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+        <StackPanel Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Margin="3"
+                    Command="{Binding SaveCommand}"
+                    Content="Speichern" />
+            <Button Margin="3"
+                    Command="{Binding CancelCommand}"
+                    Content="Abbrechen" />
+        </StackPanel>
+    </Grid>
+
+</catel:UserControl>

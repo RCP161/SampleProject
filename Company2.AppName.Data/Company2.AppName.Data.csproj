@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ModuleConfiguration\Security\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Catel.Core" Version="5.12.8" />
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Company2.Basic.Core\Company2.Basic.Core.csproj" />
+    <ProjectReference Include="..\Company2.Security.Core\Company2.Security.Core.csproj" />
+  </ItemGroup>
+
+</Project>

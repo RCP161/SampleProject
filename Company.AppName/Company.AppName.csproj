@@ -37,8 +37,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Catel.Core, Version=5.12.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Catel.Core.5.12.6\lib\net47\Catel.Core.dll</HintPath>
+    <Reference Include="Catel.Core, Version=5.12.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Catel.Core.5.12.8\lib\net47\Catel.Core.dll</HintPath>
     </Reference>
     <Reference Include="Catel.MVVM, Version=5.12.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Catel.MVVM.5.12.6\lib\net47\Catel.MVVM.dll</HintPath>

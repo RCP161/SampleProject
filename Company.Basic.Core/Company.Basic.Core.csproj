@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Catel.Core" Version="5.12.6" />
+    <PackageReference Include="Catel.Core" Version="5.12.8" />
     <PackageReference Include="Orc.EntityFramework6" Version="3.0.0" />
   </ItemGroup>
 
