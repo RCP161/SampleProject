@@ -1,9 +1,9 @@
-﻿namespace Company.AppName1.ViewModels
+﻿namespace Company1.AppName.ViewModels
 {
     using Catel.Data;
     using Catel.MVVM;
     using Catel.Services;
-    using Company.AppName1.Models;
+    using Company1.AppName.Models;
     using Company.Base.Core;
     using Company.Base.Presentation;
     using System;
@@ -14,7 +14,7 @@
     {
         public MainViewModel()
         {
-            throw new Exception("Alles auf .NetCore 3.0 Umabauen");
+            throw new Exception("Funktioniert nicht. Doch .NetCore 3.0 Umabauen?");
 
             //Model = new MainModel();
 

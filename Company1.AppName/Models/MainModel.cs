@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using Catel.Data;
 using Company.Base.Core;
 
-namespace Company.AppName1.Models
+namespace Company1.AppName.Models
 {
     public class MainModel : InoModelBase1
     {
         public MainModel()
         {
-            Modules.Add(new Security.Core.Models.Module());
-            Modules.Add(new Basic.Core.Models.Module());
+            Modules.Add(new Company.Security.Core.Models.Module());
+            Modules.Add(new Company.Basic.Core.Models.Module());
 
 
             SelectedHomeModel = Modules.FirstOrDefault().HomeModel;

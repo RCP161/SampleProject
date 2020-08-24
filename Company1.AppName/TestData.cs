@@ -10,7 +10,7 @@ using Company.Basic.Core.Services;
 using Company.Security.Core.Models;
 using Company.Security.Core.Services;
 
-namespace Company.AppName1
+namespace Company1.AppName
 {
     internal class TestData
     {
@@ -36,7 +36,7 @@ namespace Company.AppName1
                 p = new Person();
                 p.Name = "Person";
                 p.Surename = Guid.NewGuid().ToString();
-                p.SetState(Base.Core.StateEnum.Created);
+                p.SetState(Company.Base.Core.StateEnum.Created);
 
                 service.SavePerson(p);
             }
@@ -44,14 +44,14 @@ namespace Company.AppName1
             p = new Person();
             p.Name = "Sandra";
             p.Surename = "Musterfrau";
-            p.SetState(Base.Core.StateEnum.Created);
+            p.SetState(Company.Base.Core.StateEnum.Created);
 
             service.SavePerson(p);
 
             p = new Person();
             p.Name = "Marvin";
             p.Surename = "Mustermann";
-            p.SetState(Base.Core.StateEnum.Created);
+            p.SetState(Company.Base.Core.StateEnum.Created);
 
             service.SavePerson(p);
         }
@@ -66,21 +66,21 @@ namespace Company.AppName1
             Permission p = new Permission();
             p.Name = "Person";
             p.Comment = "Recht zum sehen und bearbeiten von Personen";
-            p.SetState(Base.Core.StateEnum.Created);
+            p.SetState(Company.Base.Core.StateEnum.Created);
 
             permissionService.SavePermission(p);
 
             Permission g = new Permission();
             g.Name = "Group";
             g.Comment = "Recht zum sehen und bearbeiten von Gruppen";
-            g.SetState(Base.Core.StateEnum.Created);
+            g.SetState(Company.Base.Core.StateEnum.Created);
 
             permissionService.SavePermission(g);
 
             Permission u = new Permission();
             u.Name = "User";
             u.Comment = "Recht zum sehen und bearbeiten von LogIn-Usern";
-            u.SetState(Base.Core.StateEnum.Created);
+            u.SetState(Company.Base.Core.StateEnum.Created);
 
             permissionService.SavePermission(u);
 
@@ -88,24 +88,24 @@ namespace Company.AppName1
             // Gruppe 1
             Group grp1 = new Group();
             grp1.Name = "Administratoren";
-            grp1.SetState(Base.Core.StateEnum.Created);
+            grp1.SetState(Company.Base.Core.StateEnum.Created);
 
             GroupPermission gp = new GroupPermission();
             gp.Permission = p;
             gp.Write = true;
-            gp.SetState(Base.Core.StateEnum.Created);
+            gp.SetState(Company.Base.Core.StateEnum.Created);
             grp1.GroupPermissions.Add(gp);
 
             gp = new GroupPermission();
             gp.Permission = g;
             gp.Write = true;
-            gp.SetState(Base.Core.StateEnum.Created);
+            gp.SetState(Company.Base.Core.StateEnum.Created);
             grp1.GroupPermissions.Add(gp);
 
             gp = new GroupPermission();
             gp.Permission = u;
             gp.Write = true;
-            gp.SetState(Base.Core.StateEnum.Created);
+            gp.SetState(Company.Base.Core.StateEnum.Created);
             grp1.GroupPermissions.Add(gp);
 
             groupService.SaveGroup(grp1);
@@ -114,12 +114,12 @@ namespace Company.AppName1
             // Gruppe 2
             Group grp = new Group();
             grp.Name = "Verwaltung";
-            grp.SetState(Base.Core.StateEnum.Created);
+            grp.SetState(Company.Base.Core.StateEnum.Created);
 
             gp = new GroupPermission();
             gp.Permission = p;
             gp.Write = true;
-            gp.SetState(Base.Core.StateEnum.Created);
+            gp.SetState(Company.Base.Core.StateEnum.Created);
             grp.GroupPermissions.Add(gp);
 
             groupService.SaveGroup(grp);
@@ -128,7 +128,7 @@ namespace Company.AppName1
             // Gruppe 3
             grp = new Group();
             grp.Name = "Facharbeiter";
-            grp.SetState(Base.Core.StateEnum.Created);
+            grp.SetState(Company.Base.Core.StateEnum.Created);
 
             groupService.SaveGroup(grp);
 
@@ -137,12 +137,12 @@ namespace Company.AppName1
             User user = new User();
             user.LogIn = "Admin";
             user.Password = "Password";
-            user.SetState(Base.Core.StateEnum.Created);
+            user.SetState(Company.Base.Core.StateEnum.Created);
 
             GroupUser gu = new GroupUser();
             gu.Group = grp1;
             gu.User = user;
-            gu.SetState(Base.Core.StateEnum.Created);
+            gu.SetState(Company.Base.Core.StateEnum.Created);
 
             user.GroupUsers.Add(gu);
             userService.SaveUser(user);
@@ -150,12 +150,12 @@ namespace Company.AppName1
             user = new User();
             user.LogIn = "SMusterfrau";
             user.Password = "Password";
-            user.SetState(Base.Core.StateEnum.Created);
+            user.SetState(Company.Base.Core.StateEnum.Created);
 
             gu = new GroupUser();
             gu.Group = grp;
             gu.User = user;
-            gu.SetState(Base.Core.StateEnum.Created);
+            gu.SetState(Company.Base.Core.StateEnum.Created);
 
             user.GroupUsers.Add(gu);
             userService.SaveUser(user);
@@ -163,12 +163,12 @@ namespace Company.AppName1
             user = new User();
             user.LogIn = "MMustermann";
             user.Password = "Password";
-            user.SetState(Base.Core.StateEnum.Created);
+            user.SetState(Company.Base.Core.StateEnum.Created);
 
             gu = new GroupUser();
             gu.Group = grp;
             gu.User = user;
-            gu.SetState(Base.Core.StateEnum.Created);
+            gu.SetState(Company.Base.Core.StateEnum.Created);
 
             user.GroupUsers.Add(gu);
             userService.SaveUser(user);

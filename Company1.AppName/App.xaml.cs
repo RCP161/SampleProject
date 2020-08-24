@@ -1,4 +1,4 @@
-﻿namespace Company.AppName1
+﻿namespace Company1.AppName
 {
     using System.Windows;
 
@@ -57,15 +57,15 @@
 
             Register();
 
-            if(ServiceLocator.Default.ResolveType<AppName.Data.IDbConfigruation>().CreateNewDb)
+            if(ServiceLocator.Default.ResolveType<Company.AppName.Data.IDbConfigruation>().CreateNewDb)
                 new TestData();
-
-            base.OnStartup(e);
 
 
             IServiceLocator serviceLocator = ServiceLocator.Default;
             IShellService shellService = serviceLocator.ResolveType<IShellService>();
             shellService.CreateAsync<ShellWindow>();
+
+            base.OnStartup(e);
         }
 
         private void Register()
@@ -75,7 +75,7 @@
             // =========================
 
             ServiceLocator.Default.RegisterType<Company.AppName.Data.IDbConfigruation, Config>(RegistrationType.Singleton);
-            ServiceLocator.Default.RegisterType<Base.Core.ISearchService, SearchDialog.SearchService>(RegistrationType.Transient);
+            ServiceLocator.Default.RegisterType<Company.Base.Core.ISearchService, SearchDialog.SearchService>(RegistrationType.Transient);
 
             // Basic
 

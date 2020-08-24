@@ -9,7 +9,7 @@ using Catel.MVVM;
 using Company.Base.Core;
 using Company.Base.Presentation;
 
-namespace Company.AppName1.SearchDialog
+namespace Company1.AppName.SearchDialog
 {
     public class SearchWindowViewModel : InoViewModelBase1<SearchWindowModel>
     {

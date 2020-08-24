@@ -1,6 +1,6 @@
 ﻿using Company.Base.Core;
 
-namespace Company.AppName1.SearchDialog
+namespace Company1.AppName.SearchDialog
 {
     public partial class SearchWindow
     {

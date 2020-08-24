@@ -1,4 +1,4 @@
-﻿namespace Company.AppName1.ViewModels
+﻿namespace Company1.AppName.ViewModels
 {
     using Catel.MVVM;
 

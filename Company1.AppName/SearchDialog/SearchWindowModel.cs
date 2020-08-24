@@ -8,7 +8,7 @@ using Catel.Collections;
 using Catel.Data;
 using Company.Base.Core;
 
-namespace Company.AppName1.SearchDialog
+namespace Company1.AppName.SearchDialog
 {
     public class SearchWindowModel : InoModelBase1
     {

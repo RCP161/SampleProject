@@ -1,4 +1,4 @@
-﻿namespace Company.AppName1.Views
+﻿namespace Company1.AppName.Views
 {
     public partial class MainView
     {

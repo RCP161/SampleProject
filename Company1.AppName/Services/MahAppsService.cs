@@ -4,6 +4,7 @@
     using Catel;
     using Catel.MVVM;
     using Catel.Services;
+    using Company1.AppName.Views;
     using global::MahApps.Metro.Controls;
     using global::MahApps.Metro.IconPacks;
     using Orchestra;
@@ -11,7 +12,6 @@
     using Orchestra.Services;
     using Orchestra.ViewModels;
     using Orchestra.Views;
-    using Company.AppName1.Views;
 
     public class MahAppsService : IMahAppsService
     {

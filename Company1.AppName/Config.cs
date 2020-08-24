@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Company.AppName.Data;
 
-namespace Company.AppName1
+namespace Company1.AppName
 {
     public class Config : IDbConfigruation
     {

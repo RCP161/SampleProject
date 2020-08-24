@@ -14,13 +14,27 @@
 
     public class ApplicationInitializationService : ApplicationInitializationServiceBase
     {
+#pragma warning disable IDE1006 // Benennungsstile
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+#pragma warning restore IDE1006 // Benennungsstile
 
         private readonly IServiceLocator _serviceLocator;
 
-        public override bool ShowSplashScreen => true;
+        public override bool ShowSplashScreen
+        {
+            get
+            {
+                return true;
+            }
+        }
 
-        public override bool ShowShell => true;
+        public override bool ShowShell
+        {
+            get
+            {
+                return true;
+            }
+        }
 
         public ApplicationInitializationService(IServiceLocator serviceLocator)
         {

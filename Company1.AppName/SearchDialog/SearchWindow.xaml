@@ -1,4 +1,4 @@
-﻿<catel:DataWindow x:Class="Company.AppName1.SearchDialog.SearchWindow"
+﻿<catel:DataWindow x:Class="Company1.AppName.SearchDialog.SearchWindow"
                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:catel="http://schemas.catelproject.com"

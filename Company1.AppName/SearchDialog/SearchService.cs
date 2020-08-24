@@ -9,7 +9,7 @@ using Catel.IoC;
 using Catel.Services;
 using Company.Base.Core;
 
-namespace Company.AppName1.SearchDialog
+namespace Company1.AppName.SearchDialog
 {
     public class SearchService : ISearchService
     {
@@ -32,18 +32,18 @@ namespace Company.AppName1.SearchDialog
 
             switch(typeof(T))
             {
-                case var t when t == typeof(Security.Core.Models.Group):
-                    Security.Core.Services.IGroupService groupService = ServiceLocator.Default.ResolveType<Security.Core.Services.IGroupService>();
+                case var t when t == typeof(Company.Security.Core.Models.Group):
+                    Company.Security.Core.Services.IGroupService groupService = ServiceLocator.Default.ResolveType<Company.Security.Core.Services.IGroupService>();
                     last10Function = groupService.GetLast10;
                     searchFunction = groupService.GetForSearchText;
                     break;
-                case var t when t == typeof(Security.Core.Models.User):
-                    Security.Core.Services.IUserService userService = ServiceLocator.Default.ResolveType<Security.Core.Services.IUserService>();
+                case var t when t == typeof(Company.Security.Core.Models.User):
+                    Company.Security.Core.Services.IUserService userService = ServiceLocator.Default.ResolveType<Company.Security.Core.Services.IUserService>();
                     last10Function = userService.GetLast10;
                     searchFunction = userService.GetForSearchText;
                     break;
-                case var t when t == typeof(Security.Core.Models.Permission):
-                    Security.Core.Services.IPermissionService permissionService = ServiceLocator.Default.ResolveType<Security.Core.Services.IPermissionService>();
+                case var t when t == typeof(Company.Security.Core.Models.Permission):
+                    Company.Security.Core.Services.IPermissionService permissionService = ServiceLocator.Default.ResolveType<Company.Security.Core.Services.IPermissionService>();
                     last10Function = permissionService.GetLast10;
                     searchFunction = permissionService.GetForSearchText;
                     break;
