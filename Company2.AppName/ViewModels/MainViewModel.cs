@@ -14,8 +14,6 @@
     {
         public MainViewModel()
         {
-            // throw new Exception("Funktioniert nicht. Doch .NetCore 3.0 Umabauen?");
-
             Model = new MainModel();
 
             ActivCommand = new Command<InoModelBase1>(SetActivatedModule);
