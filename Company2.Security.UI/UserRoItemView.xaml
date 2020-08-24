@@ -1,4 +1,4 @@
-﻿<catel:UserControl x:Class="Company.Security.UI.UserRoItemView"
+﻿<catel:UserControl x:Class="Company2.Security.UI.UserRoItemView"
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:catel="http://schemas.catelproject.com">
