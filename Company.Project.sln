@@ -48,39 +48,39 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.Base.Presentation",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.Basic.Presentation", "Company.Basic.Presentation\Company.Basic.Presentation.csproj", "{2D916C69-9ED4-476A-A1C0-D9A5486D92A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.AppName", "Company2.AppName\Company2.AppName.csproj", "{CF928F1F-0781-43D1-A10E-F12E673A094D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.AppName", "Company2.AppName\Company2.AppName.csproj", "{CF928F1F-0781-43D1-A10E-F12E673A094D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.AppName.Data", "Company2.AppName.Data\Company2.AppName.Data.csproj", "{39CD6D3C-EFDB-4A95-BE48-A78EDEEA7FB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.AppName.Data", "Company2.AppName.Data\Company2.AppName.Data.csproj", "{39CD6D3C-EFDB-4A95-BE48-A78EDEEA7FB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Base.Core", "Company2.Base.Core\Company2.Base.Core.csproj", "{C745FBA1-38D1-4599-9566-12E01B7D0966}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Base.Core", "Company2.Base.Core\Company2.Base.Core.csproj", "{C745FBA1-38D1-4599-9566-12E01B7D0966}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Base.Data", "Company2.Base.Data\Company2.Base.Data.csproj", "{3C7AB2C5-CA71-45A2-818F-EB2DC7F7F104}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Base.Data", "Company2.Base.Data\Company2.Base.Data.csproj", "{3C7AB2C5-CA71-45A2-818F-EB2DC7F7F104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Base.Presentation", "Company2.Base.Presentation\Company2.Base.Presentation.csproj", "{2FC81DF8-8C40-4A73-904E-96D482FF78F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Base.Presentation", "Company2.Base.Presentation\Company2.Base.Presentation.csproj", "{2FC81DF8-8C40-4A73-904E-96D482FF78F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Base.Service", "Company2.Base.Service\Company2.Base.Service.csproj", "{7F20B6F0-6496-4E81-9339-FE281A4BDD40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Base.Service", "Company2.Base.Service\Company2.Base.Service.csproj", "{7F20B6F0-6496-4E81-9339-FE281A4BDD40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Basic.Core", "Company2.Basic.Core\Company2.Basic.Core.csproj", "{29CA4D2F-6EE2-4167-822F-28AC8C80D47A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Basic.Core", "Company2.Basic.Core\Company2.Basic.Core.csproj", "{29CA4D2F-6EE2-4167-822F-28AC8C80D47A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Basic.Data", "Company2.Basic.Data\Company2.Basic.Data.csproj", "{58233A6F-4CF5-4671-AF78-42022EFF6143}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Basic.Data", "Company2.Basic.Data\Company2.Basic.Data.csproj", "{58233A6F-4CF5-4671-AF78-42022EFF6143}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Basic.Presentation", "Company2.Basic.Presentation\Company2.Basic.Presentation.csproj", "{7FD96EC7-BCF8-4BB2-BD74-5B65038E6E7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Basic.Presentation", "Company2.Basic.Presentation\Company2.Basic.Presentation.csproj", "{7FD96EC7-BCF8-4BB2-BD74-5B65038E6E7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Basic.Service", "Company2.Basic.Service\Company2.Basic.Service.csproj", "{A36D93C4-321C-4FA6-AD66-5B8348A28780}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Basic.Service", "Company2.Basic.Service\Company2.Basic.Service.csproj", "{A36D93C4-321C-4FA6-AD66-5B8348A28780}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Security.Core", "Company2.Security.Core\Company2.Security.Core.csproj", "{7D90E5D1-5F6B-4B3E-B7AA-9F6BB8531789}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Security.Core", "Company2.Security.Core\Company2.Security.Core.csproj", "{7D90E5D1-5F6B-4B3E-B7AA-9F6BB8531789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Security.Data", "Company2.Security.Data\Company2.Security.Data.csproj", "{DEED83D8-9EFA-40A1-A7FB-930159C5A5DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Security.Data", "Company2.Security.Data\Company2.Security.Data.csproj", "{DEED83D8-9EFA-40A1-A7FB-930159C5A5DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Security.Presentation", "Company2.Security.Presentation\Company2.Security.Presentation.csproj", "{007BA573-42C4-4D96-AE3A-F325739C5AEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Security.Presentation", "Company2.Security.Presentation\Company2.Security.Presentation.csproj", "{007BA573-42C4-4D96-AE3A-F325739C5AEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Security.Service", "Company2.Security.Service\Company2.Security.Service.csproj", "{456BEA03-6D44-4F72-BF11-43AB8CD4D573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Security.Service", "Company2.Security.Service\Company2.Security.Service.csproj", "{456BEA03-6D44-4F72-BF11-43AB8CD4D573}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Security.UI", "Company2.Security.UI\Company2.Security.UI.csproj", "{860C5C37-2889-4261-8A44-488703898B07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Security.UI", "Company2.Security.UI\Company2.Security.UI.csproj", "{860C5C37-2889-4261-8A44-488703898B07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Basic.UI", "Company2.Basic.UI\Company2.Basic.UI.csproj", "{BCDA1F91-9D6D-4E7D-928F-1457295F9F4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Basic.UI", "Company2.Basic.UI\Company2.Basic.UI.csproj", "{BCDA1F91-9D6D-4E7D-928F-1457295F9F4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company2.Styling", "Company2.Styling\Company2.Styling.csproj", "{C532A131-3A65-448F-9D97-EC154554A35C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company2.Styling", "Company2.Styling\Company2.Styling.csproj", "{C532A131-3A65-448F-9D97-EC154554A35C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

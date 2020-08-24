@@ -1,9 +1,9 @@
-﻿namespace Company2.AppName.ViewModels
+﻿namespace Company1.AppName.ViewModels
 {
     using Catel.Data;
     using Catel.MVVM;
     using Catel.Services;
-    using Company2.AppName.Models;
+    using Company1.AppName.Models;
     using Company.Base.Core;
     using Company.Base.Presentation;
     using System;
@@ -14,11 +14,11 @@
     {
         public MainViewModel()
         {
-            // throw new Exception("Funktioniert nicht. Doch .NetCore 3.0 Umabauen?");
+            throw new Exception("Funktioniert nicht. Doch .NetCore 3.0 Umabauen?");
 
-            Model = new MainModel();
+            //Model = new MainModel();
 
-            ActivCommand = new Command<InoModelBase1>(SetActivatedModule);
+            //ActivCommand = new Command<InoModelBase1>(SetActivatedModule);
 
         }
 

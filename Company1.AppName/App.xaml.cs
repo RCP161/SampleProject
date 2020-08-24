@@ -1,4 +1,4 @@
-﻿namespace Company2.AppName
+﻿namespace Company1.AppName
 {
     using System.Windows;
 
@@ -16,7 +16,6 @@
     /// </summary>
     public partial class App : Application
     {
-
         private static readonly ILog _log = LogManager.GetCurrentClassLogger();
 
 
@@ -104,15 +103,15 @@
             viewModelLocator.Register(typeof(SearchDialog.SearchWindow), typeof(SearchDialog.SearchWindowViewModel));
 
             // Basic
-            viewModelLocator.Register(typeof(Company2.Basic.UI.HomeView), typeof(Company.Basic.Presentation.HomeVm));
-            viewModelLocator.Register(typeof(Company2.Basic.UI.PersonView), typeof(Company.Basic.Presentation.PersonVm));
+            viewModelLocator.Register(typeof(Company.Basic.UI.HomeView), typeof(Company.Basic.Presentation.HomeVm));
+            viewModelLocator.Register(typeof(Company.Basic.UI.PersonView), typeof(Company.Basic.Presentation.PersonVm));
 
             // Security
-            viewModelLocator.Register(typeof(Company2.Security.UI.HomeView), typeof(Company.Security.Presentation.HomeVm));
-            viewModelLocator.Register(typeof(Company2.Security.UI.GroupView), typeof(Company.Security.Presentation.GroupVm));
-            viewModelLocator.Register(typeof(Company2.Security.UI.GroupRoItemView), typeof(Company.Security.Presentation.GroupRoItemVm));
-            viewModelLocator.Register(typeof(Company2.Security.UI.UserView), typeof(Company.Security.Presentation.UserVm));
-            viewModelLocator.Register(typeof(Company2.Security.UI.UserRoItemView), typeof(Company.Security.Presentation.UserRoItemVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.HomeView), typeof(Company.Security.Presentation.HomeVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.GroupView), typeof(Company.Security.Presentation.GroupVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.GroupRoItemView), typeof(Company.Security.Presentation.GroupRoItemVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.UserView), typeof(Company.Security.Presentation.UserVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.UserRoItemView), typeof(Company.Security.Presentation.UserRoItemVm));
 
             // =========================
             //          Views  
@@ -121,10 +120,10 @@
             IViewLocator viewLocator = ServiceLocator.Default.ResolveType<IViewLocator>();
 
             // Basic
-            viewLocator.Register(typeof(Company.Basic.Presentation.HomeVm), typeof(Company2.Basic.UI.HomeView));
+            viewLocator.Register(typeof(Company.Basic.Presentation.HomeVm), typeof(Company.Basic.UI.HomeView));
 
             // Security
-            viewLocator.Register(typeof(Company.Security.Presentation.HomeVm), typeof(Company2.Security.UI.HomeView));
+            viewLocator.Register(typeof(Company.Security.Presentation.HomeVm), typeof(Company.Security.UI.HomeView));
 
             // =========================
             //        Windows  
