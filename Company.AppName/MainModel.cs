@@ -16,9 +16,6 @@ namespace Company.AppName
         {
             Modules.Add(new Security.Core.Models.Module());
             Modules.Add(new Basic.Core.Models.Module());
-
-
-            SelectedHomeModel = Modules.FirstOrDefault().HomeModel;
         }
 
         public ObservableCollection<IModule> Modules

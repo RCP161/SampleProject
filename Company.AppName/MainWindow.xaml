@@ -4,6 +4,7 @@
            xmlns:bsc="clr-namespace:Company.Basic.UI;assembly=Company.Basic.UI"
            xmlns:catel="http://schemas.catelproject.com"
            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
            xmlns:local="clr-namespace:Company.AppName"
            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
            xmlns:sec="clr-namespace:Company.Security.UI;assembly=Company.Security.UI"
@@ -26,28 +27,50 @@
                                      SecurityTemplate="{StaticResource SecHomeView}" />
 
     </InoWindow.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <InoWindow.TitleTemplate>
+        <DataTemplate>
+            <Grid DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource AncestorType=InoWindow, Mode=FindAncestor}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-        <ToolBar ItemsSource="{Binding Modules}" >
-            <ToolBar.ItemTemplate>
-                <DataTemplate>
-                    <Button Command="{Binding DataContext.ActivCommand, RelativeSource={RelativeSource AncestorType=ToolBar}}"
-                            CommandParameter="{Binding HomeModel}"
-                            ToolTip="{Binding Name}">
-                        <Button.Content>
-                            <TextBlock Text="{Binding Logo}" />
-                        </Button.Content>
-                    </Button>
-                </DataTemplate>
-            </ToolBar.ItemTemplate>
-        </ToolBar>
+                <InoIconBox Grid.Column="0"
+                            Width="20"
+                            Height="20"
+                            Icon="Plus" />
+                <ComboBox Grid.Column="1"
+                          Margin="3"
+                          ItemsSource="{Binding Modules}"
+                          SelectedItem="{Binding SelectedModul}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
 
-        <ContentPresenter Grid.Row="1"
-                          Content="{Binding SelectedHomeModel}"
-                          ContentTemplateSelector="{StaticResource ModulTemplateSelector}" />
-    </Grid>
+                                <!--  Hier eig. auf Logo binden  -->
+                                <InoIconBox Grid.Column="0"
+                                            Width="10"
+                                            Height="10"
+                                            Icon="Minus" />
+                                <TextBlock Grid.Column="1" Text="{Binding Name}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ActivCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+            </Grid>
+        </DataTemplate>
+    </InoWindow.TitleTemplate>
+
+    <ContentPresenter Content="{Binding SelectedHomeModel}" ContentTemplateSelector="{StaticResource ModulTemplateSelector}" />
+
 </InoWindow>

@@ -15,11 +15,16 @@ namespace Company.AppName
         public MainVm()
         {
             Model = new MainModel();
+            SelectedModul = Modules.FirstOrDefault();
+            SetActivatedModule();
 
-            ActivCommand = new Command<InoModelBase1>(SetActivatedModule);
+            ActivCommand = new Command(() => SetActivatedModule());
         }
 
         #region Properties
+
+        public Command ActivCommand { get; private set; }
+
 
         [Model]
         public MainModel Model
@@ -30,9 +35,6 @@ namespace Company.AppName
         public static readonly PropertyData ModelProperty = RegisterProperty(nameof(Model), typeof(MainModel));
 
 
-        public Command<InoModelBase1> ActivCommand { get; private set; }
-
-
         [ViewModelToModel]
         public ObservableCollection<IModule> Modules
         {
@@ -40,6 +42,14 @@ namespace Company.AppName
             set { SetValue(ModulesProperty, value); }
         }
         public static readonly PropertyData ModulesProperty = RegisterProperty(nameof(Modules), typeof(ObservableCollection<IModule>));
+
+
+        public IModule SelectedModul
+        {
+            get { return GetValue<IModule>(SelectedModulProperty); }
+            set { SetValue(SelectedModulProperty, value); }
+        }
+        public static readonly PropertyData SelectedModulProperty = RegisterProperty(nameof(SelectedModul), typeof(IModule));
 
 
         [ViewModelToModel]
@@ -54,9 +64,9 @@ namespace Company.AppName
 
         #region Methods
 
-        private void SetActivatedModule(InoModelBase1 newActivVm)
+        private void SetActivatedModule()
         {
-            SelectedHomeModel = newActivVm;
+            SelectedHomeModel = SelectedModul.HomeModel;
         }
 
         #endregion

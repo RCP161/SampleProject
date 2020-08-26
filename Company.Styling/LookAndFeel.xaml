@@ -4,8 +4,13 @@
                     xmlns:local="clr-namespace:Company.Styling"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
 
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary Source="Styles/InoIconBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 
     <Style BasedOn="{StaticResource mah:MahApps.Styles.MetroWindow.VisualStudio}" TargetType="ctr:InoWindow" />
+    <Style BasedOn="{StaticResource InoIconBoxStyle}" TargetType="ctr:InoIconBox" />
 </ResourceDictionary>
 
 
