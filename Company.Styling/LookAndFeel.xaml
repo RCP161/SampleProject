@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctr="clr-namespace:Company.Styling.Controls"
+                    xmlns:local="clr-namespace:Company.Styling"
+                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+
+
+    <Style BasedOn="{StaticResource mah:MahApps.Styles.MetroWindow.VisualStudio}" TargetType="ctr:InoWindow" />
+</ResourceDictionary>
+
+
+
+
+<!--
+
+                Sollte dann wieder raus ins Styling
+                Resmerger kann das aber nicht zusammen fassen!
+
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+
+                Theme setting
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />-->

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Catel.Collections;
 using Catel.Data;
 using Company.Base.Core;
@@ -66,7 +67,8 @@ namespace Company.AppName.SearchDialog
 
         internal void AddResult(InoModelBase2 selectedSearchResult)
         {
-            MultipleResults.Add(selectedSearchResult);
+            if(!MultipleResults.Contains(selectedSearchResult))
+                MultipleResults.Add(selectedSearchResult);
         }
 
         internal void RemoveResult(InoModelBase2 selectedMultipleResult)
