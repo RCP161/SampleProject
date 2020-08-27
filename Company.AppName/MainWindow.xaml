@@ -39,7 +39,7 @@
                 <InoIconBox Grid.Column="0"
                             Width="20"
                             Height="20"
-                            Icon="Plus" />
+                            Icon="AppLogo" />
                 <ComboBox Grid.Column="1"
                           Margin="3"
                           ItemsSource="{Binding Modules}"
@@ -56,7 +56,7 @@
                                 <InoIconBox Grid.Column="0"
                                             Width="10"
                                             Height="10"
-                                            Icon="Minus" />
+                                            Icon="{Binding Logo}" />
                                 <TextBlock Grid.Column="1" Text="{Binding Name}" />
                             </Grid>
                         </DataTemplate>

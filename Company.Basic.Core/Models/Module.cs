@@ -11,7 +11,7 @@ namespace Company.Basic.Core.Models
     {
         public Module()
         {
-            Logo = "Bsc.";
+            Logo =  IconAlias.BasicLogo;
             Name = "Basic";
             HomeModel = Home.Instance;
         }
@@ -19,7 +19,7 @@ namespace Company.Basic.Core.Models
 
         #region Properties
 
-        public string Logo { get; private set; }
+        public IconAlias Logo { get; private set; }
         public string Name { get; private set; }
         public InoModelBase1 HomeModel { get; private set; }
 

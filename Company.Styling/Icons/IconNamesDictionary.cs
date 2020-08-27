@@ -4,20 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using Company.Base.Core;
 
 namespace Company.Styling.Icons
 {
     internal static class IconDictionarry
     {
-        internal static Dictionary<IconName, Geometry> Instance { get; } = SetInstance();
+        internal static Dictionary<IconAlias, Geometry> Instance { get; } = SetInstance();
 
-        private static Dictionary<IconName, Geometry> SetInstance()
+        private static Dictionary<IconAlias, Geometry> SetInstance()
         {
-            Dictionary<IconName, Geometry> res = new Dictionary<IconName, Geometry>();
+            Dictionary<IconAlias, Geometry> res = new Dictionary<IconAlias, Geometry>();
 
-            res.Add(IconName.Dummy, null);
-            res.Add(IconName.Plus, IconData.Plus);
-            res.Add(IconName.Minus, IconData.Minus);
+            res.Add(IconAlias.Dummy, null);
+            res.Add(IconAlias.AppLogo, IconData.Plus);
+            res.Add(IconAlias.BasicLogo, IconData.Minus);
+            res.Add(IconAlias.SecurityLogo, IconData.Minus);
 
             return res;
         }

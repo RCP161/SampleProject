@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
+using Company.Base.Core;
 using Company.Styling.Icons;
 
 namespace Company.Styling.Controls
@@ -22,18 +23,18 @@ namespace Company.Styling.Controls
 
         public InoIconBox()
         {
-            IconToFontString();
+            AliasToData();
         }
 
         #region Dependancy Properties
 
-        public IconName Icon
+        public IconAlias Icon
         {
-            get { return (IconName)GetValue(IconProperty); }
+            get { return (IconAlias)GetValue(IconProperty); }
             set { SetValue(IconProperty, value); }
         }
 
-        public static readonly DependencyProperty IconProperty = DependencyProperty.Register(nameof(Icon), typeof(IconName), typeof(InoIconBox), new FrameworkPropertyMetadata(IconName.Dummy, OnIconPropertyChanged));
+        public static readonly DependencyProperty IconProperty = DependencyProperty.Register(nameof(Icon), typeof(IconAlias), typeof(InoIconBox), new FrameworkPropertyMetadata(IconAlias.Dummy, OnIconPropertyChanged));
 
 
         public Geometry Data
@@ -53,10 +54,10 @@ namespace Company.Styling.Controls
         //Setting FontString based on IconAlias
         protected static void OnIconPropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
         {
-            ((InoIconBox)source).IconToFontString();
+            ((InoIconBox)source).AliasToData();
         }
 
-        private void IconToFontString()
+        private void AliasToData()
         {
             Data = IconDictionarry.Instance[Icon];
         }

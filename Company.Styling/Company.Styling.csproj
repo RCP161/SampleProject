@@ -124,7 +124,6 @@
     <Compile Include="Controls\InoWindow.cs" />
     <Compile Include="Controls\InoUserControl.cs" />
     <Compile Include="Converters\StateVisibilityConverter.cs" />
-    <Compile Include="Icons\Enums.cs" />
     <Compile Include="Icons\IconNamesDictionary.cs" />
     <Compile Include="Icons\IconData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -161,10 +160,6 @@
     <Page Include="FullLookAndFeel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Icons\Plus.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LookAndFeel.xaml">
       <SubType>Designer</SubType>
