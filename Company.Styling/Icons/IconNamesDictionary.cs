@@ -17,9 +17,12 @@ namespace Company.Styling.Icons
             Dictionary<IconAlias, Geometry> res = new Dictionary<IconAlias, Geometry>();
 
             res.Add(IconAlias.Dummy, null);
-            res.Add(IconAlias.AppLogo, IconData.Plus);
-            res.Add(IconAlias.BasicLogo, IconData.Minus);
-            res.Add(IconAlias.SecurityLogo, IconData.Minus);
+            res.Add(IconAlias.AppLogo, IconData.AppLogo);
+            res.Add(IconAlias.BasicLogo, IconData.BasicLogo);
+            res.Add(IconAlias.SecurityLogo, IconData.SecurityLogo);
+            res.Add(IconAlias.Home, IconData.Home);
+            res.Add(IconAlias.Group, IconData.Group);
+            res.Add(IconAlias.User, IconData.User);
 
             return res;
         }

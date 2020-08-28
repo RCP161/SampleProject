@@ -9,6 +9,9 @@ namespace Company.Base.Core
         Dummy,
         AppLogo,
         BasicLogo,
-        SecurityLogo
+        SecurityLogo,
+        Home,
+        Group,
+        User
     }
 }
