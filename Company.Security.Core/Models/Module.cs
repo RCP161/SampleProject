@@ -12,7 +12,6 @@ namespace Company.Security.Core.Models
         {
             Logo = IconAlias.SecurityLogo;
             Name = "Security";
-            HomeModel = Home.Instance;
         }
 
 
@@ -20,7 +19,6 @@ namespace Company.Security.Core.Models
 
         public IconAlias Logo { get; private set; }
         public string Name { get; private set; }
-        public InoModelBase1 HomeModel { get; private set; }
 
         #endregion
     }

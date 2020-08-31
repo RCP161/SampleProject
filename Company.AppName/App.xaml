@@ -7,20 +7,15 @@
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Company.Styling;component/FullLookAndFeel.xaml" />
-
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
 
-                <ResourceDictionary Source="pack://application:,,,/Company.Styling;component/Styles/InoHamburgerMenu.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Company.Styling;component/FullLookAndFeel.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--  Aufgrund eines Fehlers in WPF ist diese Zeile notwendig um die folgendes Styles einzubinden  -->
             <Style TargetType="{x:Type Rectangle}" />
-
-            <Style BasedOn="{StaticResource InoHamburgerMenuStyle}" TargetType="ctr:InoHamburgerMenu" />
-
 
         </ResourceDictionary>
     </Application.Resources>

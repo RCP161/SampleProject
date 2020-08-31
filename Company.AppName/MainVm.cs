@@ -16,9 +16,7 @@ namespace Company.AppName
         {
             Model = new MainModel();
             SelectedModul = Modules.FirstOrDefault();
-            SetActivatedModule();
 
-            ActivCommand = new Command(() => SetActivatedModule());
         }
 
         #region Properties
@@ -51,23 +49,6 @@ namespace Company.AppName
         }
         public static readonly PropertyData SelectedModulProperty = RegisterProperty(nameof(SelectedModul), typeof(IModule));
 
-
-        [ViewModelToModel]
-        public InoModelBase1 SelectedHomeModel
-        {
-            get { return GetValue<InoModelBase1>(SelectedHomeModuleProperty); }
-            set { SetValue(SelectedHomeModuleProperty, value); }
-        }
-        public static readonly PropertyData SelectedHomeModuleProperty = RegisterProperty(nameof(SelectedHomeModel), typeof(InoModelBase1));
-
-        #endregion
-
-        #region Methods
-
-        private void SetActivatedModule()
-        {
-            SelectedHomeModel = SelectedModul.HomeModel;
-        }
 
         #endregion
 

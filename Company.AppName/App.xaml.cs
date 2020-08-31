@@ -103,11 +103,14 @@ namespace Company.AppName
             viewModelLocator.Register(typeof(Company.Basic.UI.PersonView), typeof(Company.Basic.Presentation.PersonVm));
 
             // Security
+            viewModelLocator.Register(typeof(Company.Security.UI.ModuleView), typeof(Company.Security.Presentation.ModuleVm));
             viewModelLocator.Register(typeof(Company.Security.UI.HomeView), typeof(Company.Security.Presentation.HomeVm));
-            viewModelLocator.Register(typeof(Company.Security.UI.GroupView), typeof(Company.Security.Presentation.GroupVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.GroupEditView), typeof(Company.Security.Presentation.GroupEditVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.GroupOverviewView), typeof(Company.Security.Presentation.GroupOverviewVm));
             viewModelLocator.Register(typeof(Company.Security.UI.GroupRoItemView), typeof(Company.Security.Presentation.GroupRoItemVm));
-            viewModelLocator.Register(typeof(Company.Security.UI.UserView), typeof(Company.Security.Presentation.UserVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.UserEditView), typeof(Company.Security.Presentation.UserEditVm));
             viewModelLocator.Register(typeof(Company.Security.UI.UserRoItemView), typeof(Company.Security.Presentation.UserRoItemVm));
+            viewModelLocator.Register(typeof(Company.Security.UI.UserOverviewView), typeof(Company.Security.Presentation.UserOverviewVm));
 
             // =========================
             //          Views  

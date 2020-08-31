@@ -9,7 +9,5 @@ namespace Company.Base.Core
     {
         IconAlias Logo { get; }
         string Name { get; }
-
-        InoModelBase1 HomeModel { get; }
     }
 }

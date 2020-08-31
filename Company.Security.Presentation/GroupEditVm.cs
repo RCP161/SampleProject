@@ -14,9 +14,9 @@ using Company.Security.Core.Services;
 
 namespace Company.Security.Presentation
 {
-    public class GroupVm : InoViewModelBase2<Group>
+    public class GroupEditVm : InoViewModelBase2<Group>
     {
-        public GroupVm(Group model)
+        public GroupEditVm(Group model)
         {
             Model = model;
             SaveCommand = new Command(() => SaveGroup());
@@ -89,7 +89,7 @@ namespace Company.Security.Presentation
             ServiceLocator.Default.ResolveType<IGroupService>().SaveGroup(Model);
 
             if(isNew)
-                Home.Instance.Groups.Add(Model);
+                throw new NotImplementedException("Der Liste hinzufügen");
         }
 
         private async Task AddPermissionAsync()

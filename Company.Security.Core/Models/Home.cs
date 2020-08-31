@@ -14,41 +14,8 @@ namespace Company.Security.Core.Models
 {
     public class Home: InoModelBase1
     {
-        private Home() : base()
+        public Home() : base()
         {
-            Users = new ObservableCollection<User>(ServiceLocator.Default.ResolveType<IUserService>().GetAllComplete());
-            Groups = new ObservableCollection<Group>(ServiceLocator.Default.ResolveType<IGroupService>().GetAllComplete());
         }
-
-        private static Home _instance;
-        public static Home Instance
-        {
-            get
-            {
-                if(_instance == null)
-                    _instance = new Home();
-
-                return _instance;
-            }
-        }
-
-        #region Properties
-
-        public ObservableCollection<User> Users
-        {
-            get { return GetValue<ObservableCollection<User>>(UsersProperty); }
-            set { SetValue(UsersProperty, value); }
-        }
-        public static readonly PropertyData UsersProperty = RegisterProperty(nameof(Users), typeof(ObservableCollection<User>));
-
-
-        public ObservableCollection<Group> Groups
-        {
-            get { return GetValue<ObservableCollection<Group>>(PersonsProperty); }
-            set { SetValue(PersonsProperty, value); }
-        }
-        public static readonly PropertyData PersonsProperty = RegisterProperty(nameof(Groups), typeof(ObservableCollection<Group>));
-
-        #endregion
     }
 }

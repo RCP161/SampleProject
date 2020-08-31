@@ -137,23 +137,43 @@
     <Compile Include="GroupRoItemView.xaml.cs">
       <DependentUpon>GroupRoItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GroupView.xaml.cs">
-      <DependentUpon>GroupView.xaml</DependentUpon>
+    <Compile Include="GroupEditView.xaml.cs">
+      <DependentUpon>GroupEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SecurityTemplateSelector.cs" />
+    <Compile Include="UserOverviewView.xaml.cs">
+      <DependentUpon>UserOverviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupOverviewView.xaml.cs">
+      <DependentUpon>GroupOverviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleView.xaml.cs">
+      <DependentUpon>ModuleView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserRoItemView.xaml.cs">
       <DependentUpon>UserRoItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserView.xaml.cs">
-      <DependentUpon>UserView.xaml</DependentUpon>
+    <Compile Include="UserEditView.xaml.cs">
+      <DependentUpon>UserEditView.xaml</DependentUpon>
     </Compile>
     <Page Include="GroupRoItemView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="GroupView.xaml">
+    <Page Include="GroupEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserOverviewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GroupOverviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModuleView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="HomeView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -167,7 +187,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserView.xaml">
+    <Page Include="UserEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

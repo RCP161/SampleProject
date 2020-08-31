@@ -17,9 +17,9 @@ namespace Company.AppName
         {
             if(item != null)
             {
-                if(item is Basic.Core.Models.Home)
+                if(item is Basic.Core.Models.Module)
                     return BasicTemplate;
-                if(item is Security.Core.Models.Home)
+                if(item is Security.Core.Models.Module)
                     return SecurityTemplate;
             }
 

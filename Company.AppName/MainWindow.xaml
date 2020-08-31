@@ -16,7 +16,7 @@
     <InoWindow.Resources>
 
         <DataTemplate x:Key="SecHomeView">
-            <sec:HomeView />
+            <sec:ModuleView />
         </DataTemplate>
         <DataTemplate x:Key="BscHomeView">
             <bsc:HomeView />
@@ -71,6 +71,6 @@
         </DataTemplate>
     </InoWindow.TitleTemplate>
 
-    <ContentPresenter Content="{Binding SelectedHomeModel}" ContentTemplateSelector="{StaticResource ModulTemplateSelector}" />
+    <ContentPresenter Content="{Binding SelectedModul}" ContentTemplateSelector="{StaticResource ModulTemplateSelector}" />
 
 </InoWindow>

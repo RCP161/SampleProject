@@ -12,9 +12,9 @@ using Company.Security.Core.Services;
 
 namespace Company.Security.Presentation
 {
-    public class UserVm : InoViewModelBase2<User>
+    public class UserEditVm : InoViewModelBase2<User>
     {
-        public UserVm(User model)
+        public UserEditVm(User model)
         {
             Model = model;
             SaveCommand = new Command(() => SaveUser()); 
@@ -72,7 +72,7 @@ namespace Company.Security.Presentation
             ServiceLocator.Default.ResolveType<IUserService>().SaveUser(Model);
 
             if(isNew)
-                Home.Instance.Users.Add(Model);
+                throw new NotImplementedException("Der Liste hinzufügen");
         }
 
         #endregion

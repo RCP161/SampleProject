@@ -132,6 +132,8 @@
     <Compile Include="Controls\InoIconBox.cs" />
     <Compile Include="Controls\InoWindow.cs" />
     <Compile Include="Controls\InoUserControl.cs" />
+    <Compile Include="Converters\DebugConverter.cs" />
+    <Compile Include="Converters\BoolInvertConverter.cs" />
     <Compile Include="Converters\StateVisibilityConverter.cs" />
     <Compile Include="Icons\IconNamesDictionary.cs" />
     <Compile Include="Icons\IconData.cs" />

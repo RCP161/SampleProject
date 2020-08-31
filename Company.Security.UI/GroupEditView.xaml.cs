@@ -1,8 +1,8 @@
 ﻿namespace Company.Security.UI
 {
-    public partial class UserView
+    public partial class GroupEditView
     {
-        public UserView()
+        public GroupEditView()
         {
             InitializeComponent();
         }

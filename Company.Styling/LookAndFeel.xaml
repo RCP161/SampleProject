@@ -4,22 +4,6 @@
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
 
     <ResourceDictionary.MergedDictionaries>
-
-        <ResourceDictionary Source="Styles/InoIconBox.xaml" />
-    </ResourceDictionary.MergedDictionaries>
-
-    <Style BasedOn="{StaticResource mah:MahApps.Styles.MetroWindow.VisualStudio}" TargetType="ctr:InoWindow" />
-    <Style BasedOn="{StaticResource InoIconBoxStyle}" TargetType="ctr:InoIconBox" />
-</ResourceDictionary>
-
-
-
-
-<!--
-
-    geht komischerweiße nicht
-
-    <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Styles/InoIconBox.xaml" />
         <ResourceDictionary Source="Styles/InoHamburgerMenu.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -27,17 +11,4 @@
     <Style BasedOn="{StaticResource mah:MahApps.Styles.MetroWindow.VisualStudio}" TargetType="ctr:InoWindow" />
     <Style BasedOn="{StaticResource InoIconBoxStyle}" TargetType="ctr:InoIconBox" />
     <Style BasedOn="{StaticResource InoHamburgerMenuStyle}" TargetType="ctr:InoHamburgerMenu" />
-
-
-    findet mah: Resourcen nicht obwohl
-    - als Nuget hinzugefügt, auch im ZielProjekt
-    - Namespace (link) mit in FullLookAndFeel kopiert
-
-
-    Können so nicht gemerged werden ...
-
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
-
-                Theme setting
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />-->
+</ResourceDictionary>
