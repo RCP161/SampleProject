@@ -1,31 +1,27 @@
 ﻿<Application x:Class="Company.AppName.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ctr="clr-namespace:Company.Styling.Controls;assembly=Company.Styling"
              xmlns:local="clr-namespace:Company.AppName">
     <Application.Resources>
         <ResourceDictionary>
 
-            <!--  Aufgrund eines Fehlers in WPF ist diese Zeile notwendig um die folgendes Styles einzubinden  -->
-            <Style TargetType="{x:Type Rectangle}" />
-
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Company.Styling;component/FullLookAndFeel.xaml" />
 
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
-
-                <!--
-
-                Sollte dann wieder raus ins Styling
-                Resmerger kann das aber nicht zusammen fassen!
-
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
-
-                Theme setting
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
-                -->
 
+                <ResourceDictionary Source="pack://application:,,,/Company.Styling;component/Styles/InoHamburgerMenu.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!--  Aufgrund eines Fehlers in WPF ist diese Zeile notwendig um die folgendes Styles einzubinden  -->
+            <Style TargetType="{x:Type Rectangle}" />
+
+            <Style BasedOn="{StaticResource InoHamburgerMenuStyle}" TargetType="ctr:InoHamburgerMenu" />
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

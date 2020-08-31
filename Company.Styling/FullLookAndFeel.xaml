@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ctr="clr-namespace:Company.Styling.Controls" xmlns:local="clr-namespace:Company.Styling" xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ctr="clr-namespace:Company.Styling.Controls" xmlns:local="clr-namespace:Company.Styling.Styles" xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
   <Style x:Key="InoIconBoxStyle" TargetType="{x:Type ctr:InoIconBox}">
     <Setter Property="FontSize" Value="8" />
     <Setter Property="Focusable" Value="False" />
