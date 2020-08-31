@@ -20,6 +20,8 @@ namespace Company.Security.Presentation
             Model = new UserOverview();
             NewUserCommand = new Command(() => NewUser());
             DeleteUserCommand = new Command(() => DeleteUser());
+            EditCommand = new Command(() => EditUser());
+
 
             SelectedUser = Users.FirstOrDefault();
         }
@@ -45,6 +47,7 @@ namespace Company.Security.Presentation
 
         public Command NewUserCommand { get; private set; }
         public Command DeleteUserCommand { get; private set; }
+        public Command EditCommand { get; private set; }
 
         #endregion
 
@@ -54,6 +57,7 @@ namespace Company.Security.Presentation
         {
             SelectedUser = new User();
             SelectedUser.SetState(StateEnum.Created);
+            SelectedUser.IsOnEdit = true;
         }
 
         private void DeleteUser()
@@ -61,6 +65,11 @@ namespace Company.Security.Presentation
             ServiceLocator.Default.ResolveType<IUserService>().DeleteUser(SelectedUser);
             Users.Remove(SelectedUser);
             SelectedUser = Users.FirstOrDefault();
+        }
+
+        private void EditUser()
+        {
+            SelectedUser.IsOnEdit = true;
         }
 
         #endregion

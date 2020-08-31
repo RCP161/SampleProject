@@ -99,8 +99,11 @@ namespace Company.AppName
             viewModelLocator.Register(typeof(SearchDialog.SearchWindow), typeof(SearchDialog.SearchWindowViewModel));
 
             // Basic
+            viewModelLocator.Register(typeof(Company.Basic.UI.ModuleView), typeof(Company.Basic.Presentation.ModuleVm));
             viewModelLocator.Register(typeof(Company.Basic.UI.HomeView), typeof(Company.Basic.Presentation.HomeVm));
-            viewModelLocator.Register(typeof(Company.Basic.UI.PersonView), typeof(Company.Basic.Presentation.PersonVm));
+            viewModelLocator.Register(typeof(Company.Basic.UI.PersonEditView), typeof(Company.Basic.Presentation.PersonEditVm));
+            viewModelLocator.Register(typeof(Company.Basic.UI.PersonOverviewView), typeof(Company.Basic.Presentation.PersonOverviewVm));
+            viewModelLocator.Register(typeof(Company.Basic.UI.PersonRoItemView), typeof(Company.Basic.Presentation.PersonRoItemVm));
 
             // Security
             viewModelLocator.Register(typeof(Company.Security.UI.ModuleView), typeof(Company.Security.Presentation.ModuleVm));

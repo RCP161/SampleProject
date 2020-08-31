@@ -10,5 +10,6 @@ namespace Company.Basic.Core.Services
         Person GetPersonById(long id);
         void SavePerson(Person person);
         IEnumerable<Person> GetAll();
+        void DeletePerson(Person selectedPerson);
     }
 }

@@ -12,6 +12,7 @@ namespace Company.Base.Core
         SecurityLogo,
         Home,
         Group,
-        User
+        User,
+        Person
     }
 }

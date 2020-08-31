@@ -11,6 +11,7 @@ namespace Company.Basic.Service
 {
     public class PersonService : IPersonService
     {
+
         public IEnumerable<Person> GetAll()
         {
             IEnumerable<Person> res;
@@ -40,6 +41,10 @@ namespace Company.Basic.Service
                 pr.SaveOrUpdate(person);
                 uow.SaveChanges();
             }
+        }
+        public void DeletePerson(Person selectedPerson)
+        {
+            throw new NotImplementedException();
         }
     }
 }

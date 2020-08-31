@@ -23,7 +23,7 @@ namespace Company.Styling.Icons
             res.Add(IconAlias.Home, IconData.Home);
             res.Add(IconAlias.Group, IconData.Group);
             res.Add(IconAlias.User, IconData.User);
-
+            res.Add(IconAlias.Person, IconData.Person);
             return res;
         }
     }

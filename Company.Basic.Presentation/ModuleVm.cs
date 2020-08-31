@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Text;
 using Catel.Data;
-using Catel.IoC;
 using Catel.MVVM;
-using Company.Base.Core;
 using Company.Base.Presentation;
-using Company.Security.Core.Models;
-using Company.Security.Core.Services;
+using Company.Basic.Core.Models;
 
-namespace Company.Security.Presentation
+namespace Company.Basic.Presentation
 {
     public class ModuleVm : InoViewModelBase1<Module>
     {

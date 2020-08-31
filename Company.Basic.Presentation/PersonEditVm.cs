@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using System.Text;
 using Catel.Data;
+using Catel.IoC;
 using Catel.MVVM;
 using Company.Base.Core;
 using Company.Base.Presentation;
 using Company.Basic.Core.Models;
+using Company.Basic.Core.Services;
 
 namespace Company.Basic.Presentation
 {
-    public class PersonVm : InoViewModelBase2<Person>
+    public class PersonEditVm : InoViewModelBase2<Person>
     {
-        public PersonVm(Person model)
+        public PersonEditVm(Person model)
         {
             Model = model;
+            SaveCommand = new Command(() => SavePerson());
+            CancelCommand = new Command(Revert);
         }
 
 
@@ -33,5 +37,20 @@ namespace Company.Basic.Presentation
             set { SetValue(SurenameProperty, value); }
         }
         public static readonly PropertyData SurenameProperty = RegisterProperty(nameof(Surename), typeof(string));
+
+
+        public Command SaveCommand { get; private set; }
+        public Command CancelCommand { get; private set; }
+
+
+
+        private void SavePerson()
+        {
+            bool isNew = Model.State == StateEnum.Created;
+            ServiceLocator.Default.ResolveType<IPersonService>().SavePerson(Model);
+
+            if(isNew)
+                throw new NotImplementedException("Der Liste hinzufügen");
+        }
     }
 }

@@ -20,7 +20,12 @@ namespace Company.Base.Core
         public abstract long Id { get; protected set; }
 
         [NotMapped]
-        public bool IsOnEdit { get; set; }
+        public bool IsOnEdit
+        {
+            get { return GetValue<bool>(IsOnEditProperty); }
+            set { SetValue(IsOnEditProperty, value); }
+        }
+        public static readonly PropertyData IsOnEditProperty = RegisterProperty(nameof(IsOnEdit), typeof(bool));
 
         [NotMapped]
         public abstract Dictionary<string, PropertyInfo> MappedPropertyInfos { get; }

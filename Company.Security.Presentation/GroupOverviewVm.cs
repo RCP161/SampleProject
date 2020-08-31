@@ -20,6 +20,7 @@ namespace Company.Security.Presentation
             Model = new GroupOverview();
             NewGroupCommand = new Command(() => NewGroup());
             DeleteGroupCommand = new Command(() => DeleteGroup());
+            EditCommand = new Command(() => EditGroup());
 
             SelectedGroup = Groups.FirstOrDefault();
         }
@@ -43,9 +44,9 @@ namespace Company.Security.Presentation
         public static readonly PropertyData SelectedGroupProperty = RegisterProperty(nameof(SelectedGroup), typeof(Group));
 
 
-
         public Command NewGroupCommand { get; private set; }
         public Command DeleteGroupCommand { get; private set; }
+        public Command EditCommand { get; private set; }
 
         #endregion
 
@@ -55,6 +56,7 @@ namespace Company.Security.Presentation
         {
             SelectedGroup = new Group();
             SelectedGroup.SetState(StateEnum.Created);
+            SelectedGroup.IsOnEdit = true;
         }
 
         private void DeleteGroup()
@@ -62,6 +64,11 @@ namespace Company.Security.Presentation
             ServiceLocator.Default.ResolveType<IGroupService>().DeleteGroup(SelectedGroup);
             Groups.Remove(SelectedGroup);
             SelectedGroup = Groups.FirstOrDefault();
+        }
+
+        private void EditGroup()
+        {
+            SelectedGroup.IsOnEdit = true;
         }
 
         #endregion

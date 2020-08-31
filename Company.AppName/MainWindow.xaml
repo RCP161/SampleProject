@@ -19,7 +19,7 @@
             <sec:ModuleView />
         </DataTemplate>
         <DataTemplate x:Key="BscHomeView">
-            <bsc:HomeView />
+            <bsc:ModuleView />
         </DataTemplate>
 
         <local:ModulTemplateSelector x:Key="ModulTemplateSelector"

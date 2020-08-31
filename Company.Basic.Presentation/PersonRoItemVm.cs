@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Text;
 using Catel.Data;
 using Catel.MVVM;
@@ -10,11 +9,11 @@ using Company.Basic.Core.Models;
 
 namespace Company.Basic.Presentation
 {
-    public class HomeVm : InoViewModelBase1<Home>
+    public class PersonRoItemVm : InoViewModelBase1<Person>
     {
-        public HomeVm()
+        public PersonRoItemVm(Person model)
         {
-            Model = new Home();
+            Model = model;
         }
     }
 }

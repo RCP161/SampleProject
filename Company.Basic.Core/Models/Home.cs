@@ -11,36 +11,8 @@ namespace Company.Basic.Core.Models
 {
     public class Home : InoModelBase1
     {
-        private Home()
+        public Home()
         {
-            Persons = new ObservableCollection<Person>(ServiceLocator.Default.ResolveType<IPersonService>().GetAll());
         }
-
-
-        private static Home _instance;
-        public static Home Instance
-        {
-            get
-            {
-                if(_instance == null)
-                    _instance = new Home();
-
-                return _instance;
-            }
-        }
-
-
-
-        #region Properties
-
-        public ObservableCollection<Person> Persons
-        {
-            get { return GetValue<ObservableCollection<Person>>(PersonsProperty); }
-            set { SetValue(PersonsProperty, value); }
-        }
-        public static readonly PropertyData PersonsProperty = RegisterProperty(nameof(Persons), typeof(ObservableCollection<Person>));
-
-        #endregion
-
     }
 }
