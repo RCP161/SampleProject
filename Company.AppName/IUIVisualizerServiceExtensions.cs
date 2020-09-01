@@ -12,6 +12,7 @@ namespace Company.AppName
         // Lieber von UIVisualizerService erben und als Service setzen
         // Es müssen wohl dennoch die Extension angepasst werden oder eigenes Interface/Service ...
         // Kp warum das löschen jetzt nicht mehr im BaseRepo geht ...
+        // using(DbContextManager ... in Basic noch, wenn das geht (Speichern nach vorherigem Cancel führ zu neuen KindListen. Dann kracht das EF bei einem Context)
         // Muss am Modul UC wirklich Conten.IsEnabled = true
 
 
