@@ -7,8 +7,10 @@ namespace Company.Base.Data
 {
     public abstract class InoBaseRepository<T> : EntityRepositoryBase<T, long>, IInoBaseRepository<T> where T : InoModelBase2
     {
+        private DbContext _context;
         public InoBaseRepository(DbContext dbContext) : base(dbContext)
         {
+            _context = dbContext;
         }
 
         public void SaveOrUpdate(T model)
@@ -22,7 +24,7 @@ namespace Company.Base.Data
                     Attach(model);
                     break;
                 case StateEnum.Deleted:
-                    Delete(model);
+                    _context.Entry(model).State = EntityState.Deleted;
                     break;
             }
 

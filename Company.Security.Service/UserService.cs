@@ -19,7 +19,8 @@ namespace Company.Security.Service
         public IEnumerable<User> GetAllComplete()
         {
             IEnumerable<User> res;
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IUserRepository>().GetAllComplete();
             }
@@ -31,7 +32,8 @@ namespace Company.Security.Service
         {
             IEnumerable<User> res;
 
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IUserRepository>().GetByGroupId(id);
             }
@@ -41,7 +43,8 @@ namespace Company.Security.Service
 
         public void SaveUser(User user)
         {
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 uow.GetRepository<IUserRepository>().SaveOrUpdate(user);
                 uow.SaveChanges();
@@ -57,7 +60,8 @@ namespace Company.Security.Service
 
             user.SetState(Base.Core.StateEnum.Deleted);
 
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 uow.GetRepository<IUserRepository>().SaveOrUpdate(user);
                 uow.SaveChanges();
@@ -69,7 +73,8 @@ namespace Company.Security.Service
             List<string> blocker = new List<string>();
             int c;
 
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 c = uow.GetRepository<IGroupRepository>().GetByUserId(user.Id).Count();
             }
@@ -94,7 +99,8 @@ namespace Company.Security.Service
         public IEnumerable<InoModelBase2> GetLast10()
         {
             IEnumerable<User> res;
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IUserRepository>().GetLast10();
             }
@@ -105,7 +111,8 @@ namespace Company.Security.Service
         public IEnumerable<InoModelBase2> GetForSearchText(string arg)
         {
             IEnumerable<User> res;
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IUserRepository>().GetForSearchText(arg);
             }

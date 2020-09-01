@@ -20,7 +20,7 @@ namespace Company.AppName.SearchDialog
             SearchCommand = new Command(() => Model.DoSearch());
             RemoveCommand = new Command(() => Model.RemoveResult(SelectedMultipleResult));
             AddCommand = new Command(() => AddResult());
-            OkCommand = new Command(() => Finish());
+            OkCommand = new Command(() => AddResult());
             CancelCommand = new Command(() => Cancel());
         }
 
@@ -89,11 +89,6 @@ namespace Company.AppName.SearchDialog
 
             if(!IsMultiple)
                 this.SaveAndCloseViewModelAsync();
-        }
-
-        private void Finish()
-        {
-            this.SaveAndCloseViewModelAsync();
         }
 
         private void Cancel()

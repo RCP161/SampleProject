@@ -20,7 +20,8 @@ namespace Company.Security.Service
         {
             IEnumerable<Group> res;
 
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IGroupRepository>().GetAllComplete();
             }
@@ -45,7 +46,8 @@ namespace Company.Security.Service
             List<GroupPermission> deletedGroupPermissions = group.GroupPermissions.Where(x => x.State == StateEnum.Deleted).ToList();
             List<GroupUser> removedUsers = group.GroupUsers.Where(x => x.State == StateEnum.Deleted).ToList();
 
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 uow.GetRepository<IGroupRepository>().SaveOrUpdate(group);
 
@@ -74,7 +76,8 @@ namespace Company.Security.Service
 
             group.SetState(StateEnum.Deleted);
 
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 uow.GetRepository<IGroupRepository>().SaveOrUpdate(group);
 
@@ -93,7 +96,8 @@ namespace Company.Security.Service
         {
             IEnumerable<Group> res;
 
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IGroupRepository>().GetLast10();
             }
@@ -105,7 +109,8 @@ namespace Company.Security.Service
         {
             IEnumerable<Group> res;
 
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IGroupRepository>().GetForSearchText(arg);
             }

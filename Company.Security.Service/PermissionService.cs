@@ -14,7 +14,8 @@ namespace Company.Security.Service
     {
         public void SavePermission(Permission p)
         {
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 uow.GetRepository<IPermissionRepository>().SaveOrUpdate(p);
                 uow.SaveChanges();
@@ -24,7 +25,8 @@ namespace Company.Security.Service
         public IEnumerable<InoModelBase2> GetLast10()
         {
             IEnumerable<Permission> res;
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IPermissionRepository>().GetLast10();
             }
@@ -35,7 +37,8 @@ namespace Company.Security.Service
         public IEnumerable<InoModelBase2> GetForSearchText(string arg)
         {
             IEnumerable<Permission> res;
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IPermissionRepository>().GetForSearchText(arg);
             }
