@@ -55,7 +55,7 @@ namespace Company.Basic.Presentation
         {
             SelectedPerson = new Person();
             SelectedPerson.SetState(StateEnum.Created);
-            SelectedPerson.IsOnEdit = true;
+            EditManager.IsOnEdit = true;
         }
 
         private void DeletePerson()
@@ -67,7 +67,7 @@ namespace Company.Basic.Presentation
 
         private void EditPerson()
         {
-            SelectedPerson.IsOnEdit = true;
+            EditManager.IsOnEdit = true;
         }
     }
 }

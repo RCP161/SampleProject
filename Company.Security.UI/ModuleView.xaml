@@ -27,7 +27,9 @@
         <!--  Items  -->
         <mah:HamburgerMenu.ItemsSource>
             <mah:HamburgerMenuItemCollection>
-                <mah:HamburgerMenuIconItem x:Name="DefaultHamburgerMenuItem" Label="Home">
+                <mah:HamburgerMenuIconItem x:Name="DefaultHamburgerMenuItem"
+                                           IsEnabled="{Binding EditManager.IsOnNavigation}"
+                                           Label="Home">
                     <mah:HamburgerMenuIconItem.Icon>
                         <ctr:InoIconBox Width="25" Icon="Home" />
                     </mah:HamburgerMenuIconItem.Icon>
@@ -35,7 +37,7 @@
                         <local:HomeView />
                     </mah:HamburgerMenuIconItem.Tag>
                 </mah:HamburgerMenuIconItem>
-                <mah:HamburgerMenuIconItem Label="Gruppe">
+                <mah:HamburgerMenuIconItem IsEnabled="{Binding EditManager.IsOnNavigation}" Label="Gruppe">
                     <mah:HamburgerMenuIconItem.Icon>
                         <ctr:InoIconBox Width="25" Icon="Group" />
                     </mah:HamburgerMenuIconItem.Icon>
@@ -43,7 +45,7 @@
                         <local:GroupOverviewView />
                     </mah:HamburgerMenuIconItem.Tag>
                 </mah:HamburgerMenuIconItem>
-                <mah:HamburgerMenuIconItem Label="Benutzer">
+                <mah:HamburgerMenuIconItem IsEnabled="{Binding EditManager.IsOnNavigation}" Label="Benutzer">
                     <mah:HamburgerMenuIconItem.Icon>
                         <ctr:InoIconBox Width="25" Icon="User" />
                     </mah:HamburgerMenuIconItem.Icon>
@@ -70,7 +72,9 @@
 
         <mah:HamburgerMenu.ContentTemplate>
             <DataTemplate>
-                <ContentPresenter Margin="5" Content="{Binding}" />
+                <ContentPresenter Margin="5"
+                                  Content="{Binding}"
+                                  IsEnabled="True" />
             </DataTemplate>
         </mah:HamburgerMenu.ContentTemplate>
 

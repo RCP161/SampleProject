@@ -20,7 +20,7 @@ namespace Company.Security.Presentation
         {
             Model = model;
             SaveCommand = new Command(() => SaveGroup());
-            CancelCommand = new Command(Revert);
+            CancelCommand = new Command(() => CancelEdition());
             AddPermissionCommand = new TaskCommand(() => AddPermissionAsync());
             RemovePermissionCommand = new Command(() => RemovePermission());
             AddUserCommand = new TaskCommand(() => AddUserAsync());
@@ -90,6 +90,8 @@ namespace Company.Security.Presentation
 
             if(isNew)
                 throw new NotImplementedException("Der Liste hinzufügen");
+
+            SaveEdition();
         }
 
         private async Task AddPermissionAsync()

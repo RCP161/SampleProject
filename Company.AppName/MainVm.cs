@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using Catel.Data;
 using Catel.MVVM;
 using Company.Base.Core;
+using Company.Base.Presentation;
 
 namespace Company.AppName
 {
-    public class MainVm : ViewModelBase
+    public class MainVm : InoViewModelBase1<MainModel>
     {
         public MainVm()
         {
@@ -22,15 +23,6 @@ namespace Company.AppName
         #region Properties
 
         public Command ActivCommand { get; private set; }
-
-
-        [Model]
-        public MainModel Model
-        {
-            get { return GetValue<MainModel>(ModelProperty); }
-            private set { SetValue(ModelProperty, value); }
-        }
-        public static readonly PropertyData ModelProperty = RegisterProperty(nameof(Model), typeof(MainModel));
 
 
         [ViewModelToModel]

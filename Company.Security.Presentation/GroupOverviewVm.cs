@@ -56,7 +56,7 @@ namespace Company.Security.Presentation
         {
             SelectedGroup = new Group();
             SelectedGroup.SetState(StateEnum.Created);
-            SelectedGroup.IsOnEdit = true;
+            EditManager.IsOnEdit = true;
         }
 
         private void DeleteGroup()
@@ -68,7 +68,7 @@ namespace Company.Security.Presentation
 
         private void EditGroup()
         {
-            SelectedGroup.IsOnEdit = true;
+            EditManager.IsOnEdit = true;
         }
 
         #endregion

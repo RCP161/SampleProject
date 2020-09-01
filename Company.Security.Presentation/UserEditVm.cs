@@ -18,7 +18,7 @@ namespace Company.Security.Presentation
         {
             Model = model;
             SaveCommand = new Command(() => SaveUser()); 
-            CancelCommand = new Command(Revert);
+            CancelCommand = new Command(() => CancelEdition());
         }
 
         #region Properties
@@ -73,6 +73,8 @@ namespace Company.Security.Presentation
 
             if(isNew)
                 throw new NotImplementedException("Der Liste hinzufügen");
+
+            SaveEdition();
         }
 
         #endregion

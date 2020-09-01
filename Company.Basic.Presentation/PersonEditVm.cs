@@ -17,9 +17,8 @@ namespace Company.Basic.Presentation
         {
             Model = model;
             SaveCommand = new Command(() => SavePerson());
-            CancelCommand = new Command(Revert);
+            CancelCommand = new Command(() => CancelEdition());
         }
-
 
         [ViewModelToModel]
         public string Name
@@ -51,6 +50,8 @@ namespace Company.Basic.Presentation
 
             if(isNew)
                 throw new NotImplementedException("Der Liste hinzufügen");
+
+            SaveEdition();
         }
     }
 }

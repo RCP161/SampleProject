@@ -19,13 +19,16 @@ namespace Company.Base.Core
 
         public abstract long Id { get; protected set; }
 
+        /// <summary>
+        /// NICHT SETZEN!!! Ist nur für ViewModelBase2. Kann ich so nicht wegkapseln
+        /// </summary>
         [NotMapped]
-        public bool IsOnEdit
+        public bool IsReadyForEdit
         {
-            get { return GetValue<bool>(IsOnEditProperty); }
-            set { SetValue(IsOnEditProperty, value); }
+            get { return GetValue<bool>(IsReadyForEditProperty); }
+            set { SetValue(IsReadyForEditProperty, value); }
         }
-        public static readonly PropertyData IsOnEditProperty = RegisterProperty(nameof(IsOnEdit), typeof(bool));
+        public static readonly PropertyData IsReadyForEditProperty = RegisterProperty(nameof(IsReadyForEdit), typeof(bool));
 
         [NotMapped]
         public abstract Dictionary<string, PropertyInfo> MappedPropertyInfos { get; }
@@ -52,7 +55,9 @@ namespace Company.Base.Core
         {
             base.OnPropertyChanged(e);
 
-            if(IsOnEdit && State == StateEnum.Unchanged && MappedPropertyInfos.ContainsKey(e.PropertyName))
+            // IsReadyForEdit weil daran InoViewModelBase2 die geladenen Objekte BackUped etc.
+            // IsOnEdit ist nur für UI IsEnabled
+            if(IsReadyForEdit && State == StateEnum.Unchanged && MappedPropertyInfos.ContainsKey(e.PropertyName))
                 State = StateEnum.Modified;
         }
 

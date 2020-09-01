@@ -11,29 +11,11 @@ using Company.Base.Core;
 
 namespace Company.Base.Presentation
 {
-    public abstract class InoViewModelBase2<T> : ViewModelBase where T : InoModelBase2
+    public abstract class InoViewModelBase2<T> : InoViewModelBase1<T> where T : InoModelBase2
     {
 
-        public InoViewModelBase2()
+        public InoViewModelBase2() : base()
         { }
-
-        [Model]
-        public T Model
-        {
-            get { return GetValue<T>(ModelProperty); }
-            protected set { SetValue(ModelProperty, value); }
-        }
-        public static readonly PropertyData ModelProperty = RegisterProperty(nameof(Model), typeof(T));
-
-
-        [ViewModelToModel]
-        public string DisplayText
-        {
-            get { return GetValue<string>(DisplayTextProperty); }
-            set { SetValue(DisplayTextProperty, value); }
-        }
-        public static readonly PropertyData DisplayTextProperty = RegisterProperty(nameof(DisplayText), typeof(string));
-
 
         #region Methods
 
@@ -52,7 +34,13 @@ namespace Company.Base.Presentation
             EditableObjectHelper.BeginEditObject(Model);
         }
 
-        public void Revert()
+        public void SaveEdition()
+        {
+            SaveData();
+            EditManager.IsOnEdit = false;
+        }
+
+        private void SaveData()
         {
             InoViewModelBase2<T> inoVm;
             IEnumerable<IViewModel> childs = GetChildViewModels();
@@ -61,7 +49,36 @@ namespace Company.Base.Presentation
             {
                 inoVm = vm as InoViewModelBase2<T>;
                 if(inoVm != null)
-                    ((InoViewModelBase2<T>)vm).Revert();
+                    ((InoViewModelBase2<T>)vm).SaveData();
+            }
+
+            EditableObjectHelper.EndEditObject(Model);
+            EditableObjectHelper.BeginEditObject(Model);
+
+            foreach(IViewModel vm in childs)
+            {
+                inoVm = vm as InoViewModelBase2<T>;
+                if(inoVm != null)
+                    ((InoViewModelBase2<T>)vm).BeginEditViewModel();
+            }
+        }
+
+        public void CancelEdition()
+        {
+            RevertData();
+            EditManager.IsOnEdit = false;
+        }
+
+        private void RevertData()
+        {
+            InoViewModelBase2<T> inoVm;
+            IEnumerable<IViewModel> childs = GetChildViewModels();
+
+            foreach(IViewModel vm in childs)
+            {
+                inoVm = vm as InoViewModelBase2<T>;
+                if(inoVm != null)
+                    ((InoViewModelBase2<T>)vm).RevertData();
             }
 
             EditableObjectHelper.CancelEditObject(Model);
@@ -75,43 +92,10 @@ namespace Company.Base.Presentation
             }
         }
 
-        // Nicht machen! Würde UnitOfWork Handling torpedieren!
-        //
-        //public void SaveViewModel(bool onlyChilds)
-        //{
-        //    InoViewModelBase inoVm;
-        //    IEnumerable<IViewModel> childs = GetChildViewModels();
-
-        //    foreach(IViewModel vm in childs)
-        //    {
-        //        inoVm = vm as InoViewModelBase;
-        //        if(inoVm != null)
-        //            ((InoViewModelBase)vm).SaveViewModel(false);
-        //    }
-
-
-        //    if(!onlyChilds)
-        //    {
-        //        EditableObjectHelper.EndEditObject(this);
-        //        SaveFunction();
-        //        EditableObjectHelper.BeginEditObject(this);
-        //    }
-
-        //    foreach(IViewModel vm in childs)
-        //    {
-        //        inoVm = vm as InoViewModelBase;
-        //        if(inoVm != null)
-        //            ((InoViewModelBase)vm).BeginEditViewModel(false);
-        //    }
-        //}
-
-        //public virtual void SaveFunction()
-        //{ }
-
         protected override void OnBeginEdit(BeginEditEventArgs e)
         {
             base.OnBeginEdit(e);
-            Model.IsOnEdit = true;
+            Model.IsReadyForEdit = true;
 
             if(LogManager.IsDebugEnabled.Value)
                 Trace.WriteLine(String.Format("Ino VM: {0} starts edit", Model.GetType()));
@@ -120,7 +104,7 @@ namespace Company.Base.Presentation
         protected override void OnEndEdit(EditEventArgs e)
         {
             base.OnEndEdit(e);
-            Model.IsOnEdit = false;
+            Model.IsReadyForEdit = false;
 
             if(LogManager.IsDebugEnabled.Value)
                 Trace.WriteLine(String.Format("Ino VM: {0} ends edit", Model.GetType()));
@@ -129,7 +113,7 @@ namespace Company.Base.Presentation
         protected override void OnCancelEdit(EditEventArgs e)
         {
             base.OnCancelEdit(e);
-            Model.IsOnEdit = false;
+            Model.IsReadyForEdit = false;
 
             if(LogManager.IsDebugEnabled.Value)
                 Trace.WriteLine(String.Format("Ino VM: {0} abots edit", Model.GetType()));

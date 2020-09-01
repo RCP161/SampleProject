@@ -57,7 +57,7 @@ namespace Company.Security.Presentation
         {
             SelectedUser = new User();
             SelectedUser.SetState(StateEnum.Created);
-            SelectedUser.IsOnEdit = true;
+            EditManager.IsOnEdit = true;
         }
 
         private void DeleteUser()
@@ -69,7 +69,7 @@ namespace Company.Security.Presentation
 
         private void EditUser()
         {
-            SelectedUser.IsOnEdit = true;
+            EditManager.IsOnEdit = true;
         }
 
         #endregion

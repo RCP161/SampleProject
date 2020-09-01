@@ -72,6 +72,7 @@ namespace Company.AppName
 
             ServiceLocator.Default.RegisterType<Company.AppName.Data.IDbConfigruation, Config>(RegistrationType.Singleton);
             ServiceLocator.Default.RegisterType<Base.Core.ISearchService, SearchDialog.SearchService>(RegistrationType.Transient);
+            ServiceLocator.Default.RegisterType<Base.Presentation.IEditManager, Base.Presentation.EditManager>(RegistrationType.Singleton);
 
             // Basic
 

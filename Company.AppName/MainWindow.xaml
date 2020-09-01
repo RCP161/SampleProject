@@ -42,6 +42,7 @@
                             Icon="AppLogo" />
                 <ComboBox Grid.Column="1"
                           Margin="3"
+                          IsEnabled="{Binding EditManager.IsOnNavigation}"
                           ItemsSource="{Binding Modules}"
                           SelectedItem="{Binding SelectedModul}">
                     <ComboBox.ItemTemplate>

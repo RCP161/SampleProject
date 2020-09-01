@@ -27,7 +27,9 @@
         <!--  Items  -->
         <mah:HamburgerMenu.ItemsSource>
             <mah:HamburgerMenuItemCollection>
-                <mah:HamburgerMenuIconItem x:Name="DefaultHamburgerMenuItem" Label="Home">
+                <mah:HamburgerMenuIconItem x:Name="DefaultHamburgerMenuItem"
+                                           IsEnabled="{Binding EditManager.IsOnNavigation}"
+                                           Label="Home">
                     <mah:HamburgerMenuIconItem.Icon>
                         <ctr:InoIconBox Width="25" Icon="Home" />
                     </mah:HamburgerMenuIconItem.Icon>
@@ -35,7 +37,7 @@
                         <local:HomeView />
                     </mah:HamburgerMenuIconItem.Tag>
                 </mah:HamburgerMenuIconItem>
-                <mah:HamburgerMenuIconItem Label="Personen">
+                <mah:HamburgerMenuIconItem IsEnabled="{Binding EditManager.IsOnNavigation}" Label="Personen">
                     <mah:HamburgerMenuIconItem.Icon>
                         <ctr:InoIconBox Width="25" Icon="Person" />
                     </mah:HamburgerMenuIconItem.Icon>
@@ -62,7 +64,9 @@
 
         <mah:HamburgerMenu.ContentTemplate>
             <DataTemplate>
-                <ContentPresenter Margin="5" Content="{Binding}" />
+                <ContentPresenter Margin="5"
+                                  Content="{Binding}"
+                                  IsEnabled="True" />
             </DataTemplate>
         </mah:HamburgerMenu.ContentTemplate>
 
