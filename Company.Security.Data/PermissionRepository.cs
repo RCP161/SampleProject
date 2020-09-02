@@ -22,7 +22,7 @@ namespace Company.Security.Data
 
         public IEnumerable<Permission> GetLast10()
         {
-            return GetQuery().OrderByDescending(x => x.Id).Take(10);
+            return GetQuery().OrderByDescending(x => x.Id).Take(10).ToList();
         }
     }
 }

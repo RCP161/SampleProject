@@ -21,9 +21,9 @@ namespace Company.Security.Presentation
             Model = model;
             SaveCommand = new Command(() => SaveGroup());
             CancelCommand = new Command(() => CancelEdition());
-            AddPermissionCommand = new TaskCommand(() => AddPermissionAsync());
+            AddPermissionCommand = new Command(() => AddPermission());
             RemovePermissionCommand = new Command(() => RemovePermission());
-            AddUserCommand = new TaskCommand(() => AddUserAsync());
+            AddUserCommand = new Command(() => AddUser());
             RemoveUserCommand= new Command(() => RemoveUser());
         }
 
@@ -74,9 +74,9 @@ namespace Company.Security.Presentation
 
         public Command SaveCommand { get; private set; }
         public Command CancelCommand { get; private set; }
-        public TaskCommand AddPermissionCommand { get; private set; }
+        public Command AddPermissionCommand { get; private set; }
         public Command RemovePermissionCommand { get; private set; }
-        public TaskCommand AddUserCommand { get; private set; }
+        public Command AddUserCommand { get; private set; }
         public Command RemoveUserCommand { get; private set; }
 
         #endregion
@@ -94,9 +94,9 @@ namespace Company.Security.Presentation
             SaveEdition();
         }
 
-        private async Task AddPermissionAsync()
+        private void AddPermission()
         {
-            Permission permission = await ServiceLocator.Default.ResolveType<ISearchService>().SearchAsync<Permission>();
+            Permission permission = ServiceLocator.Default.ResolveType<ISearchService>().Search<Permission>();
 
             if(permission == null)
                 return;
@@ -117,9 +117,9 @@ namespace Company.Security.Presentation
             SelectedGroupPermission.SetState(StateEnum.Deleted);
         }
 
-        private async Task AddUserAsync()
+        private void AddUser()
         {
-            User user = await ServiceLocator.Default.ResolveType<ISearchService>().SearchAsync<User>();
+            User user = ServiceLocator.Default.ResolveType<ISearchService>().Search<User>();
 
             if(user == null)
                 return;

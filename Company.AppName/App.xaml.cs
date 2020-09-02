@@ -59,9 +59,9 @@ namespace Company.AppName
             base.OnStartup(e);
 
 
-            IUIVisualizerService uIVisualizerService = ServiceLocator.Default.ResolveType<IUIVisualizerService>();
+            Base.Presentation.IWindowService windowService = ServiceLocator.Default.ResolveType<Base.Presentation.IWindowService>();
 
-            uIVisualizerService.ShowAsync<MainVm>();
+            windowService.ShowAsync<MainVm>();
         }
 
         private void Register()
@@ -73,6 +73,7 @@ namespace Company.AppName
             ServiceLocator.Default.RegisterType<Company.AppName.Data.IDbConfigruation, Config>(RegistrationType.Singleton);
             ServiceLocator.Default.RegisterType<Base.Core.ISearchService, SearchDialog.SearchService>(RegistrationType.Transient);
             ServiceLocator.Default.RegisterType<Base.Presentation.IEditManager, Base.Presentation.EditManager>(RegistrationType.Singleton);
+            ServiceLocator.Default.RegisterType<Base.Presentation.IWindowService, WindowService>(RegistrationType.Singleton);
 
             // Basic
 
@@ -133,9 +134,10 @@ namespace Company.AppName
             // =========================
 
             IUIVisualizerService uIVisualizerService = ServiceLocator.Default.ResolveType<IUIVisualizerService>();
+            Company.Base.Presentation.IWindowService windowService = ServiceLocator.Default.ResolveType<Base.Presentation.IWindowService>();
 
-            uIVisualizerService.Register(typeof(MainVm), typeof(MainWindow));
-            uIVisualizerService.Register(typeof(SearchDialog.SearchWindowViewModel), typeof(SearchDialog.SearchWindow));
+            windowService.Register(typeof(MainVm), typeof(MainWindow));
+            windowService.Register(typeof(SearchDialog.SearchWindowViewModel), typeof(SearchDialog.SearchWindow));
         }
 
         // TODO : Todo-Liste

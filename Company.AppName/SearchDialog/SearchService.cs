@@ -8,24 +8,25 @@ using System.Windows.Media.Media3D;
 using Catel.IoC;
 using Catel.Services;
 using Company.Base.Core;
+using Company.Base.Presentation;
 
 namespace Company.AppName.SearchDialog
 {
     public class SearchService : ISearchService
     {
-        public async Task<T> SearchAsync<T>() where T : InoModelBase2
+        public T Search<T>() where T : InoModelBase2
         {
-            IEnumerable<T> res = await StartDialogAsync<T>(false);
+            IEnumerable<T> res = StartDialog<T>(false);
             return res.SingleOrDefault();
         }
 
-        public async Task<IEnumerable<T>> SearchMultipleAsync<T>() where T : InoModelBase2
+        public IEnumerable<T> SearchMultiple<T>() where T : InoModelBase2
         {
-            IEnumerable<T> res = await StartDialogAsync<T>(true);
+            IEnumerable<T> res = StartDialog<T>(true);
             return res;
         }
 
-        private async Task<IEnumerable<T>> StartDialogAsync<T>(bool isMultiple) where T : InoModelBase2
+        private IEnumerable<T> StartDialog<T>(bool isMultiple) where T : InoModelBase2
         {
             Func<IEnumerable<InoModelBase2>> last10Function;
             Func<string, IEnumerable<InoModelBase2>> searchFunction;
@@ -54,7 +55,7 @@ namespace Company.AppName.SearchDialog
 
             SearchWindowModel model = new SearchWindowModel(isMultiple, last10Function, searchFunction);
 
-            bool? result = await ServiceLocator.Default.ResolveType<IUIVisualizerService>().ShowDialogAsync<SearchWindowViewModel>(model);
+            bool? result = ServiceLocator.Default.ResolveType<IWindowService>().ShowDialog<SearchWindowViewModel>(model);
 
             if(result.HasValue && result.Value)
                 return model.MultipleResults.OfType<T>().ToList();
