@@ -16,7 +16,8 @@ namespace Company.Basic.Service
         {
             IEnumerable<Person> res;
 
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IPersonRepository>().GetAll().ToList();
             }
@@ -26,7 +27,8 @@ namespace Company.Basic.Service
 
         public Person GetPersonById(long id)
         {
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 return uow.GetRepository<IPersonRepository>().GetByKey(id);
             }
@@ -34,7 +36,8 @@ namespace Company.Basic.Service
 
         public void SavePerson(Person person)
         {
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 IPersonRepository pr = uow.GetRepository<IPersonRepository>();
 
@@ -42,6 +45,7 @@ namespace Company.Basic.Service
                 uow.SaveChanges();
             }
         }
+
         public void DeletePerson(Person selectedPerson)
         {
             throw new NotImplementedException();

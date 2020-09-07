@@ -32,7 +32,7 @@ namespace Company.Security.Data
 
         public IEnumerable<User> GetLast10()
         {
-            return GetQuery().OrderByDescending(x => x.Id).Take(10);
+            return GetQuery().OrderByDescending(x => x.Id).Take(10).ToList();
         }
     }
 }

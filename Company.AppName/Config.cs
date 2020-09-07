@@ -21,7 +21,13 @@ namespace Company.AppName
 
         public bool CreateNewDb
         {
-            get { return false; }
+            get { return true; }
         }
+
+
+        // TODO : PR
+
+        // Speichern nach vorherigem Cancel führ zu neuen KindListen. Dann kracht das EF bei einem Context
+        // Muss am Modul UC wirklich Conten.IsEnabled = true
     }
 }

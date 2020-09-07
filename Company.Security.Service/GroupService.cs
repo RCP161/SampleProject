@@ -33,7 +33,8 @@ namespace Company.Security.Service
         {
             IEnumerable<Group> res;
 
-            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(DbContextManager<AppDbContext>.GetManager().Context))
+            using(DbContextManager<AppDbContext> manager = DbContextManager<AppDbContext>.GetManager())
+            using(UnitOfWork<AppDbContext> uow = new UnitOfWork<AppDbContext>(manager.Context))
             {
                 res = uow.GetRepository<IGroupRepository>().GetByUserId(id);
             }

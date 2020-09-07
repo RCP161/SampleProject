@@ -34,7 +34,7 @@ namespace Company.Security.Data
 
         public IEnumerable<Group> GetLast10()
         {
-            return GetQuery().OrderByDescending(x => x.Id).Take(10);
+            return GetQuery().OrderByDescending(x => x.Id).Take(10).ToList();
         }
     }
 }
