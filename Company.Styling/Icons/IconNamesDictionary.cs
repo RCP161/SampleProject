@@ -15,14 +15,15 @@ namespace Company.Styling.Icons
         private static Dictionary<IconAlias, Geometry> SetInstance()
         {
             Dictionary<IconAlias, Geometry> res = new Dictionary<IconAlias, Geometry>();
+            IconData iconData = new IconData();
 
             res.Add(IconAlias.Dummy, null);
-            res.Add(IconAlias.AppLogo, IconData.AppLogo);
-            res.Add(IconAlias.BasicLogo, IconData.BasicLogo);
-            res.Add(IconAlias.SecurityLogo, IconData.SecurityLogo);
-            res.Add(IconAlias.Home, IconData.Home);
-            res.Add(IconAlias.Group, IconData.Group);
-            res.Add(IconAlias.User, IconData.User);
+            res.Add(IconAlias.AppLogo, iconData.AppLogo);
+            res.Add(IconAlias.BasicLogo, iconData.BasicLogo);
+            res.Add(IconAlias.SecurityLogo, iconData.SecurityLogo);
+            res.Add(IconAlias.Home, iconData.Home);
+            res.Add(IconAlias.Group, iconData.Group);
+            res.Add(IconAlias.User, iconData.User);
 
             return res;
         }
